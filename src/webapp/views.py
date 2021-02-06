@@ -68,7 +68,7 @@ def create_account_view(request):
 @login_required(login_url='/welcome')
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
-    return render(request, 'coming-soon.html', {'user': current_user})
+    return render(request, 'homepage.html', {'user': current_user})
 
 # view where users can change their account information or delete their account
 @login_required(login_url='/welcome')
