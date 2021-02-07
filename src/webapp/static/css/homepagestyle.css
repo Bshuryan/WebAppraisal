@@ -11,10 +11,10 @@
 }
 
 .jumbotron {
-  background-image: url(../../static/img/homepage-background.jpeg);
+  background-image: url(../../static/img/Header-Test2.PNG);
   background-size: cover;
   height: 100%;
-  min-height: 250px;
+  min-height: 300px;
   position: relative;
 }
 
