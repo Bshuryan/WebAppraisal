@@ -3,56 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/homepagestyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Homepage</title>
 </head>
+
+<header>
+    <div class="container">
+      <nav class="navbar navbar-default">
+          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+                    <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+                </button>
+                   <ul class="dropdown-menu" aria-labelledby="account-management">
+                        <li>
+                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+                                <img src="../static/img/person.svg" width="24" height="24" alt=""> User Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/welcome" class="btn btn-default btn-block text-left">
+                                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+                            </a>
+                        </li>
+                   </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
 <body>
-    <nav class="navbar">
-        <a class="navbar-brand">Real Estate Logo</a>
-        <div class="dropdown">
-            <form method="POST">
-                    {% csrf_token %}
-				</form>
-            <button onclick="myFunction()" class="dropbtn"><img src="../static/img/hamburger.png" width="50" height="50"></button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="">Account Settings</a>
-                <a href="{% url 'logout' %}">Logout</a>
+    <section class="jumbotron text-center">
+        <div class="container" style="position: absolute">
+            <h1 class="jumbotron-heading appraisal-header"><strong>My Appraisals</strong></h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div>
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h7 style="font-family: Georgia, serif;">Create new appraisal</h7><br>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                 <div class="card appraisal-card" style="width: 18rem">
+                    <img src="../static/img/house1.jpg" class="card-img-top" alt="Image of House"/>
+                    <div class="card-body">
+                        <hr><h5 class="card-title" style="font-family: Georgia, serif;">1234 Main St.</h5>
+                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: #4CAF50">DONE</span></p>
+                    </div>
+                </div>
             </div>
 
+            <div class="col-md-4">
+                 <div class="card appraisal-card" style="width: 18rem">
+                    <img src="../static/img/house2.jpg" class="card-img-top" alt="Image of House"/>
+                    <div class="card-body">
+                        <hr><h5 class="card-title" style="font-family: Georgia, serif;">4321 Side St.</h5>
+                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: darkorange">In Progress</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                 <div class="card appraisal-card" style="width: 18rem">
+                    <img src="../static/img/house3.jpg" class="card-img-top" alt="Image of House"/>
+                    <div class="card-body">
+                        <hr><h5 class="card-title" style="font-family: Georgia, serif;">512 Sesame St.</h5>
+                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: darkred">Not Started</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        </button>
-    </nav>
-
-    <h1 class="intro">
-        Here are your appraisal listings
-    </h1>
-    <div class="row">
-  <div class="column" style="background-color:#4CAF50;"><img src="../static/img/house1.jpg" width="150" height="150">
-      <div class="column1"> <h2>Appraisal 1</h2>
-    <p>Address</p>
-      <p>Price</p>
-      <p>Value</p>
-      </div>
-      <div class="column2">
-      </div>
-
-  </div>
-  <div class="column" style="background-color:#abd4b2;"><img src="../static/img/house2.jpg" width="150" height="150">
-    <div class="column1"> <h2>Appraisal 2</h2>
-    <p>Address</p>
-      <p>Price</p>
-      <p>Value</p>
     </div>
-  </div>
-  <div class="column" style="background-color:#4CAF50;"><img src="../static/img/house3.jpg" width="150" height="150">
-    <div class="column1"> <h2>Appraisal 3</h2>
-    <p>Address</p>
-      <p>Price</p>
-      <p>Value</p>
-    </div>
-  </div>
 
-</div>
 
 <script>
 /* When the user clicks on the button,

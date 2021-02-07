@@ -18,11 +18,7 @@ def redirect_to_login(request):
 
 # login page - default when first opening the webapp
 def login_view(request):
-    # TODO: Remove once logout button is functioning
-  #  logout(request)
-   # if request.user.is_authenticated:
-    #    return redirect('/home')
-
+    logout(request)
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
 
@@ -68,6 +64,11 @@ def create_account_view(request):
 @login_required(login_url='/welcome')
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
     return render(request, 'homepage.html', {'user': current_user})
 
 # view where users can change their account information or delete their account
@@ -84,25 +85,22 @@ def account_management_view(request):
 
             if user_form.is_valid() or phone_num_form.is_valid():
                 if user_form.is_valid():
-                    username = user_form.cleaned_data['username']
-                    try:
-                        same_user = User.objects.exclude(pk=request.user.id).get(username=username)
-                    except User.DoesNotExist:
-                        user_form.save()
-                    else:
-                        messages.error(request, "Username already in use!")
+                    user_form.save()
 
                 if phone_num_form.is_valid():
                     phone_num_form.save()
                 # see https://stackoverflow.com/questions/28723266/django-display-message-after-post-form-submit to implement
                 messages.success(request, "We've successfully updated your account")
                 return redirect('/account-management')
+            else:
+                return redirect('/account-management')
 
-        # on the button: <input ... name=delete_account
-        # likely want a popup button to confirm
         elif 'delete_account_confirm' in request.POST:
             user.delete()
             return redirect('/welcome')
+
+        else:
+            return redirect('/account-management')
 
     else:
         user_form = UpdateAccountForm(instance=user)
