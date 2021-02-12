@@ -38,9 +38,9 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, "loginpage.html", {"form": form })
 
-def logout_view(request):
-    logout(request)
-    return redirect('welcome/')
+# def logout_view(request):
+#     logout(request)
+#     return redirect('welcome/')
 
 # for new users to create an account
 def create_account_view(request):

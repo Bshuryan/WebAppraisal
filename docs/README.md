@@ -87,3 +87,15 @@ A: You may have to make migrations to the update the database schema. Run the co
 Q: How do I create my admin account?
 
 A: In the Docker desktop app, click the dropdown for the webappraisal container. Hover over the "web_appraisal_web_1" and select the second button to the right of it (CLI). A command prompt should open up. From here, you can run "python manage.py createsuperuser". It should then prompt you for the information to make a superuser account. You can confirm that it has worked by going to localhost:8000/admin/ and entering in the credentials you created for the superuser.
+
+Q: How do I run unit tests?
+
+A: Run the following commands:
+
+    1. docker-compose run web coverage run -m pytest
+        * This will run the unit tests
+    2. docker-compose run web coverage report // this is optional
+        * Gives a summary of unit test coverage
+    3. docker-compose run web coverage html // this is also optional
+        * Creates the directory "htmlcov" at the project level - open up htmlcov/index.html for a detailed coverage report. This shows lines of code/branches covered or not covered by unit tests.
+    

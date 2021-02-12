@@ -1,14 +1,16 @@
 from django.test import TestCase
-from webapp.models import Profile
-from webapp.models import User
+from src.webapp.models import Profile
+from src.webapp.models import User
 
 class ModelsTest(TestCase):
-    def test_profile(self):
-        user = User.objects.create(email='test@gmail.com', password='password', first_name='John', last_name='Doe')
-        profile = Profile.objects.create(user_id=1, phone_number='123-4567', role=Profile.Roles.CUSTOMER)
+    def test_get_display_appraiser(self):
+        appraiser = Profile.objects.create(user_id=2, phone_number='123-4567', role=Profile.Roles.APPRAISER)
+        self.assertEqual(appraiser.get_display_role(), 'Appraiser')
+        appraiser.delete()
 
-        self.assertTrue(user, isinstance(User))
-        self.assertTrue(profile, isinstance(Profile))
-
+    def test_get_display_customer(self):
+        customer = Profile.objects.create(user_id=3, role=Profile.Roles.CUSTOMER)
+        self.assertEqual(customer.get_display_role(), 'Customer requesting appraisal')
+        customer.delete()
 
 
