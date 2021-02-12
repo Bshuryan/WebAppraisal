@@ -27,5 +27,13 @@ urlpatterns = [
     path('welcome/', views.login_view),
     path('create-account/', views.create_account_view),
     path('home/', views.dashboard_view),
-    path('account-management/', views.account_management_view)
+    path('account-management/', views.account_management_view),
+
+    # Appraisal paths
+    path('general/', views.app1),
+    path('hood/', views.app2),
+    path('site/', views.app3),
+    path('improve/', views.app4),
+    path('comments/', views.app5)
+
 ]
