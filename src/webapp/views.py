@@ -112,4 +112,53 @@ def account_management_view(request):
 
 
 
+@login_required(login_url='/welcome')
+def app1(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
 
+    return render(request, 'app1.html', {'user': current_user})
+
+
+@login_required(login_url='/welcome')
+def app2(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'app2.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def app3(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'app3.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def app4(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'app4.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def app5(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'app5.html', {'user': current_user})
