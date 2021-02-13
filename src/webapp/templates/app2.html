@@ -40,5 +40,65 @@
     <a href="../general/" ><button>General</button></a>
     <a href="../site/" ><button>Site</button></a>
 
+<form>
+  <div class="form-group row">
+    <label for="CurrentOwner" class="col-sm-2 col-form-label">Current Owner</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="CurrentOwner" placeholder="Full Name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Borrower" class="col-sm-2 col-form-label">Borrower(IF Applicable)</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Borrower" placeholder="Full Name">
+    </div>
+  </div>
+    <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Occupant</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="Occ1" value="option1" checked>
+          <label class="form-check-label" for="Occ1">
+            Owner
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="Occ2" value="option2">
+          <label class="form-check-label" for="Occ2">
+            Tenant
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="gridRadios" id="Occ3" value="option3">
+          <label class="form-check-label" for="Occ3">
+            Vacant
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+    <div class="form-group col-md-3">
+      <label for="Sale Price">Sale Price</label>
+      <input type="number" class="form-control" id="Sale Price">
+    </div>
+    <div class="form-group">
+  <label for="dateSale" class="col-md-1">Date of sale</label>
+  <div class="col-md-4">
+    <input class="form-control" type="date" value="" id="dateSale">
+  </div>
+
+
+
+
+
+<div>
+<textarea id="Comment" name="TextArea" rows="4" cols="50">
+Please Enter any additional comments.
+</textarea>
+</div>
+
+</form>
+
 </body>
 </html>
