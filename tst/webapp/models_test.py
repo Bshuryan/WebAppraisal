@@ -1,15 +1,17 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from src.webapp.models import Profile
-from src.webapp.models import User
 
 class ModelsTest(TestCase):
     def test_get_display_appraiser(self):
-        appraiser = Profile.objects.create(user_id=2, phone_number='123-4567', role=Profile.Roles.APPRAISER)
+        user = User.objects.create(username='ut_appraiser', email='appraiser@gmail.com', password='password')
+        print(str(user.id) + '\n\n\n\n')
+        appraiser = Profile.objects.create(user_id=user.id, phone_number='123-4567', role=Profile.Roles.APPRAISER)
         self.assertEqual(appraiser.get_display_role(), 'Appraiser')
-        appraiser.delete()
 
     def test_get_display_customer(self):
-        customer = Profile.objects.create(user_id=3, role=Profile.Roles.CUSTOMER)
+        user = User.objects.create(username='ut_customer', email='customer@gmail.com', password='password')
+        customer = Profile.objects.create(user_id=user.id, role=Profile.Roles.CUSTOMER)
         self.assertEqual(customer.get_display_role(), 'Customer requesting appraisal')
         customer.delete()
 

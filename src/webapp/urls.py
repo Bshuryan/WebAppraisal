@@ -31,9 +31,9 @@ urlpatterns = [
 
     # Appraisal paths
     path('general/', views.app1),
-    path('hood/', views.app2),
+    path('neighborhood/', views.app2),
     path('site/', views.app3),
-    path('improve/', views.app4),
+    path('description-improvements/', views.app4),
     path('comments/', views.app5)
 
 ]

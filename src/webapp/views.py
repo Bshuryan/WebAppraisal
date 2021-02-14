@@ -120,7 +120,7 @@ def app1(request):
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'app1.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/app1.html', {'user': current_user})
 
 
 @login_required(login_url='/welcome')
@@ -131,7 +131,7 @@ def app2(request):
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'app2.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/app2.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
 def app3(request):
@@ -141,7 +141,7 @@ def app3(request):
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'app3.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/app3.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
 def app4(request):
@@ -151,7 +151,7 @@ def app4(request):
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'app4.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/description_improvments.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
 def app5(request):
@@ -161,4 +161,4 @@ def app5(request):
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'app5.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/app5.html', {'user': current_user})
