@@ -113,38 +113,38 @@ def account_management_view(request):
 
 
 @login_required(login_url='/welcome')
-def app1(request):
+def general_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/app1.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/general.html', {'user': current_user})
 
 
 @login_required(login_url='/welcome')
-def app2(request):
+def neighborhood_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/app2.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/neighborhood.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def app3(request):
+def site_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/app3.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/site.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def app4(request):
+def improvments_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
@@ -154,11 +154,11 @@ def app4(request):
     return render(request, 'appraisal_edit_forms/description_improvments.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def app5(request):
+def comment_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/app5.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/comments.html', {'user': current_user})
