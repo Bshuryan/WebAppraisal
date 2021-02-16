@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../../static/css/FormStyle.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+  
   <title>Property Information</title>
   <script>
     // Adds the years 1980-2020 to the tax year dropdown
@@ -25,41 +27,55 @@
 <body>
 
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
-
 <body class="bg-light">
-    <div class="container">
-        <div>
-            <h2 class="form-header webappraisal-header">Property Information</h2>
-                <a href="../general/" ><button>General</button></a>
-                <a href="../site/" ><button>Site</button></a>
-                ADD BUTTONS HERE FOR NAVIGATION TO OTHER APP PAGES
-            <hr>
-        </div>
 
+<div class="container">
+  
+  <h2 class="form-header webappraisal-header">Property Information</h2>  
+  
+  <div class="btn-group" role="group">
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Navigate Pages >
+      </button>
+      <div class="dropdown-menu">
+        <a class="btn btn-secondary disabled" href="../site/">Sites</a>
+        <a class="btn btn-secondary" href="../property-information/">Property Information</a>
+        <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
+        <a class="btn btn-secondary" href="../comments/">Comments</a>
+        <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
+        <a class="btn btn-secondary" href="../general/">General</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <hr>
         <form method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -83,8 +99,13 @@
             </select>
           </div>
           <div class="form-group col-md-6">
-            <label for="id_sale_date">Date of Sale TODO dates only</label>
-            <input id="id_sale_date" type="number" class="form-control"></input>
+            <label for="id_sale_date">Date of Sale</label>
+            <div class="input-group date" data-provide="datepicker">
+              <input type="text" class="form-control">
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -135,26 +156,33 @@
         <div class="form-row">
           <div class="text-center">
               <div class="form-group col-md-12">
-                <h1>Photos</h1>
+                <h2>Photos</h1>
+                <hr>
               </div>
-              <div class="formg
               <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
               <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
               <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
               <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
+              <br>
+              <hr>
+              <br>
           </div>
         </div>
-
-            <div class="form-floating col-md-12 additional-comments">
-            <label for="market_conditions">Market Conditions</label>
-            <textarea class="form-control" placeholder="Notes" id="market_conditions"></textarea>
+        
+        <div class="form-row">
+          <div class="form-floating col-md-12 additional-comments">
+            <label for="comments">Additional Comments</label>
+            <textarea class="form-control" placeholder="Comments..." id="comments"></textarea>
+          </div>
         </div>
 
         <br><br><hr>
 
         <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+        <br><br>
     </form>
     </div>
+</div>
 
 </body>
 
