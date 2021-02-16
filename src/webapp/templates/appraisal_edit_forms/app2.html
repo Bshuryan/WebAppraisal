@@ -35,70 +35,108 @@
 </header>
 
 
-    <h1>Neighborhood</h1>
+<body class="bg-light">
+    <div class="container">
 
-    <a href="../general/" ><button>General</button></a>
-    <a href="../site/" ><button>Site</button></a>
-
-<form>
-  <div class="form-group row">
-    <label for="CurrentOwner" class="col-sm-2 col-form-label">Current Owner</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="CurrentOwner" placeholder="Full Name">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="Borrower" class="col-sm-2 col-form-label">Borrower(IF Applicable)</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="Borrower" placeholder="Full Name">
-    </div>
-  </div>
-    <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Occupant</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="Occ1" value="option1" checked>
-          <label class="form-check-label" for="Occ1">
-            Owner
-          </label>
+        <div>
+            <h2 class="form-header webappraisal-header">Neigboorhood</h2>
+                <a href="../general/" ><button>General</button></a>
+                <a href="../site/" ><button>Site</button></a>
+            <hr>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="Occ2" value="option2">
-          <label class="form-check-label" for="Occ2">
-            Tenant
-          </label>
+
+        <form method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="id_neighborhood_name">Neighborhood Name</label>
+                <input id="id_neighborhood_name" type="text" class="form-control">
+            </div>
         </div>
-        <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="gridRadios" id="Occ3" value="option3">
-          <label class="form-check-label" for="Occ3">
-            Vacant
-          </label>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     <label for="id_location">Location</label>
+      <select id="id_location" class="form-control">
+        <option selected>Select...</option>
+            <option value="Urban">Urban</option>
+			<option value="Suburban">Suburban</option>
+			<option value="Rural">Rural</option>
+      </select>
+            </div>
+            <div class="form-group col-md-6">
+     <label for="id_prop_value">Property Value</label>
+      <select id="id_prop_value" class="form-control">
+        <option selected>Select...</option>
+            <option value="Increasing">Increasing</option>
+			<option value="Stable">Stable</option>
+			<option value="Slow">Slow</option>
+      </select>
         </div>
-      </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     <label for="id_growth_rate">Growth Rate</label>
+      <select id="id_growth_rate" class="form-control">
+        <option selected>Select...</option>
+            <option value="Rapid">Rapid</option>
+			<option value="Stable">Stable</option>
+			<option value="Slow">Slow</option>
+      </select>
+            </div>
+            <div class="form-group col-md-6">
+     <label for="id_supply_demand">Supply/Demand</label>
+      <select id="id_supply_demand" class="form-control">
+        <option selected>Select...</option>
+            <option value="Shortage">Shortage</option>
+			<option value="Stable">Stable</option>
+			<option value="Declining">Declining</option>
+      </select>
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     <label for="id_built_up">Built Up</label>
+      <select id="id_built_up" class="form-control">
+        <option selected>Select...</option>
+            <option value="75">Over 75%</option>
+			<option value="2575">25%-75%</option>
+			<option value="25">Under 25%</option>
+      </select>
+            </div>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="marketabilty_factors">Marketability Factors</label>
+            <textarea class="form-control" placeholder="Notes" id="marketabilty_factors"></textarea>
+        </div>
+
+            <div class="form-floating col-md-12 additional-comments">
+            <label for="market_conditions">Market Conditions</label>
+            <textarea class="form-control" placeholder="Notes" id="market_conditions"></textarea>
+        </div>
+
+        <br><br><hr>
+
+        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+    </form>
     </div>
-  </fieldset>
-    <div class="form-group col-md-3">
-      <label for="Sale Price">Sale Price</label>
-      <input type="number" class="form-control" id="Sale Price">
-    </div>
-    <div class="form-group">
-  <label for="dateSale" class="col-md-1">Date of sale</label>
-  <div class="col-md-4">
-    <input class="form-control" type="date" value="" id="dateSale">
-  </div>
-
-
-
-
-
-<div>
-<textarea id="Comment" name="TextArea" rows="4" cols="50">
-Please Enter any additional comments.
-</textarea>
-</div>
-
-</form>
 
 </body>
+
+<body class="bg-dark flex-column">
+  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
+          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+        </div>
+      </div>
+      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+  </footer>
+</body>
+
 </html>
