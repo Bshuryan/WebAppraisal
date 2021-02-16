@@ -162,3 +162,47 @@ def comment_view(request):
             redirect('/welcome')
 
     return render(request, 'appraisal_edit_forms/comments.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def materials_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/materials-condition.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def kitchen_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/kitchen.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def basement_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/basement.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def utilities_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/utilities.html', {'user': current_user})
+
+
+
+
