@@ -144,14 +144,13 @@ def site_view(request):
     return render(request, 'appraisal_edit_forms/site.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def improvments_view(request):
+def improvements_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
-
-    return render(request, 'appraisal_edit_forms/description_improvments.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/description_improvements.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
 def comment_view(request):
@@ -164,13 +163,21 @@ def comment_view(request):
     return render(request, 'appraisal_edit_forms/comments.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
+def property_information_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+    return render(request, 'appraisal_edit_forms/property_information.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
 def materials_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
-
     return render(request, 'appraisal_edit_forms/materials-condition.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
@@ -202,7 +209,4 @@ def utilities_view(request):
             redirect('/welcome')
 
     return render(request, 'appraisal_edit_forms/utilities.html', {'user': current_user})
-
-
-
 

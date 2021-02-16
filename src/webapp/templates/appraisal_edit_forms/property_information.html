@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../static/css/FormStyle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <title>Property Information</title>
+  <script>
+    // Adds the years 1980-2020 to the tax year dropdown
+    window.onload = function()
+    {
+      for(var i = 2020; i > 1980; i--)
+      {
+        elem = document.createElement("option");
+        elem.value = i;
+        elem.text = i;
+        document.getElementById("year_select").appendChild(elem);
+      }
+    }
+  </script>
+</head>
+<body>
+
+<header>
+    <div class="container">
+      <nav class="navbar navbar-default">
+          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+                </button>
+                   <ul class="dropdown-menu" aria-labelledby="account-management">
+                        <li>
+                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/welcome" class="btn btn-default btn-block text-left">
+                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+                            </a>
+                        </li>
+                   </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<body class="bg-light">
+    <div class="container">
+        <div>
+            <h2 class="form-header webappraisal-header">Property Information</h2>
+                <a href="../general/" ><button>General</button></a>
+                <a href="../site/" ><button>Site</button></a>
+                ADD BUTTONS HERE FOR NAVIGATION TO OTHER APP PAGES
+            <hr>
+        </div>
+
+        <form method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="current_owner">Current Owner</label>
+                <input id="current_owner" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="borrower">Borrower</label>
+                <input id="borrower" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="occupant">Occupant</label>
+            <select id="occupant" class="form-control">
+              <option selected>Select...</option>
+              <option value="owner">Owner</option>
+              <option value="tenant">Tenant</option>
+              <option value="vacant">Vacant</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="id_sale_date">Date of Sale TODO dates only</label>
+            <input id="id_sale_date" type="number" class="form-control"></input>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="tax_year">Tax Year</label>
+              <select id="year_select" class="form-control">
+              </select>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="real_estate_taxes">Real Estate Taxes</label>
+            <input id="real_estate_taxes" type="number" class="form-control" placeholder="$"></input>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="homeowers_fees">Homeowners Association Fees</label>
+            <input id="homeowners_fees" type="number" class="form-control" placeholder="$"></input>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="property_rights">Property Rights Appraised</label>
+              <select id="property_rights" class="form-control">
+                <option selected>Select...</option>
+                <option value="fee_simple">Fee Simple</option>
+                <option value="leasehold">Leasehold</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="project_type">Project Type</label>
+            <select id="project_type" class="form-control">
+              <option selected>Select...</option>
+              <option value="pud">PUD</option>
+              <option value="condominium">Condominium</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="map_reference">Map Reference Number</label>
+            <input id="map_reference" type="number" class="form-control"></input>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="census_tract">Census Tract</label>
+            <input id="census_tract" type="number" class="form-control"></input>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="text-center">
+              <div class="form-group col-md-12">
+                <h1>Photos</h1>
+              </div>
+              <div class="formg
+              <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
+              <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
+              <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
+              <img class="rounded" width="200px" height="200px" src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png"</img>
+          </div>
+        </div>
+
+            <div class="form-floating col-md-12 additional-comments">
+            <label for="market_conditions">Market Conditions</label>
+            <textarea class="form-control" placeholder="Notes" id="market_conditions"></textarea>
+        </div>
+
+        <br><br><hr>
+
+        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+    </form>
+    </div>
+
+</body>
+
+<body class="bg-dark flex-column">
+  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
+          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+        </div>
+      </div>
+      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+  </footer>
+</body>
+
+</html>
