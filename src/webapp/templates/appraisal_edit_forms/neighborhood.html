@@ -6,10 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>NEIGHBORHOOD </title>
+    <title>Neighborhood </title>
 </head>
-<body>
-
 <header>
     <div class="container">
       <nav class="navbar navbar-default">
@@ -39,8 +37,7 @@
 <body class="bg-light">
 
     <div class="container">
-
-       <h2 class="form-header webappraisal-header">Neighborhood</h2>  
+        <h1 class="form-header webappraisal-header">Neighborhood</h1>
   
       <div class="btn-group" role="group">
         <div class="btn-group" role="group">
@@ -57,7 +54,7 @@
             <a class="btn btn-secondary disabled" href="../general/">General</a>
           </div>
         </div>
-      </div>
+      </div><br><br>
 
         <form method="POST">
         <div class="form-row">
@@ -126,14 +123,20 @@
             <textarea class="form-control" placeholder="Notes" id="marketabilty_factors"></textarea>
         </div>
 
-            <div class="form-floating col-md-12 additional-comments">
+        <div class="form-floating col-md-12 additional-comments">
             <label for="market_conditions">Market Conditions</label>
             <textarea class="form-control" placeholder="Notes" id="market_conditions"></textarea>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="additional_comments">Additional Comments</label>
+            <textarea class="form-control" placeholder="Notes" id="additional_comments"></textarea>
         </div>
 
         <br><br><hr>
 
         <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+            <br><br>
     </form>
     </div>
 
