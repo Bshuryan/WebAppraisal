@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/FormStyle.css">
+    <link rel="stylesheet" href="../../static/css/homepagestyle.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Site Information</title>
 </head>
+<body>
 <header>
     <div class="container">
       <nav class="navbar navbar-default">
@@ -34,166 +34,9 @@
 </header>
 
 
-<body class="bg-light">
-
-    <div class="container">
-        <h1 class="form-header webappraisal-header">Site Information</h1>
-
-      <div class="btn-group" role="group">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Navigate Pages >
-          </button>
-          <div class="dropdown-menu">
-            <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
-            <a class="btn btn-secondary" href="../property-information/">Property Information</a>
-            <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
-            <a class="btn btn-secondary" href="../site/">Sites</a>
-            <br>
-            <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
-            <a class="btn btn-secondary" href="../general/">General</a>
-          </div>
-        </div>
-      </div><br><br><hr>
-
-        <form method="POST">
-
-         <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="id_dimensions">Dimensions</label>
-                <input id="id_dimensions" type="text" class="form-control">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="id_site_area">Site Area(Sqft.)</label>
-                <input id="id_site_area" type="text" class="form-control">
-            </div>
-             <div class="form-group col-md-3">
-                <label for="id_topography">Topography</label>
-                <input id="id_topography" type="text" class="form-control">
-            </div>
-             <div class="form-group col-md-3">
-                <label for="id_size">Size</label>
-             <input id="id_size" type="text" class="form-control">
-            </div>
-        </div>
-
-            <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="id_shape">Shape</label>
-                <input id="id_shape" type="text" class="form-control">
-            </div>
-            <div class="form-group col-md-3">
-            <label for="id_view">View</label>
-            <textarea class="form-control" placeholder="Notes" id="id_view"></textarea>
-            </div>
-             <div class="form-group col-md-3">
-            <label for="id_landscaping">Landscaping</label>
-            <textarea class="form-control" placeholder="Notes" id="id_landscaping"></textarea>
-            </div>
-             <div class="form-group col-md-3">
-                <label for="id_driveway">Driveway</label>
-             <input id="id_driveway" type="text" class="form-control">
-            </div>
-        </div>
-
-            <div class="form-row">
-            <div class="form-group col-md-4">
-            <label for="id_easements">Apparent easements</label>
-            <textarea class="form-control" placeholder="Notes" id="id_easements"></textarea>
-            </div>
-            <div class="form-group col-md-4">
-            <label for="id_drainage">Drainage</label>
-            <textarea class="form-control" placeholder="Notes" id="id_drainage"></textarea>
-            </div>
-             <div class="form-group col-md-4">
-                <label for="id_specific_zone">Specific Zone</label>
-                <input id="id_specific_zone" type="text" class="form-control">
-            </div>
-        </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-12">
-     <label for="id_zone_compliance">Zone Compliance</label>
-      <select id="id_zone_compliance" class="form-control">
-        <option value="NoZone"selected>No Zoning</option>
-            <option value="Legal">Legal</option>
-			<option value="Nonconforming">Legal Nonconforming</option>
-			<option value="Illegal">Illegal</option>
-      </select>
-            </div>
-            </div>
-
-            <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_fema_zone">FEMA Zone</label>
-                <input id="id_fema_zone" type="text" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="id_fema_map">FEMA Map No.</label>
-                <input id="id_fema_map" type="text" class="form-control">
-            </div>
-             <div class="form-group col-md-4">
-                <label for="id_map_date">Map Date</label>
-            <div class="input-group date" data-provide="datepicker">
-              <input id="id_map_date" type="date" class="form-control">
-            </div>
-            </div>
-        </div>
-
-            <hr>
-
-           <div class="form-sub-header form-row">
-            <h2 class="form-sub-header">Select all that apply</h2>
-        </div>
-
-        <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="site_corner_lot">
-            <label class="checkbox-inline form-check-label" for="site_corner_lot">Corner Lot</label>
-        </div>
-
-            <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="site_public_electric">
-            <label class="checkbox-inline form-check-label" for="site_public_electric">Public Electric</label>
-        </div>
-
-            <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="site_public_gas">
-            <label class="checkbox-inline form-check-label" for="site_public_gas">Public Gas</label>
-        </div>
-
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="site_public_water">
-          <label class="checkbox-inline form-check-label" for="site_public_water">Public Water</label>
-        </div>
-
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="site_sanitary_sewer">
-          <label class="checkbox-inline form-check-label" for="site_sanitary_sewer">Sanitary Sewer</label>
-        </div>
-
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="site_storm_sewer">
-          <label class="checkbox-inline form-check-label" for="site_storm_sewer">Storm Sewer</label>
-        </div>
-
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="flood_hazard">
-          <label class="checkbox-inline form-check-label" for="flood_hazard">FEMA Flood Hazard</label>
-        </div><br><br><hr>
-
-            <div class="form-row">
-          <div class="form-floating col-md-12 additional-comments">
-            <label for="comments">Additional Comments</label>
-            <textarea class="form-control" placeholder="Comments..." id="comments"></textarea>
-          </div>
-        </div>
-
-        <br><br><hr>
-
-        </form>
-
-</div>
+    <h1>Site</h1>
+    <a href="../neighborhood/" ><button>Neighborhood</button></a>
+    <a href="../description-improvements/" ><button>Description of Improvements</button></a>
 </body>
 
 <body class="bg-dark flex-column">
