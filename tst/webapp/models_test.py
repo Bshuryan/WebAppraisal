@@ -5,7 +5,6 @@ from src.webapp.models import Profile
 class ModelsTest(TestCase):
     def test_get_display_appraiser(self):
         user = User.objects.create(username='ut_appraiser', email='appraiser@gmail.com', password='password')
-        print(str(user.id) + '\n\n\n\n')
         appraiser = Profile.objects.create(user_id=user.id, phone_number='123-4567', role=Profile.Roles.APPRAISER)
         self.assertEqual(appraiser.get_display_role(), 'Appraiser')
 
