@@ -8,6 +8,7 @@
 
 .webappraisal-header {
   font-family: Georgia, serif;
+  font-size: 50px;
 }
 
 .form-header {
@@ -154,5 +155,16 @@ hr {
   padding-top: 30px;
   padding-bottom: 20px;
   background-color: #404633;!important;
+}
+
+.footer {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
