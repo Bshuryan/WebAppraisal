@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>NEIGHBORHOOD </title>
 </head>
 <body>
@@ -35,14 +37,27 @@
 
 
 <body class="bg-light">
+
     <div class="container">
 
-        <div>
-            <h2 class="form-header webappraisal-header">Neigboorhood</h2>
-                <a href="../general/" ><button>General</button></a>
-                <a href="../site/" ><button>Site</button></a>
-            <hr>
+       <h2 class="form-header webappraisal-header">Neighborhood</h2>  
+  
+      <div class="btn-group" role="group">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Navigate Pages >
+          </button>
+          <div class="dropdown-menu">
+            <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
+            <a class="btn btn-secondary" href="../property-information/">Property Information</a>
+            <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
+            <a class="btn btn-secondary disabled" href="../site/">Sites</a>
+            <br>
+            <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
+            <a class="btn btn-secondary disabled" href="../general/">General</a>
+          </div>
         </div>
+      </div>
 
         <form method="POST">
         <div class="form-row">
