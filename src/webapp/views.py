@@ -38,20 +38,18 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, "loginpage.html", {"form": form })
 
-# def logout_view(request):
-#     logout(request)
-#     return redirect('welcome/')
-
 # for new users to create an account
 def create_account_view(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.profile.role = form.cleaned_data.get('user_role')
-            user.profile.phone_number = form.cleaned_data.get('phone_number')
+            user_id = User.objects.get(username=user.username).id
+            profile = Profile.objects.create(phone_number=form.cleaned_data.get('phone_number'),
+                                             role=form.cleaned_data.get('user_role'),
+                                             user_id=user_id)
+            user.profile = profile
             user.save()
-
             raw_password = form.cleaned_data.get('password1')
             usr = authenticate(username=user.username, password=raw_password)
             login(request, usr)
@@ -75,7 +73,7 @@ def dashboard_view(request):
 @login_required(login_url='/welcome')
 def account_management_view(request):
     user = User.objects.get(pk=request.user.id)
-    additional_user_info = Profile.objects.get(pk=request.user.id)
+    additional_user_info = Profile.objects.get(user_id=request.user.id)
 
     if request.method == 'POST':
         # on the button: <input type=submit name=update_account
