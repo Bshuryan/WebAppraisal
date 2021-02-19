@@ -208,3 +208,13 @@ def utilities_view(request):
 
     return render(request, 'appraisal_edit_forms/utilities.html', {'user': current_user})
 
+login_required(login_url='/welcome')
+def foundation_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/foundation.html', {'user': current_user})
+
