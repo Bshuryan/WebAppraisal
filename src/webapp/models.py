@@ -25,3 +25,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True)
     role = models.TextField(choices=Roles.choices, blank=False)
+class Appraisal(models.Model):
+    id = models.IntegerField(primary_key=True)
+    house_id = models.IntegerField()
+    positive_features = models.TextField(blank=True, null=True)
+    negative_conditions = models.TextField(blank=True, null=True)
+    reconciliation = models.TextField(blank=True, null=True)
+    appraisal_price = models.IntegerField(blank=True, null=True)
