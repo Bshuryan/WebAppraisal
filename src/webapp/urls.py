@@ -37,8 +37,9 @@ urlpatterns = [
     path('comments/', views.comment_view),
     path('property-information/', views.property_information_view),
     path('comments/', views.comment_view),
-    path('materials-condition/', views.materials_view),
+    path('materials-conditions/', views.materials_conditions_view),
     path('kitchen/', views.kitchen_view),
     path('basement/', views.basement_view),
     path('utilities/', views.utilities_view),
+    path('offsite-information/', views.offsite_information_view)
 ]
