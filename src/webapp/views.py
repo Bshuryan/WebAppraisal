@@ -170,13 +170,13 @@ def property_information_view(request):
     return render(request, 'appraisal_edit_forms/property_information.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def materials_view(request):
+def materials_conditions_view(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
-    return render(request, 'appraisal_edit_forms/materials-condition.html', {'user': current_user})
+    return render(request, 'appraisal_edit_forms/materials_conditions.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
 def kitchen_view(request):
@@ -217,4 +217,15 @@ def foundation_view(request):
             redirect('/welcome')
 
     return render(request, 'appraisal_edit_forms/foundation.html', {'user': current_user})
+
+
+@login_required(login_url='/welcome')
+def offsite_information_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/offsite_information.html', {'user': current_user})
 
