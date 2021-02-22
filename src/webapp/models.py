@@ -683,3 +683,17 @@ class Appraisal(models.Model):
     negative_conditions = models.TextField(blank=True, null=True)
     reconciliation = models.TextField(blank=True, null=True)
     appraisal_price = models.IntegerField(blank=True, null=True)
+
+
+class Neighborhood(models.Model):
+    id = models.IntegerField(primary_key=True)
+    location = models.TextField()  # This field type is a guess.
+    name = models.IntegerField()
+    built_up = models.TextField()  # This field type is a guess.
+    growth_rate = models.TextField()  # This field type is a guess.
+    property_value = models.TextField()  # This field type is a guess.
+    demand_supply = models.TextField()  # This field type is a guess.
+    marketability_factors = models.TextField()
+    market_conditions = models.TextField()
+    comments = models.TextField(blank=True, null=True)
+    house = models.ForeignKey(House, models.DO_NOTHING)
