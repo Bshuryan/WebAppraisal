@@ -1,39 +1,79 @@
-from django.utils.translation import ugettext_lazy as _
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
-User._meta.get_field('email').blank = False
-User._meta.get_field('email').null = False
-User._meta.get_field('first_name').blank = False
-User._meta.get_field('first_name').null = False
-User._meta.get_field('last_name').blank = False
-User._meta.get_field('last_name').null = False
 
-class Profile(models.Model):
-    class Roles(models.TextChoices):
-        APPRAISER = 'APPRAISER', _('Appraiser')
-        CUSTOMER = 'CUSTOMER', _('Customer requesting appraisal')
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=150)
 
-    def get_display_role(self):
-        if self.role == Profile.Roles.APPRAISER:
-            return 'Appraiser'
-        else:
-            return 'Customer requesting appraisal'
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=20, blank=True)
-    role = models.TextField(choices=Roles.choices, blank=False)
 
-class Appraisal(models.Model):
-    id = models.IntegerField(primary_key=True)
-    house_id = models.IntegerField()
-    positive_features = models.TextField(blank=True, null=True)
-    negative_conditions = models.TextField(blank=True, null=True)
-    reconciliation = models.TextField(blank=True, null=True)
-    appraisal_price = models.IntegerField(blank=True, null=True)
-    
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
+
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
+
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.BooleanField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
 class Basement(models.Model):
     id = models.IntegerField(primary_key=True)
     basement_area = models.IntegerField(blank=True, null=True)
@@ -44,6 +84,11 @@ class Basement(models.Model):
     basement_outside_entry = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     materials_conditions = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'basement'
+
 
 class DescriptionOfImprovements(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -63,7 +108,56 @@ class DescriptionOfImprovements(models.Model):
     unknown_insulation = models.BooleanField()
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey('House', models.DO_NOTHING)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'description_of_improvements'
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.SmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
+
+
 class Foundation(models.Model):
     id = models.IntegerField(primary_key=True)
     sump_pump = models.BooleanField()
@@ -74,8 +168,13 @@ class Foundation(models.Model):
     infestation = models.TextField(blank=True, null=True)
     settlement = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    improvements_id = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
-    
+    improvements = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'foundation'
+
+
 class House(models.Model):
     id = models.IntegerField(primary_key=True)
     street_address = models.TextField()
@@ -86,7 +185,12 @@ class House(models.Model):
     appraisal_status = models.TextField()  # This field type is a guess.
     appraiser = models.ForeignKey(AuthUser, models.DO_NOTHING, blank=True, null=True)
     customer = models.ForeignKey(AuthUser, models.DO_NOTHING, blank=True, null=True)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'house'
+
+
 class HouseFeatures(models.Model):
     id = models.IntegerField(primary_key=True)
     pool = models.TextField()
@@ -100,6 +204,11 @@ class HouseFeatures(models.Model):
     comments = models.TextField()
     house = models.ForeignKey(House, models.DO_NOTHING)
 
+    class Meta:
+        managed = False
+        db_table = 'house_features'
+
+
 class Kitchen(models.Model):
     id = models.IntegerField(primary_key=True)
     kitchen_refrig = models.BooleanField()
@@ -111,7 +220,12 @@ class Kitchen(models.Model):
     kitchen_description = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     materials_condition = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'kitchen'
+
+
 class MaterialsAndCondition(models.Model):
     id = models.IntegerField(primary_key=True)
     condition_floors = models.TextField(blank=True, null=True)  # This field type is a guess.
@@ -128,7 +242,12 @@ class MaterialsAndCondition(models.Model):
     materials_doors = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'materials_and_condition'
+
+
 class Neighborhood(models.Model):
     id = models.IntegerField(primary_key=True)
     location = models.TextField()  # This field type is a guess.
@@ -141,7 +260,12 @@ class Neighborhood(models.Model):
     market_conditions = models.TextField()
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
- 
+
+    class Meta:
+        managed = False
+        db_table = 'neighborhood'
+
+
 class Offsite(models.Model):
     id = models.IntegerField(primary_key=True)
     offsite_curb_note = models.TextField(blank=True, null=True)
@@ -156,7 +280,12 @@ class Offsite(models.Model):
     offsite_street = models.TextField()  # This field type is a guess.
     comments = models.TextField(blank=True, null=True)
     site = models.ForeignKey('Site', models.DO_NOTHING)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'offsite'
+
+
 class Property(models.Model):
     id = models.IntegerField(primary_key=True)
     borrower = models.TextField()
@@ -172,7 +301,12 @@ class Property(models.Model):
     sale_price = models.IntegerField(blank=True, null=True)
     date_of_sale = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    house_id = models.ForeignKey(House, models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'property'
+
 
 class Room(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -181,6 +315,11 @@ class Room(models.Model):
     room_area = models.IntegerField(blank=True, null=True)
     room_comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'room'
+
 
 class Site(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -208,7 +347,12 @@ class Site(models.Model):
     map_date = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
- 
+
+    class Meta:
+        managed = False
+        db_table = 'site'
+
+
 class Utilities(models.Model):
     id = models.IntegerField(primary_key=True)
     heat_type = models.TextField()
@@ -219,7 +363,12 @@ class Utilities(models.Model):
     cooling_condition = models.TextField()  # This field type is a guess.
     comments = models.TextField()
     materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
-    
+
+    class Meta:
+        managed = False
+        db_table = 'utilities'
+
+
 class WebappAppraisal(models.Model):
     id = models.IntegerField(primary_key=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
@@ -227,3 +376,17 @@ class WebappAppraisal(models.Model):
     negative_conditions = models.TextField(blank=True, null=True)
     reconciliation = models.TextField(blank=True, null=True)
     appraisal_price = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'webapp_appraisal'
+
+
+class WebappProfile(models.Model):
+    phone_number = models.CharField(max_length=20)
+    role = models.TextField()
+    user = models.OneToOneField(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'webapp_profile'
