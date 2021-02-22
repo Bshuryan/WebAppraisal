@@ -3,56 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+          integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Foundation</title>
 </head>
-<body>
-
 <header>
- <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+            <div class="dropdown">
                 <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
                     <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
                 </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
+                <ul class="dropdown-menu" aria-labelledby="account-management">
+                    <li>
+                        <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+                            <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/welcome" class="btn btn-default btn-block text-left">
+                            <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
 </header>
 
-add shit here
+<body class="bg-light">
 
+<div class="container">
+    <h1 class="form-header webappraisal-header">Foundation</h1>
+    <hr>
 
-<body class="bg-dark flex-column">
-  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-md-7">
-          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
-          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+    <div class="btn-group" role="group">
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Navigate Pages >
+            </button>
+            <div class="dropdown-menu">
+                <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
+                <a class="btn btn-secondary" href="../property-information/">Property Information</a>
+                <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
+                <a class="btn btn-secondary" href="../site/">Sites</a>
+                <a class="btn btn-secondary" href="../basement/">Basement</a>
+                <br>
+                <a class="btn btn-secondary" href="../foundation/">Foundation</a>
+                <br>
+                <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
+                <a class="btn btn-secondary" href="../general/">General</a>
+            </div>
         </div>
-      </div>
-      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
     </div>
-  </footer>
+    <br><br>
+
+    <form method="POST">
+        Does the Property Have a...
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="sump_pump">
+            <label class="checkbox-inline form-check-label" for="sump_pump">Sump Pump</label>
+        </div>
+
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="slab">
+            <label class="checkbox-inline form-check-label" for="slab">Slab</label>
+        </div>
+
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="crawl_space">
+            <label class="checkbox-inline form-check-label" for="crawl_space">Crawl Space</label>
+        </div>
+
+        <br><br><br>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="foundation_ext">foundation_ext??</label>
+            <textarea class="form-control" placeholder="Notes" id="foundation_ext"></textarea>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="dampness">Dampness</label>
+            <textarea class="form-control" placeholder="Notes" id="dampness"></textarea>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="infestation">Infestation</label>
+            <textarea class="form-control" placeholder="Notes" id="infestation"></textarea>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="settlement">Settlement</label>
+            <textarea class="form-control" placeholder="Notes" id="settlement"></textarea>
+        </div>
+
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="additional_comments">Additional Comments</label>
+            <textarea class="form-control" placeholder="Notes" id="additional_comments"></textarea>
+        </div>
+
+        <br><br>
+        <hr>
+
+        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+        <br><br>
+    </form>
+</div>
 </body>
 
 
+<body class="bg-dark flex-column">
+<footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">
+                    Webappraisal</h1>
+                <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers
+                    happier.</p>
+            </div>
+        </div>
+        <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+</footer>
+</body>
 
 
 </body>
