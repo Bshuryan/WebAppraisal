@@ -35,7 +35,7 @@ urlpatterns = [
     path('site/', views.site_view),
     path('description-improvements/', views.improvements_view),
     path('comments/', views.comment_view),
-    path('property-information/', views.property_information_view),
+    path('property-information/<house_id>/', views.property_information_view),
     path('comments/', views.comment_view),
     path('materials-conditions/', views.materials_conditions_view),
     path('kitchen/', views.kitchen_view),

@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from src.WebAppraisal.forms import NewUserForm, UpdateAccountForm, UpdatePhoneNumberForm
-from src.webapp.models import Profile
+from src.WebAppraisal.forms import *
+from src.webapp.models import *
 
 APPRAISER_ROLE = 'APPRAISER'
 CUSTOMER_ROLE = 'CUSTOMER'
@@ -161,13 +161,56 @@ def comment_view(request):
     return render(request, 'appraisal_edit_forms/comments.html', {'user': current_user})
 
 @login_required(login_url='/welcome')
-def property_information_view(request):
-    current_user = User.objects.get(pk=request.user.id)
+def property_information_view(request, house_id):
+    # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
     if request.method == 'POST':
+        # shared logic among views for user logout
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
-    return render(request, 'appraisal_edit_forms/property_information.html', {'user': current_user})
+
+        # on the button: <input type=submit name=update_account
+        if 'submit_prop_info' in request.POST:
+            # we need to update the object
+            if Property.objects.filter(house_id=house_id).exists():
+                property_info = Property.objects.get(house_id=house_id)
+                form = PropertyInformationForm(request.POST, instance=property_info)
+
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, "We've successfully updated the housing information")
+                    return redirect('/property-information/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/property-information/%s/' % house_id)
+
+            # we need to create a new instance
+            else:
+                form = PropertyInformationForm(request.POST)
+                if form.is_valid():
+                    new_table_instance = form.save(commit=False)
+                    # Important: set foreign key to house id
+                    new_table_instance.house = House.objects.get(id=house_id)
+                    new_table_instance.save()
+                    messages.success(request, "We've successfully updated the housing information")
+                    return redirect('/property-information/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/property-information/%s/' % house_id)
+
+        # hopefully won't reach here but just in case redirect back to same page
+        else:
+            return redirect('/property-information/%s/' % house_id)
+
+    # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+    else:
+        if Property.objects.filter(house=house_id).exists():
+            property_info = Property.objects.get(house=house_id)
+            form = PropertyInformationForm(instance=property_info)
+        else:
+            form = PropertyInformationForm(request.POST)
+
+        return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form })
 
 @login_required(login_url='/welcome')
 def materials_conditions_view(request):
@@ -218,4 +261,8 @@ def offsite_information_view(request):
             redirect('/welcome')
 
     return render(request, 'appraisal_edit_forms/offsite_information.html', {'user': current_user})
+
+def hasAccessToAppraisal(user_id, house_id):
+    current_house = House.objects.get(pk=house_id)
+    return current_house.appraiser == user_id or current_house.customer == user_id
 

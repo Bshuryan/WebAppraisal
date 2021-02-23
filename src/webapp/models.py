@@ -1,3 +1,5 @@
+import datetime
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
@@ -34,7 +36,8 @@ class House(models.Model):
     zip = models.TextField()
     county = models.TextField()
     appraisal_status = models.TextField()
-    appraiser = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)
+    appraiser = models.ForeignKey(User, models.DO_NOTHING, blank=False, null=False, related_name='appraiser')
+    customer = models.ForeignKey(User, models.DO_NOTHING, blank=False, null=False, related_name='customer')
     
 class HouseFeatures(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -124,14 +127,29 @@ class Basement(models.Model):
 
 
 class Property(models.Model):
-    id = models.IntegerField(primary_key=True)
-    borrower = models.TextField()
-    current_owner = models.TextField()
-    occupant = models.TextField(blank=True, null=True)  # This field type is a guess.
-    tax_year = models.IntegerField(blank=True, null=True)
+    class OccupantTypes(models.TextChoices):
+        OWNER = 'Owner'
+        TENANT = 'Tenant'
+        VACANT = 'Vacant'
+
+    class PropRightsAppraisedTypes(models.TextChoices):
+        FEE_SIMPLE = 'Fee Simple'
+        LEASEHOLD = 'Leasehold'
+
+    class ProjectTypes(models.TextChoices):
+        PUD = 'Planned Unit Development'
+        CONDOMINIUM = 'Condominium'
+
+    year_choices = [(i, i) for i in range(datetime.date.today().year+1, 1984, -1)]
+
+    id = models.AutoField(primary_key=True)
+    borrower = models.CharField(max_length=50, blank=True, null=True)
+    current_owner = models.CharField(max_length=50, blank=True, null=True)
+    occupant = models.CharField(max_length=10, blank=True, null=True, choices=OccupantTypes.choices)  # This field type is a guess.
+    tax_year = models.IntegerField(blank=True, null=True, choices=year_choices)
     re_taxes = models.IntegerField(blank=True, null=True)
-    prop_rights_appraised = models.TextField(blank=True, null=True)  # This field type is a guess.
-    project_type = models.TextField(blank=True, null=True)  # This field type is a guess.
+    prop_rights_appraised = models.CharField(max_length = 10, blank=True, null=True, choices=PropRightsAppraisedTypes.choices)  # This field type is a guess.
+    project_type = models.CharField(max_length=30, blank=True, null=True, choices=ProjectTypes.choices)  # This field type is a guess.
     hoa_price = models.IntegerField(blank=True, null=True)
     map_ref = models.IntegerField(blank=True, null=True)
     census_tract = models.IntegerField(blank=True, null=True)
@@ -139,6 +157,7 @@ class Property(models.Model):
     date_of_sale = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
+
     
 class Room(models.Model):
     id = models.IntegerField(primary_key=True)
