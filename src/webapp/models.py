@@ -70,18 +70,22 @@ class DescriptionOfImprovements(models.Model):
     
     
 class MaterialsAndCondition(models.Model):
+    class Condition(models.TextChoices):
+        GOOD = 'GOOD', _('Good')
+        AVERAGE = 'AVERAGE', _('Average')
+        POOR = 'POOR', _('Poor')
     id = models.IntegerField(primary_key=True)
-    condition_floors = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_floors = models.TextField(choices=Condition.choices, blank=False)
     material_floors = models.TextField(blank=True, null=True)
-    condition_walls = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_walls = models.TextField(choices=Condition.choices, blank=False)
     material_walls = models.TextField(blank=True, null=True)
-    condition_trim = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_trim = models.TextField(choices=Condition.choices, blank=False)
     materials_trim = models.TextField(blank=True, null=True)
-    condition_bath_floor = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_bath_floor = models.TextField(choices=Condition.choices, blank=False)
     materials_bath_floor = models.TextField(blank=True, null=True)
-    condition_bath_wainscot = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_bath_wainscot = models.TextField(choices=Condition.choices, blank=False)
     materials_bath_wainscot = models.TextField(blank=True, null=True)
-    condition_doors = models.TextField(blank=True, null=True)  # This field type is a guess.
+    condition_doors = models.TextField(choices=Condition.choices, blank=False)
     materials_doors = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
@@ -127,11 +131,11 @@ class Property(models.Model):
     id = models.IntegerField(primary_key=True)
     borrower = models.TextField()
     current_owner = models.TextField()
-    occupant = models.TextField(blank=True, null=True)  # This field type is a guess.
+    occupant = models.TextField(blank=True, null=True)
     tax_year = models.IntegerField(blank=True, null=True)
     re_taxes = models.IntegerField(blank=True, null=True)
-    prop_rights_appraised = models.TextField(blank=True, null=True)  # This field type is a guess.
-    project_type = models.TextField(blank=True, null=True)  # This field type is a guess.
+    prop_rights_appraised = models.TextField(blank=True, null=True)
+    project_type = models.TextField(blank=True, null=True)
     hoa_price = models.IntegerField(blank=True, null=True)
     map_ref = models.IntegerField(blank=True, null=True)
     census_tract = models.IntegerField(blank=True, null=True)
@@ -141,19 +145,37 @@ class Property(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Room(models.Model):
+    class RoomType(models.TextChoices):
+        FOYER = 'FOYER', _('Foyer')
+        LIVING = 'LIVING', _('Living Room')
+        DINING = 'DINING', _('Dining Room')
+        KITCHEN = 'KITCHEN', _('Kitchen')
+        DEN = 'DEN', _('Den')
+        FAMILY = 'FAMILY', _('Family Room')
+        RECREATION = 'RECREATION', _('Recreation Room')
+        BEDROOM = 'BEDROOM', _('Bedroom')
+        BATH = 'BATH', _('Bath')
+        HALF_BATH = 'HALF_BATH', _('Half Bath')
+        LAUNDRY = 'LAUNDRY', _('Laundry')
+        BASEMENT = 'BASEMENT', _('Basement')
     id = models.IntegerField(primary_key=True)
-    room_type = models.TextField(blank=True, null=True)  # This field type is a guess.
+    room_type = models.TextField(choices=RoomType.choices, blank=False)
     room_level = models.IntegerField(blank=True, null=True)
     room_area = models.IntegerField(blank=True, null=True)
     room_comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Site(models.Model):
+    class ZoneCompliance(models.TextChoices):
+        LEGAL = 'LEGAL', _('LEGAL')
+        LEGAL_NONCONF = 'LEGAL_NONCONF', _('Legal Nonconforming (grandfathered use)')
+        ILLEGAL = 'ILLEGAL', _('Illegal')
+        NO_ZONING = 'NO_ZONING', _('No Zoning')
     id = models.IntegerField(primary_key=True)
     dimensions = models.TextField(blank=True, null=True)
     site_area = models.IntegerField(blank=True, null=True)
     specific_zone = models.TextField(blank=True, null=True)
-    zone_compliance = models.TextField(blank=True, null=True)  # This field type is a guess.
+    zone_compliance = models.TextField(choices=ZoneCompliance.choices, blank=False)
     corner_lot = models.BooleanField()
     public_electric = models.BooleanField()
     public_gas = models.BooleanField()
@@ -176,28 +198,36 @@ class Site(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Offsite(models.Model):
+    class OffsiteType(models.TextChoices):
+        PUBLIC = 'PUBLIC', _('Public')
+        PRIVATE = 'PRIVATE', _('Private')
+        NEITHER = 'NEITHER', _('Neither')
     id = models.IntegerField(primary_key=True)
     offsite_curb_note = models.TextField(blank=True, null=True)
     offsite_street_note = models.TextField(blank=True, null=True)
     offsite_sidewalk_note = models.TextField(blank=True, null=True)
     offsite_streetlight_note = models.TextField(blank=True, null=True)
     offsite_alley_note = models.TextField(blank=True, null=True)
-    offsite_streetlights = models.TextField()  # This field type is a guess.
-    offsite_curb = models.TextField()  # This field type is a guess.
-    offsite_sidewalk = models.TextField()  # This field type is a guess.
-    offsite_alley = models.TextField()  # This field type is a guess.
-    offsite_street = models.TextField()  # This field type is a guess.
+    offsite_streetlights = models.TextField(choices=OffsiteType.choices, blank=False)
+    offsite_curb = models.TextField(choices=OffsiteType.choices, blank=False)
+    offsite_sidewalk = models.TextField(choices=OffsiteType.choices, blank=False)
+    offsite_alley = models.TextField(choices=OffsiteType.choices, blank=False)
+    offsite_street = models.TextField(choices=OffsiteType.choices, blank=False)
     comments = models.TextField(blank=True, null=True)
     site = models.ForeignKey('Site', models.DO_NOTHING)
 
 class Utilities(models.Model):
+    class Condition(models.TextChoices):
+        GOOD = 'GOOD', _('Good')
+        AVERAGE = 'AVERAGE', _('Average')
+        POOR = 'POOR', _('Poor')
     id = models.IntegerField(primary_key=True)
     heat_type = models.TextField()
     washer_dryer = models.BooleanField()
     heat_fuel = models.TextField()
-    heat_condition = models.TextField()  # This field type is a guess.
+    heat_condition = models.TextField(choices=Condition.choices, blank=False)
     cooling_type = models.TextField()
-    cooling_condition = models.TextField()  # This field type is a guess.
+    cooling_condition = models.TextField(choices=Condition.choices, blank=False)
     comments = models.TextField()
     materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
     
@@ -210,13 +240,29 @@ class Appraisal(models.Model):
     appraisal_price = models.IntegerField(blank=True, null=True)
 
 class Neighborhood(models.Model):
+    class Location(models.TextChoices):
+        URBAN = 'URBAN', _('Urban')
+        SUBURBAN = 'SUBURBAN', _('Suburban')
+        RURAL = 'RURAL', _('Rural')
+    class GrowthRate(models.TextChoices):
+        RAPID = 'RAPID', _('Rapid')
+        STABLE = 'STABLE', _('Stable')
+        SLOW = 'SLOW', _('Slow')
+    class BuiltUp(models.TextChoices):
+        OVER75 = 'OVER75', _('Over 75%')
+        UNDER75 = 'UNDER75', _('25%-75%')
+        UNDER25 = 'UNDER25', _('Under 25%')
+    class SupplyDemand (models.TextChoices):
+        SHORTAGE = 'SHORTAGE', _('Shortage')
+        STABLE = 'STABLE', _('Stable')
+        DECLINING = 'DECLINING', _('Declining')
     id = models.IntegerField(primary_key=True)
-    location = models.TextField()  # This field type is a guess.
+    location = models.TextField(choices=Location.choices, blank=False)
     name = models.IntegerField()
-    built_up = models.TextField()  # This field type is a guess.
-    growth_rate = models.TextField()  # This field type is a guess.
-    property_value = models.TextField()  # This field type is a guess.
-    demand_supply = models.TextField()  # This field type is a guess.
+    built_up = models.TextField(choices=BuiltUp.choices, blank=False)
+    growth_rate = models.TextField(choices=GrowthRate.choices, blank=False)
+    property_value = models.TextField()
+    supply_demand = models.TextField(choices=SupplyDemand.choices, blank=False)
     marketability_factors = models.TextField()
     market_conditions = models.TextField()
     comments = models.TextField(blank=True, null=True)
