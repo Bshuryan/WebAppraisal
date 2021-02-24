@@ -11,6 +11,7 @@ User._meta.get_field('first_name').null = False
 User._meta.get_field('last_name').blank = False
 User._meta.get_field('last_name').null = False
 
+
 class Profile(models.Model):
     class Roles(models.TextChoices):
         APPRAISER = 'APPRAISER', _('Appraiser')
@@ -25,7 +26,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True)
     role = models.TextField(choices=Roles.choices, blank=False)
-    
+
+
 class House(models.Model):
     id = models.IntegerField(primary_key=True)
     street_address = models.TextField()
@@ -35,7 +37,8 @@ class House(models.Model):
     county = models.TextField()
     appraisal_status = models.TextField()
     appraiser = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)
-    
+
+
 class HouseFeatures(models.Model):
     id = models.IntegerField(primary_key=True)
     pool = models.TextField()
@@ -48,7 +51,8 @@ class HouseFeatures(models.Model):
     attic = models.TextField()
     comments = models.TextField()
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
+
 class DescriptionOfImprovements(models.Model):
     id = models.IntegerField(primary_key=True)
     design_style = models.TextField(blank=True, null=True)
@@ -67,13 +71,14 @@ class DescriptionOfImprovements(models.Model):
     unknown_insulation = models.BooleanField()
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey('House', models.DO_NOTHING)
-    
-    
+
+
 class MaterialsAndCondition(models.Model):
     class Condition(models.TextChoices):
         GOOD = 'GOOD', _('Good')
         AVERAGE = 'AVERAGE', _('Average')
         POOR = 'POOR', _('Poor')
+
     id = models.IntegerField(primary_key=True)
     condition_floors = models.TextField(choices=Condition.choices, blank=False)
     material_floors = models.TextField(blank=True, null=True)
@@ -90,6 +95,7 @@ class MaterialsAndCondition(models.Model):
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
+
 class Kitchen(models.Model):
     id = models.IntegerField(primary_key=True)
     kitchen_refrig = models.BooleanField()
@@ -101,8 +107,8 @@ class Kitchen(models.Model):
     kitchen_description = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     materials_condition = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
-    
-    
+
+
 class Foundation(models.Model):
     id = models.IntegerField(primary_key=True)
     sump_pump = models.BooleanField()
@@ -114,7 +120,8 @@ class Foundation(models.Model):
     settlement = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     improvements = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
-    
+
+
 class Basement(models.Model):
     id = models.IntegerField(primary_key=True)
     basement_area = models.IntegerField(blank=True, null=True)
@@ -143,7 +150,8 @@ class Property(models.Model):
     date_of_sale = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
+
 class Room(models.Model):
     class RoomType(models.TextChoices):
         FOYER = 'FOYER', _('Foyer')
@@ -158,19 +166,22 @@ class Room(models.Model):
         HALF_BATH = 'HALF_BATH', _('Half Bath')
         LAUNDRY = 'LAUNDRY', _('Laundry')
         BASEMENT = 'BASEMENT', _('Basement')
+
     id = models.IntegerField(primary_key=True)
     room_type = models.TextField(choices=RoomType.choices, blank=False)
     room_level = models.IntegerField(blank=True, null=True)
     room_area = models.IntegerField(blank=True, null=True)
     room_comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
+
 class Site(models.Model):
     class ZoneCompliance(models.TextChoices):
         LEGAL = 'LEGAL', _('LEGAL')
         LEGAL_NONCONF = 'LEGAL_NONCONF', _('Legal Nonconforming (grandfathered use)')
         ILLEGAL = 'ILLEGAL', _('Illegal')
         NO_ZONING = 'NO_ZONING', _('No Zoning')
+
     id = models.IntegerField(primary_key=True)
     dimensions = models.TextField(blank=True, null=True)
     site_area = models.IntegerField(blank=True, null=True)
@@ -196,12 +207,14 @@ class Site(models.Model):
     map_date = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
+
 class Offsite(models.Model):
     class OffsiteType(models.TextChoices):
         PUBLIC = 'PUBLIC', _('Public')
         PRIVATE = 'PRIVATE', _('Private')
         NEITHER = 'NEITHER', _('Neither')
+
     id = models.IntegerField(primary_key=True)
     offsite_curb_note = models.TextField(blank=True, null=True)
     offsite_street_note = models.TextField(blank=True, null=True)
@@ -216,11 +229,13 @@ class Offsite(models.Model):
     comments = models.TextField(blank=True, null=True)
     site = models.ForeignKey('Site', models.DO_NOTHING)
 
+
 class Utilities(models.Model):
     class Condition(models.TextChoices):
         GOOD = 'GOOD', _('Good')
         AVERAGE = 'AVERAGE', _('Average')
         POOR = 'POOR', _('Poor')
+
     id = models.IntegerField(primary_key=True)
     heat_type = models.TextField()
     washer_dryer = models.BooleanField()
@@ -230,7 +245,8 @@ class Utilities(models.Model):
     cooling_condition = models.TextField(choices=Condition.choices, blank=False)
     comments = models.TextField()
     materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
-    
+
+
 class Appraisal(models.Model):
     id = models.IntegerField(primary_key=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
@@ -239,23 +255,28 @@ class Appraisal(models.Model):
     reconciliation = models.TextField(blank=True, null=True)
     appraisal_price = models.IntegerField(blank=True, null=True)
 
+
 class Neighborhood(models.Model):
     class Location(models.TextChoices):
         URBAN = 'URBAN', _('Urban')
         SUBURBAN = 'SUBURBAN', _('Suburban')
         RURAL = 'RURAL', _('Rural')
+
     class GrowthRate(models.TextChoices):
         RAPID = 'RAPID', _('Rapid')
         STABLE = 'STABLE', _('Stable')
         SLOW = 'SLOW', _('Slow')
+
     class BuiltUp(models.TextChoices):
         OVER75 = 'OVER75', _('Over 75%')
         UNDER75 = 'UNDER75', _('25%-75%')
         UNDER25 = 'UNDER25', _('Under 25%')
-    class SupplyDemand (models.TextChoices):
+
+    class SupplyDemand(models.TextChoices):
         SHORTAGE = 'SHORTAGE', _('Shortage')
         STABLE = 'STABLE', _('Stable')
         DECLINING = 'DECLINING', _('Declining')
+
     id = models.IntegerField(primary_key=True)
     location = models.TextField(choices=Location.choices, blank=False)
     name = models.IntegerField()
