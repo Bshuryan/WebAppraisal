@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Kitchen</title>
 </head>
-<body>
 <header>
     <div class="container">
       <nav class="navbar navbar-default">
@@ -32,16 +33,86 @@
     </div>
 </header>
 
+
 <body class="bg-light">
+
     <div class="container">
-        <div>
-            <h2 class="form-header webappraisal-header">Kitchen</h2>
-                <a href="../general/" ><button>General</button></a>
-                <a href="../site/" ><button>Site</button></a>
-            <hr>
+        <h1 class="form-header webappraisal-header">Kitchen</h1>
+  
+      <div class="btn-group" role="group">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Navigate Pages >
+          </button>
+          <div class="dropdown-menu">
+            <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
+            <a class="btn btn-secondary" href="../property-information/">Property Information</a>
+            <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
+            <a class="btn btn-secondary" href="../site/">Sites</a>
+            <br>
+            <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
+            <a class="btn btn-secondary" href="../general/">General</a>
+          </div>
+        </div>
+      </div><br><br><hr>
+
+      <form method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="description">Description</label>
+                <textarea id="description" type="text" class="form-control"></textarea>
+            </div>
         </div>
 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="refrigerator">Refrigerator</label>
+            <input id="refrigerator" class="form-control" type="text"></input>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="oven">Oven</label>
+            <input id="oven" class="form-control" type="text"></input>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="dishwasher">Dishwasher</label>
+            <input id="dishwasher" class="form-control" type="text"></input>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="microwave">Microwave</label>
+            <input id="microwave" class="form-control" type="text"></input>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="cabinets">Cabinets</label>
+            <input id="cabinets" class="form-control" type="text"></input>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="garbage_disposal">Garbage Disposal</label>
+            <input id="garbage_disposal" class="form-control" type="text"></input>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="fan_hood">Fan Hood</label>
+            <input id="fan_hood" class="form-control" type="text"></input>
+          </div>
+        </div>
+        
+        <div class="form-floating col-md-12 additional-comments">
+            <label for="additional_comments">Additional Comments</label>
+            <textarea class="form-control" placeholder="Notes" id="additional_comments"></textarea>
+        </div>
+
+        <br><br><hr>
+
+        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+            <br><br>
+    </form>
     </div>
+
 </body>
 
 <body class="bg-dark flex-column">
@@ -58,6 +129,4 @@
   </footer>
 </body>
 
-
-</body>
 </html>

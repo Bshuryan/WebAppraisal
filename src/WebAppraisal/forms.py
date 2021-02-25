@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
-from src.webapp.models import Profile
+from src.webapp.models import *
 
 # Form for creating a new user - this includes all fields for the built-in Django User object
 # and three additional fields on top of it: email, phone number, and user role
@@ -37,3 +37,8 @@ class UpdatePhoneNumberForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class PropertyInformationForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        exclude = ['house', 'id']
