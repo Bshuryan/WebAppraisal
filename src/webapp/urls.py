@@ -42,6 +42,6 @@ urlpatterns = [
     path('basement/', views.basement_view),
     path('utilities/', views.utilities_view),
     path('offsite-information/', views.offsite_information_view),
-    path('appraisal/', views.appraisal_view),
+    path('AppraisalPage/', views.appraisal_view),
     path('amenities/', views.amenities_view)
 ]

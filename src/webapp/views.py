@@ -219,3 +219,23 @@ def offsite_information_view(request):
 
     return render(request, 'appraisal_edit_forms/offsite_information.html', {'user': current_user})
 
+@login_required(login_url='/welcome')
+def appraisal_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/AppraisalPage.html', {'user': current_user})
+
+
+@login_required(login_url='/welcome')
+def amenities_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'appraisal_edit_forms/amenities.html', {'user': current_user})
