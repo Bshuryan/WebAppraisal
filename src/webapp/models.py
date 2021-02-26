@@ -227,14 +227,38 @@ class Appraisal(models.Model):
     appraisal_price = models.IntegerField(blank=True, null=True)
 
 class Neighborhood(models.Model):
-    id = models.IntegerField(primary_key=True)
-    location = models.TextField()  # This field type is a guess.
-    name = models.IntegerField()
-    built_up = models.TextField()  # This field type is a guess.
-    growth_rate = models.TextField()  # This field type is a guess.
-    property_value = models.TextField()  # This field type is a guess.
-    demand_supply = models.TextField()  # This field type is a guess.
-    marketability_factors = models.TextField()
-    market_conditions = models.TextField()
+    class Location(models.TextChoices):
+        URBAN = 'Urban'
+        SUBURBAN = 'Suburban'
+        RURAL = 'Rural'
+
+    class GrowthRate(models.TextChoices):
+        RAPID = 'Rapid'
+        STABLE = 'Stable'
+        SLOW = 'Slow'
+
+    class BuiltUp(models.TextChoices):
+        OVER75 = 'Over 75%'
+        UNDER75 = '25%-75%'
+        UNDER25 = 'Under 25%'
+
+    class DemandSupply(models.TextChoices):
+        SHORTAGE = 'Shortage'
+        STABLE = 'Stable'
+        DECLINING = 'Declining'
+
+    class PropertyValue(models.TextChoices):
+        INCREASING = 'Increasing'
+        STABLE = 'Stable'
+        SLOW = 'Slow'
+    id = models.AutoField(primary_key=True)
+    location = models.CharField(max_length=10, blank=True, null=True, choices=Location.choices)
+    name = models.CharField(max_length=30, blank=True, null=True)
+    built_up = models.CharField(max_length=15, blank=True, null=True, choices=BuiltUp.choices)
+    growth_rate = models.CharField(max_length=10, blank=True, null=True, choices=GrowthRate.choices)
+    property_value = models.CharField(max_length=15, blank=True, null=True, choices=PropertyValue.choices)
+    demand_supply = models.CharField(max_length=20, blank=True, null=True, choices=DemandSupply.choices)
+    marketability_factors = models.TextField(blank=True, null=True)
+    market_conditions = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
