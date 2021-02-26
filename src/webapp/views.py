@@ -283,3 +283,13 @@ def amenities_view(request):
             redirect('/welcome')
 
     return render(request, 'appraisal_edit_forms/amenities.html', {'user': current_user})
+
+@login_required(login_url='/welcome')
+def sitero_view(request):
+    current_user = User.objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        if 'user_logout' in request.POST:
+            logout(request)
+            redirect('/welcome')
+
+    return render(request, 'customer_view_forms/view_site.html', {'user': current_user})

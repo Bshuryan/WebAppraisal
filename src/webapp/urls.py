@@ -43,5 +43,6 @@ urlpatterns = [
     path('utilities/', views.utilities_view),
     path('offsite-information/', views.offsite_information_view),
     path('AppraisalPage/', views.appraisal_view),
-    path('amenities/', views.amenities_view)
+    path('amenities/', views.amenities_view),
+    path('sitero/', views.sitero_view)
 ]
