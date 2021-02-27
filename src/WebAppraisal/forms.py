@@ -42,3 +42,8 @@ class PropertyInformationForm(forms.ModelForm):
     class Meta:
         model = Property
         exclude = ['house', 'id']
+
+class NeighborhoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighborhood
+        exclude = ['house', 'id']

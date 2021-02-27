@@ -122,14 +122,54 @@ def general_view(request):
 
 
 @login_required(login_url='/welcome')
-def neighborhood_view(request):
+def neighborhood_view(request, house_id):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
+            # on the button: <input type=submit name=update_account
+        if 'submit_neighborhood_info' in request.POST:
+            # we need to update the object
+            if Neighborhood.objects.filter(house_id=house_id).exists():
+                neighborhood_info = Neighborhood.objects.get(house_id=house_id)
+                form = NeighborhoodForm(request.POST, instance=neighborhood_info)
 
-    return render(request, 'appraisal_edit_forms/neighborhood.html', {'user': current_user})
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, "We've successfully updated the neighborhood information")
+                    return redirect('/neighborhood/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/neighborhood/%s/' % house_id)
+
+            # we need to create a new instance
+            else:
+                form = NeighborhoodForm(request.POST)
+                if form.is_valid():
+                    new_table_instance = form.save(commit=False)
+                    # Important: set foreign key to house id
+                    new_table_instance.house = House.objects.get(id=house_id)
+                    new_table_instance.save()
+                    messages.success(request, "We've successfully updated the housing information")
+                    return redirect('/neighborhood/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/neighborhood/%s/' % house_id)
+
+        # hopefully won't reach here but just in case redirect back to same page
+        else:
+            return redirect('/neighborhood/%s/' % house_id)
+
+    # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+    else:
+        if Neighborhood.objects.filter(house=house_id).exists():
+            neighborhood_info = Neighborhood.objects.get(house=house_id)
+            form = NeighborhoodForm(instance=neighborhood_info)
+        else:
+            form = NeighborhoodForm(request.POST)
+
+        return render(request, 'appraisal_edit_forms/neighborhood.html', context={'form': form})
 
 @login_required(login_url='/welcome')
 def site_view(request):
