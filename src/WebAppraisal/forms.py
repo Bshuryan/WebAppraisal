@@ -47,3 +47,18 @@ class NeighborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
         exclude = ['house', 'id']
+
+class CreateAppraisalForm(forms.ModelForm):
+    class Meta:
+        model = House
+        fields = ['street_address', 'city', 'state', 'zip', 'county', 'appraisal_status', 'comments']
+
+    def __init__(self, *args, **kwargs):
+        super(CreateAppraisalForm, self).__init__(*args, **kwargs)
+        self.fields['customer_username'] = forms.CharField(max_length=50)
+
+
+class UpdateAppraisalForm(forms.ModelForm):
+    class Meta:
+        model = House
+        exclude = ['customer', 'appraiser', 'id']

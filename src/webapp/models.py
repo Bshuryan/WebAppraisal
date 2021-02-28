@@ -1,10 +1,9 @@
 import datetime
 
-from django.utils.translation import ugettext_lazy as _
-from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from localflavor.us.us_states import STATE_CHOICES
 
 User._meta.get_field('email').blank = False
 User._meta.get_field('email').null = False
@@ -29,15 +28,21 @@ class Profile(models.Model):
     role = models.TextField(choices=Roles.choices, blank=False)
 
 class House(models.Model):
-    id = models.IntegerField(primary_key=True)
-    street_address = models.TextField()
-    city = models.TextField()
-    state = models.TextField()
-    zip = models.TextField()
-    county = models.TextField()
-    appraisal_status = models.TextField()
+    class AppraisalStatus(models.TextChoices):
+        NOT_STARTED = 'Not Started'
+        IN_PROGRESS = 'In Progress'
+        DONE = 'Done'
+
+    id = models.AutoField(primary_key=True)
+    street_address = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(blank=True, null=True, max_length=50, choices=STATE_CHOICES)
+    zip = models.CharField(max_length=100, blank=True, null=True)
+    county = models.CharField(max_length=100, blank=True, null=True)
+    appraisal_status = models.CharField(default=AppraisalStatus.NOT_STARTED, choices=AppraisalStatus.choices, max_length=15)
     appraiser = models.ForeignKey(User, models.DO_NOTHING, blank=False, null=False, related_name='appraiser')
     customer = models.ForeignKey(User, models.DO_NOTHING, blank=False, null=False, related_name='customer')
+    comments = models.TextField(blank=True, null=True)
 
 class DescriptionOfImprovements(models.Model):
     id = models.IntegerField(primary_key=True)

@@ -38,7 +38,7 @@
 <body class="bg-light">
 
   <div class="container">
-
+  
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
       Open Navigation Menu
@@ -55,7 +55,7 @@
             </button>
           </div>
           <div class="modal-body">
-
+            
             <div class="form-row text-center">
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../general/">Amenities</a>
@@ -79,7 +79,7 @@
                 <a class="btn btn-primary" href="../description-improvements/">Improvements</a>
               </div>
             </div>
-
+            
             <div class="form-row text-center">
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../kitchen/">Kitchen</a>
@@ -91,7 +91,7 @@
                 <a class="btn btn-primary" href="../neighborhood/">Neighborhood</a>
               </div>
             </div>
-
+      
             <div class="form-row text-center">
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../offsite-information/">Offsite Information</a>
@@ -103,7 +103,7 @@
                 <a class="btn btn-primary" href="../general/">Rooms</a>
               </div>
             </div>
-
+            
             <div class="form-row text-center">
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../site/">Sites</a>
@@ -112,7 +112,7 @@
                 <a class="btn btn-primary" href="../utilities/">Utilities</a>
               </div>
               <div class="form-group col-md-4">
-
+                
               </div>
             </div>
             &nbsp
@@ -120,7 +120,7 @@
         </div>
       </div>
     </div>
-
+  
     <h1 class="form-header webappraisal-header">General Information</h1>
 
     <div class="content">
@@ -128,6 +128,14 @@
 
         <form method="POST">
           {% csrf_token %}
+
+          <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="id_customer_username">Customer Username</label>
+                    {% render_field form.customer_username placeholder=form.customer_username.label class="form-control" %}
+                </div>
+          </div>
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="id_appraisal_status">Appraisal Status</label>
@@ -138,6 +146,9 @@
             <div class="form-row">
                  <div class="form-group col-md-7">
                  <label for="id_street_address">Street Address</label>
+                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
+                     <span class="glyphicon glyphicon-info-sign"></span>
+                   </a>
                    {% render_field form.street_address placeholder=form.street_address.label class="form-control" %}
                 </div>
 
@@ -172,28 +183,6 @@
             <div class="row">
                 <button class="btn btn-primary btn-md form-submit-btn" type="submit" name="submit_general_info">Save changes</button><br><br>
             </div>
-          <hr>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="panel panel-warning cust-info">
-                    <div class="panel panel-heading">
-                      <h4 class="text-warning text-center"><span class="glyphicon glyphicon-earphone"></span> Customer Contact Information</h4>
-                    </div>
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <strong>Name:</strong> {{ customer.first_name }} {{ customer.last_name }}
-                      </li>
-                      <li class="list-group-item">
-                        <strong>Email:</strong> {{ customer.email }}
-                      </li>
-
-                      <li class="list-group-item">
-                        <strong>Phone Number:</strong> {{ phone_number }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
         </form>
     </div>
     </div>
@@ -213,6 +202,13 @@
     </div>
   </footer>
 
+<script>
+  $(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+</script>
+
 </body>
 
 </html>
+

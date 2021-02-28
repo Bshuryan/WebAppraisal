@@ -108,17 +108,68 @@ def account_management_view(request):
                                                              'role': additional_user_info.get_display_role() })
 
 
+@login_required(login_url='/welcome')
+def general_view(request, house_id):
+    current_user = User.objects.get(pk=request.user.id)
+    if not House.objects.filter(id=house_id).exists():
+        redirect('/general/new')
+    else:
+        house_instance = House.objects.get(id=house_id)
+        if request.method == 'POST':
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
+            elif 'submit_general_info' in request.POST:
+                form = UpdateAppraisalForm(request.POST, instance=house_instance)
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, "We've successfully updated the general information")
+                    return redirect('/general/%s' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/general/%s' % house_id)
+            else:
+                return redirect('/general/%s' % house_id)
+        # render form using existing info
+        else:
+            form = UpdateAppraisalForm(instance=house_instance)
+            phone_num = Profile.objects.get(user_id=house_instance.customer.id).phone_number
+            if not phone_num:
+                phone_num = 'Not entered'
+
+            return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
+                                                                         'form': form, 'phone_number': phone_num})
 
 @login_required(login_url='/welcome')
-def general_view(request):
+def create_appraisal(request):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/general.html', {'user': current_user})
+        if 'submit_general_info' in request.POST:
+            form = CreateAppraisalForm(request.POST)
+            if form.is_valid():
+                new_house = form.save(commit=False)
+                customer_username = form.cleaned_data.get('customer_username')
+                new_house.customer = User.objects.filter(username=customer_username).first()
+                new_house.appraiser = current_user
+                new_house.save()
+                messages.success(request, "We've successfully updated the housing information")
+                house_id = new_house.id
+                return redirect('/general/' + str(house_id))
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/general/new')
+        else:
+            return redirect('/general/new')
+
+    # haven't submitted anything - get blank form
+    else:
+        form = CreateAppraisalForm()
+        return render(request, 'appraisal_edit_forms/create_appraisal.html', context={'form': form, 'appraiser': current_user})
 
 
 @login_required(login_url='/welcome')

@@ -30,8 +30,9 @@ urlpatterns = [
     path('account-management/', views.account_management_view),
 
     # Appraisal paths
-    path('general/', views.general_view),
-    path('neighborhood/<house_id>/', views.neighborhood_view),
+    path('general/new', views.create_appraisal),
+    path('general/<int:house_id>', views.general_view),
+    path('neighborhood/<house_id>', views.neighborhood_view),
     path('site/', views.site_view),
     path('description-improvements/', views.improvements_view),
     path('comments/', views.comment_view),

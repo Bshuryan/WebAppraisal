@@ -17,6 +17,8 @@ Django = "==3.1.5"
 django-widget-tweaks = "==1.4.8"
 pytest-django = "*"
 pytest-docker-compose = "*"
+django-localflavor = "==3.0.1"
+python-stdnum = "==1.16"
 
 [dev-packages]
 
