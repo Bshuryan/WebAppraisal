@@ -39,88 +39,6 @@
 
   <div class="container">
   
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-      Open Navigation Menu
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../general/">Amenities</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../basement/">Basement</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../comments/">Comments</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../general/">Foundation</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../general/">General</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../description-improvements/">Improvements</a>
-              </div>
-            </div>
-            
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../kitchen/">Kitchen</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../materials-conditions/">Materials and Conditions</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../neighborhood/">Neighborhood</a>
-              </div>
-            </div>
-      
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../offsite-information/">Offsite Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../property-information/">Property Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../general/">Rooms</a>
-              </div>
-            </div>
-            
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../site/">Sites</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../utilities/">Utilities</a>
-              </div>
-              <div class="form-group col-md-4">
-                
-              </div>
-            </div>
-            &nbsp
-          </div>
-        </div>
-      </div>
-    </div>
-  
     <h1 class="form-header webappraisal-header">General Information</h1>
 
     <div class="content">
@@ -146,9 +64,6 @@
             <div class="form-row">
                  <div class="form-group col-md-7">
                  <label for="id_street_address">Street Address</label>
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-                     <span class="glyphicon glyphicon-info-sign"></span>
-                   </a>
                    {% render_field form.street_address placeholder=form.street_address.label class="form-control" %}
                 </div>
 
