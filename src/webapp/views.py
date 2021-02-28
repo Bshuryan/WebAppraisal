@@ -62,18 +62,18 @@ def create_account_view(request):
 @login_required(login_url='/welcome')
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
-    role = Profile.objects.get(user_id=request.user.id).get_display_role()
+    role = Profile.objects.get(user_id=request.user.id).role
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    if role == 'Appraiser':
+    if role == Profile.Roles.APPRAISER:
         houses = list(House.objects.filter(appraiser=current_user))
     else:
         houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
 
-    return render(request, 'homepage.html', {'user': current_user, 'role': role, 'houses': houses})
+    return render(request, 'homepage.html', {'user': current_user, 'role': role.__str__(), 'houses': houses})
 
 # view where users can change their account information or delete their account
 @login_required(login_url='/welcome')
@@ -118,7 +118,7 @@ def account_management_view(request):
 def general_view(request, house_id):
     user_role = Profile.objects.get(user_id=request.user.id).role
     house_instance = House.objects.get(id=house_id)
-    if user_role == "Appraiser":
+    if user_role == Profile.Roles.APPRAISER:
         if not House.objects.filter(id=house_id).exists():
             redirect('/general/new')
         else:
@@ -146,11 +146,13 @@ def general_view(request, house_id):
                     phone_num = 'Not entered'
 
                 return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
-                                                                             'form': form, 'phone_number': phone_num})
-    #
+                                                                             'form': form, 'phone_number': phone_num,
+                                                                             'house_id': house_id})
+    # user is a customer
     else:
         phone_num = Profile.objects.get(user_id=house_instance.appraiser.id).phone_number
         return render(request, 'customer_view_forms/view_general.html', context={'appraiser': house_instance.appraiser,
+                                                                                 'house': house_instance, 'house_id': house_id,
                                                                                  'phone_number': phone_num})
 
 
@@ -268,54 +270,62 @@ def comment_view(request):
 def property_information_view(request, house_id):
     # TODO: Add generic error page to redirect to when don't have access
     # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
-    if request.method == 'POST':
-        # shared logic among views for user logout
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-        # on the button: <input type=submit name=update_account
-        if 'submit_prop_info' in request.POST:
-            # we need to update the object
-            if Property.objects.filter(house_id=house_id).exists():
-                property_info = Property.objects.get(house_id=house_id)
-                form = PropertyInformationForm(request.POST, instance=property_info)
+            # on the button: <input type=submit name=update_account
+            if 'submit_prop_info' in request.POST:
+                # we need to update the object
+                if Property.objects.filter(house_id=house_id).exists():
+                    property_info = Property.objects.get(house_id=house_id)
+                    form = PropertyInformationForm(request.POST, instance=property_info)
 
-                if form.is_valid():
-                    form.save()
-                    messages.success(request, "We've successfully updated the housing information")
-                    return redirect('/property-information/%s/' % house_id)
-                # hopefully won't reach here but just in case redirect back to same page
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/property-information/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/property-information/%s/' % house_id)
+
+                # we need to create a new instance
                 else:
-                    return redirect('/property-information/%s/' % house_id)
+                    form = PropertyInformationForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/property-information/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/property-information/%s/' % house_id)
 
-            # we need to create a new instance
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/property-information/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Property.objects.filter(house=house_id).exists():
+                property_info = Property.objects.get(house=house_id)
+                form = PropertyInformationForm(instance=property_info)
             else:
                 form = PropertyInformationForm(request.POST)
-                if form.is_valid():
-                    new_table_instance = form.save(commit=False)
-                    # Important: set foreign key to house id
-                    new_table_instance.house = House.objects.get(id=house_id)
-                    new_table_instance.save()
-                    messages.success(request, "We've successfully updated the housing information")
-                    return redirect('/property-information/%s/' % house_id)
-                # hopefully won't reach here but just in case redirect back to same page
-                else:
-                    return redirect('/property-information/%s/' % house_id)
 
-        # hopefully won't reach here but just in case redirect back to same page
-        else:
-            return redirect('/property-information/%s/' % house_id)
-
-    # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+            return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form, 'house_id': house_id })
     else:
-        if Property.objects.filter(house=house_id).exists():
-            property_info = Property.objects.get(house=house_id)
-            form = PropertyInformationForm(instance=property_info)
+        if Property.objects.filter(house_id=house_id).exists():
+            property_info = Property.objects.get(house_id=house_id)
         else:
-            form = PropertyInformationForm(request.POST)
-
-        return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form })
+            property_info = 'empty'
+        return render(request, 'customer_view_forms/view_property_information.html', context={'property': property_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
 def materials_conditions_view(request):
