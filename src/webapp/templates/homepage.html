@@ -43,44 +43,56 @@
 
     <div class="container">
         <div>
-            <span class="glyphicon glyphicon-plus-sign"></span>
-            <h7 style="font-family: Georgia, serif;">Create new appraisal</h7><br>
+          {% if role == "Appraiser" %}
+            <a href="/general/new" style="color: black">
+              <span class="glyphicon glyphicon-plus-sign"></span>
+              <h7 style="font-family: Georgia, serif; ">Create new appraisal</h7
+            </a><br>
+          {% endif %}
         </div>
         <div class="row">
+          {% for house in houses %}
             <div class="col-md-4">
                  <div class="card appraisal-card" style="width: 18rem">
                     <img src="../static/img/house1.jpg" class="card-img-top" alt="Image of House"/>
                     <div class="card-body">
-                        <hr><a href="/property-information" class="card-title" style="font-family: Georgia, serif; font-size: 20px"><span style="color: black">1234 Main St.</span></a>
-                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: #4CAF50">DONE</span></p>
-                    </div>
-                </div>
-            </div>
+                        <hr><a href="/general/{{ house.id }}" class="card-title" style="font-family: Georgia, serif; font-size: 20px">
+                              <span style="color: black">{{ house.street_address }}</span></a>
+                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status:
+                          {% if house.appraisal_status ==  "Not Started"%}
+                            <span style="color: darkred">Not Started</span>
 
-            <div class="col-md-4">
-                 <div class="card appraisal-card" style="width: 18rem">
-                    <img src="../static/img/house2.jpg" class="card-img-top" alt="Image of House"/>
-                    <div class="card-body">
-                        <hr><a href="/property-information" class="card-title" style="font-family: Georgia, serif; font-size: 20px"><span style="color: black">4321 Side St.</span></a>
-                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: darkorange">In Progress</span></p>
-                    </div>
-                </div>
-            </div>
+                          {% elif house.appraisal_status == "In Progress" %}
+                            <span style="color: darkorange">In Progress</span>
 
-            <div class="col-md-4">
-                 <div class="card appraisal-card" style="width: 18rem">
-                    <img src="../static/img/house3.jpg" class="card-img-top" alt="Image of House"/>
-                    <div class="card-body">
-                        <hr><a href="/property-information" class="card-title" style="font-family: Georgia, serif; font-size: 20px"><span style="color: black">512 Sesame St.</span></a>
-                        <p class="card-text" style="font-family: Georgia, serif;">Appraisal Status: <span style="color: darkred">Not Started</span></p>
+                          {% else %}
+                             <span style="color: #4CAF50">DONE</span>
+
+                          {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
+          {% endfor %}
+
         </div>
     </div>
-
-
+</body>
+<body class="bg-dark flex-column">
+  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
+          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+        </div>
+      </div>
+      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+  </footer>
+</body>
 <script>
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -101,6 +113,4 @@ window.onclick = function(event) {
   }
 }
 </script>
-
-</body>
 </html>

@@ -62,12 +62,18 @@ def create_account_view(request):
 @login_required(login_url='/welcome')
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
+    role = Profile.objects.get(user_id=request.user.id).get_display_role()
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    return render(request, 'homepage.html', {'user': current_user})
+    if role == 'Appraiser':
+        houses = list(House.objects.filter(appraiser=current_user))
+    else:
+        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+
+    return render(request, 'homepage.html', {'user': current_user, 'role': role, 'houses': houses})
 
 # view where users can change their account information or delete their account
 @login_required(login_url='/welcome')
@@ -110,36 +116,43 @@ def account_management_view(request):
 
 @login_required(login_url='/welcome')
 def general_view(request, house_id):
-    current_user = User.objects.get(pk=request.user.id)
-    if not House.objects.filter(id=house_id).exists():
-        redirect('/general/new')
-    else:
-        house_instance = House.objects.get(id=house_id)
-        if request.method == 'POST':
-            if 'user_logout' in request.POST:
-                logout(request)
-                redirect('/welcome')
+    user_role = Profile.objects.get(user_id=request.user.id).role
+    house_instance = House.objects.get(id=house_id)
+    if user_role == "Appraiser":
+        if not House.objects.filter(id=house_id).exists():
+            redirect('/general/new')
+        else:
+            if request.method == 'POST':
+                if 'user_logout' in request.POST:
+                    logout(request)
+                    redirect('/welcome')
 
-            elif 'submit_general_info' in request.POST:
-                form = UpdateAppraisalForm(request.POST, instance=house_instance)
-                if form.is_valid():
-                    form.save()
-                    messages.success(request, "We've successfully updated the general information")
-                    return redirect('/general/%s' % house_id)
-                # hopefully won't reach here but just in case redirect back to same page
+                elif 'submit_general_info' in request.POST:
+                    form = UpdateAppraisalForm(request.POST, instance=house_instance)
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the general information")
+                        return redirect('/general/%s' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/general/%s' % house_id)
                 else:
                     return redirect('/general/%s' % house_id)
+            # render form using existing info
             else:
-                return redirect('/general/%s' % house_id)
-        # render form using existing info
-        else:
-            form = UpdateAppraisalForm(instance=house_instance)
-            phone_num = Profile.objects.get(user_id=house_instance.customer.id).phone_number
-            if not phone_num:
-                phone_num = 'Not entered'
+                form = UpdateAppraisalForm(instance=house_instance)
+                phone_num = Profile.objects.get(user_id=house_instance.customer.id).phone_number
+                if not phone_num:
+                    phone_num = 'Not entered'
 
-            return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
-                                                                         'form': form, 'phone_number': phone_num})
+                return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
+                                                                             'form': form, 'phone_number': phone_num})
+    #
+    else:
+        phone_num = Profile.objects.get(user_id=house_instance.appraiser.id).phone_number
+        return render(request, 'customer_view_forms/view_general.html', context={'appraiser': house_instance.appraiser,
+                                                                                 'phone_number': phone_num})
+
 
 @login_required(login_url='/welcome')
 def create_appraisal(request):
