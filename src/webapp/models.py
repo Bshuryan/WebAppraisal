@@ -158,7 +158,7 @@ class Site(models.Model):
     landscaping = models.CharField(max_length=30, blank=True, null=True)
     driveway_surface = models.CharField(max_length=30, blank=True, null=True)
     apparent_easements = models.CharField(max_length=30, blank=True, null=True)
-    fema_flood_hazard = models.BooleanField(blank=True, null=True)
+    fema_flood_hazard = models.BooleanField()
     fema_zone = models.CharField(max_length=30, blank=True, null=True)
     fema_map_no = models.CharField(max_length=30, blank=True, null=True)
     map_date = models.DateField(blank=True, null=True)

@@ -71,8 +71,8 @@
                 {% render_field form.dimensions placeholder=form.dimensions.label class="form-control"%}
             </div>
             <div class="form-group col-md-3">
-                <label for="id_site_area">Site Area(Sqft.)</label>
-                {% render_field form.site_area placeholder="Sqft." class="form-control"%}
+                <label for="id_site_area">Site Area (Acres)</label>
+                {% render_field form.site_area placeholder="Acres" class="form-control"%}
             </div>
             <div class="form-group col-md-3">
                 <label for="id_topography">Topography</label>
@@ -104,26 +104,24 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="id_easements">Apparent easements</label>
                     {% render_field form.apparent_easements placeholder=form.apparent_easements.label class="form-control"%}
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="id_drainage">Drainage</label>
                     {% render_field form.drainage placeholder=form.drainage.label class="form-control"%}
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="id_specific_zone">Specific Zone</label>
                     {% render_field form.specific_zone placeholder=form.specific_zone.label class="form-control"%}
                 </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-3">
                     <label for="id_zone_compliance">Zone Compliance</label>
                     {% render_field form.zone_compliance placeholder=form.zone_compliance.label class="form-control"%}
                 </div>
             </div>
+
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -146,32 +144,32 @@
             <h2 class="form-sub-header">Select all that apply</h2>
         </div>
 
-        <div class="form-check col-md-3">
+        <div class="form-check col-md-1">
             <label for="id_corner_lot">Corner Lot</label>
             {% render_field form.corner_lot placeholder=form.map_date.label class="form-control"%}
         </div>
 
-            <div class="form-check col-md-3">
+            <div class="form-check col-md-1">
                 <label for="id_public_electric">Public Electric</label>
                 {% render_field form.public_electric placeholder=form.public_electric.label class="form-control"%}
         </div>
 
-            <div class="form-check col-md-3">
+            <div class="form-check col-md-1">
                 <label for="id_public_gas">Public Gas</label>
                 {% render_field form.public_gas placeholder=form.public_gas.label class="form-control"%}
         </div>
 
-        <div class="form-check col-md-3">
+        <div class="form-check col-md-1">
                 <label for="id_public_water">Public Water</label>
                 {% render_field form.public_water placeholder=form.public_water.label class="form-control"%}
         </div>
 
-        <div class="form-check col-md-3">
+        <div class="form-check col-md-2">
                 <label for="id_public_sanitary_sewer">Public Sanitary Sewer</label>
                 {% render_field form.public_sanitary_sewer placeholder=form.public_sanitary_sewer.label class="form-control"%}
         </div>
 
-        <div class="form-check col-md-3">
+        <div class="form-check col-md-2">
                 <label for="id_public_storm_sewer">Public Storm Sewer</label>
                 {% render_field form.public_storm_sewer placeholder=form.public_storm_sewer.label class="form-control"%}
         </div>
