@@ -238,14 +238,55 @@ def neighborhood_view(request, house_id):
         return render(request, 'appraisal_edit_forms/neighborhood.html', context={'form': form})
 
 @login_required(login_url='/welcome')
-def site_view(request):
+def site_view(request, house_id):
     current_user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
+            # on the button: <input type=submit name=update_account
+        if 'submit_site_info' in request.POST:
+            # we need to update the object
+            if Site.objects.filter(house_id=house_id).exists():
+                site_info = Site.objects.get(house_id=house_id)
+                form = SiteForm(request.POST, instance=site_info)
 
-    return render(request, 'appraisal_edit_forms/site.html', {'user': current_user})
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, "We've successfully updated the site information")
+                    return redirect('/site/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/site/%s/' % house_id)
+
+            # we need to create a new instance
+            else:
+                form = SiteForm(request.POST)
+                if form.is_valid():
+                    new_table_instance = form.save(commit=False)
+                    # Important: set foreign key to house id
+                    new_table_instance.house = House.objects.get(id=house_id)
+                    new_table_instance.save()
+                    messages.success(request, "We've successfully updated the housing information")
+                    return redirect('/site/%s/' % house_id)
+                # hopefully won't reach here but just in case redirect back to same page
+                else:
+                    return redirect('/site/%s/' % house_id)
+
+        # hopefully won't reach here but just in case redirect back to same page
+        else:
+            return redirect('/site/%s/' % house_id)
+
+    # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+    else:
+        if Site.objects.filter(house=house_id).exists():
+            site_info = Site.objects.get(house=house_id)
+            form = SiteForm(instance=site_info)
+        else:
+            form = SiteForm(request.POST)
+
+        return render(request, 'appraisal_edit_forms/site.html', context={'form': form, 'house_id': house_id})
+
 
 @login_required(login_url='/welcome')
 def improvements_view(request):

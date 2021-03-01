@@ -134,28 +134,33 @@ class Room(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Site(models.Model):
-    id = models.IntegerField(primary_key=True)
-    dimensions = models.TextField(blank=True, null=True)
+    class ZoneCompliance(models.TextChoices):
+        LEGAL = 'Legal'
+        LEGAL_NONCONF = 'Legal Nonconforming (grandfathered use)'
+        ILLEGAL = 'Illegal'
+        NO_ZONE = 'No Zoning'
+    id = models.AutoField(primary_key=True)
+    dimensions = models.CharField(max_length=30, blank=True, null=True)
     site_area = models.IntegerField(blank=True, null=True)
-    specific_zone = models.TextField(blank=True, null=True)
-    zone_compliance = models.TextField(blank=True, null=True)  # This field type is a guess.
+    specific_zone = models.CharField(max_length=50, blank=True, null=True)
+    zone_compliance = models.CharField(max_length=60, blank=True, null=True, choices=ZoneCompliance.choices)
     corner_lot = models.BooleanField()
     public_electric = models.BooleanField()
     public_gas = models.BooleanField()
     public_water = models.BooleanField()
     public_sanitary_sewer = models.BooleanField()
     public_storm_sewer = models.BooleanField()
-    topography = models.TextField(blank=True, null=True)
-    size = models.TextField(blank=True, null=True)
-    shape = models.TextField(blank=True, null=True)
-    drainage = models.TextField(blank=True, null=True)
-    view = models.TextField(blank=True, null=True)
-    landscaping = models.TextField(blank=True, null=True)
-    driveway_surface = models.TextField(blank=True, null=True)
-    apparent_easements = models.TextField(blank=True, null=True)
+    topography = models.CharField(max_length=30, blank=True, null=True)
+    size = models.CharField(max_length=30, blank=True, null=True)
+    shape = models.CharField(max_length=30, blank=True, null=True)
+    drainage = models.CharField(max_length=30, blank=True, null=True)
+    view = models.CharField(max_length=30, blank=True, null=True)
+    landscaping = models.CharField(max_length=30, blank=True, null=True)
+    driveway_surface = models.CharField(max_length=30, blank=True, null=True)
+    apparent_easements = models.CharField(max_length=30, blank=True, null=True)
     fema_flood_hazard = models.BooleanField(blank=True, null=True)
-    fema_zone = models.TextField(blank=True, null=True)
-    fema_map_no = models.TextField(blank=True, null=True)
+    fema_zone = models.CharField(max_length=30, blank=True, null=True)
+    fema_map_no = models.CharField(max_length=30, blank=True, null=True)
     map_date = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
