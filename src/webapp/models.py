@@ -184,17 +184,21 @@ class Site(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Offsite(models.Model):
+    class PublicUtilities(models.TextChoices):
+        PUBLIC = 'Public'
+        PRIVATE = 'Private'
+        NEITHER = 'Neither'
     id = models.IntegerField(primary_key=True)
-    offsite_curb_note = models.TextField(blank=True, null=True)
-    offsite_street_note = models.TextField(blank=True, null=True)
-    offsite_sidewalk_note = models.TextField(blank=True, null=True)
-    offsite_streetlight_note = models.TextField(blank=True, null=True)
-    offsite_alley_note = models.TextField(blank=True, null=True)
-    offsite_streetlights = models.TextField()  # This field type is a guess.
-    offsite_curb = models.TextField()  # This field type is a guess.
-    offsite_sidewalk = models.TextField()  # This field type is a guess.
-    offsite_alley = models.TextField()  # This field type is a guess.
-    offsite_street = models.TextField()  # This field type is a guess.
+    offsite_curb_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_street_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_sidewalk_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_streetlight_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_alley_note = models.CharField(max_length=50, blank=True, null=True)
+    offsite_streetlights = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_curb = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_sidewalk = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_alley = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_street = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
     comments = models.TextField(blank=True, null=True)
     site = models.ForeignKey('Site', models.DO_NOTHING)
 
