@@ -33,7 +33,24 @@ urlpatterns = [
     path('general/new', views.create_appraisal),
     path('general/<int:house_id>', views.general_view),
     path('neighborhood/<house_id>', views.neighborhood_view),
-    path('site/', views.site_view),
+    path('site/<house_id>', views.site_view),
+    path('description-improvements', views.improvements_view),
+    path('comments', views.comment_view),
+    path('property-information/<house_id>', views.property_information_view),
+    path('comments', views.comment_view),
+    path('materials-conditions', views.materials_conditions_view),
+    path('kitchen', views.kitchen_view),
+    path('basement', views.basement_view),
+    path('utilities', views.utilities_view),
+    path('offsite-information', views.offsite_information_view),
+    path('AppraisalPage', views.appraisal_view),
+    path('amenities', views.amenities_view),
+
+    # adding optional slashes
+    path('general/new/', views.create_appraisal),
+    path('general/<int:house_id>/', views.general_view),
+    path('neighborhood/<house_id>/', views.neighborhood_view),
+    path('site/<house_id>/', views.site_view),
     path('description-improvements/', views.improvements_view),
     path('comments/', views.comment_view),
     path('property-information/<house_id>/', views.property_information_view),
@@ -44,6 +61,5 @@ urlpatterns = [
     path('utilities/', views.utilities_view),
     path('offsite-information/', views.offsite_information_view),
     path('AppraisalPage/', views.appraisal_view),
-    path('amenities/', views.amenities_view),
-    path('sitero/', views.sitero_view)
+    path('amenities/', views.amenities_view)
 ]

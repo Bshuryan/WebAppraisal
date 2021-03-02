@@ -45,7 +45,7 @@ class House(models.Model):
     comments = models.TextField(blank=True, null=True)
 
 class DescriptionOfImprovements(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     design_style = models.TextField(blank=True, null=True)
     age = models.IntegerField()
     effective_age = models.IntegerField(blank=True, null=True)
@@ -61,22 +61,26 @@ class DescriptionOfImprovements(models.Model):
     none_insulation = models.BooleanField()
     unknown_insulation = models.BooleanField()
     comments = models.TextField(blank=True, null=True)
-    house = models.ForeignKey('House', models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
 
 class MaterialsAndCondition(models.Model):
+    class Condition(models.TextChoices):
+        GOOD = 'Good'
+        AVERAGE = 'Average'
+        POOR = 'Poor'
     id = models.IntegerField(primary_key=True)
-    condition_floors = models.TextField(blank=True, null=True)  # This field type is a guess.
-    material_floors = models.TextField(blank=True, null=True)
-    condition_walls = models.TextField(blank=True, null=True)  # This field type is a guess.
-    material_walls = models.TextField(blank=True, null=True)
-    condition_trim = models.TextField(blank=True, null=True)  # This field type is a guess.
-    materials_trim = models.TextField(blank=True, null=True)
-    condition_bath_floor = models.TextField(blank=True, null=True)  # This field type is a guess.
-    materials_bath_floor = models.TextField(blank=True, null=True)
-    condition_bath_wainscot = models.TextField(blank=True, null=True)  # This field type is a guess.
-    materials_bath_wainscot = models.TextField(blank=True, null=True)
-    condition_doors = models.TextField(blank=True, null=True)  # This field type is a guess.
-    materials_doors = models.TextField(blank=True, null=True)
+    condition_floors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    material_floors = models.CharField(max_length=50, blank=True, null=True)
+    condition_walls = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    material_walls = models.CharField(max_length=50, blank=True, null=True)
+    condition_trim = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    materials_trim = models.CharField(max_length=50, blank=True, null=True)
+    condition_bath_floor = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    materials_bath_floor = models.CharField(max_length=50, blank=True, null=True)
+    condition_bath_wainscot = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    materials_bath_wainscot = models.CharField(max_length=50, blank=True, null=True)
+    condition_doors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    materials_doors = models.CharField(max_length=50, blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
@@ -126,52 +130,75 @@ class Property(models.Model):
 
     
 class Room(models.Model):
+    class RoomType(models.TextChoices):
+        FOYER = 'Foyer'
+        LIVING = 'Living Room'
+        DINING = 'Dining Room'
+        KITCHEN = 'Kitchen'
+        DEN = 'Den'
+        FAMILY = 'Family Room'
+        RECREATION = 'Recreation Room'
+        BEDROOM = 'Bedroom'
+        BATH = 'Bathroom'
+        HALFBATH = '1/2 bath'
+        LAUNDRY = 'Laundry Room'
+        BASEMENT = 'Basement'
     id = models.IntegerField(primary_key=True)
-    room_type = models.TextField(blank=True, null=True)  # This field type is a guess.
+    room_type = models.CharField(max_length=20, blank=True, null=True, choices=RoomType.choices)
     room_level = models.IntegerField(blank=True, null=True)
     room_area = models.IntegerField(blank=True, null=True)
     room_comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Site(models.Model):
-    id = models.IntegerField(primary_key=True)
-    dimensions = models.TextField(blank=True, null=True)
+    class ZoneCompliance(models.TextChoices):
+        LEGAL = 'Legal'
+        LEGAL_NONCONF = 'Legal Nonconforming (grandfathered use)'
+        ILLEGAL = 'Illegal'
+        NO_ZONE = 'No Zoning'
+    id = models.AutoField(primary_key=True)
+    dimensions = models.CharField(max_length=30, blank=True, null=True)
     site_area = models.IntegerField(blank=True, null=True)
-    specific_zone = models.TextField(blank=True, null=True)
-    zone_compliance = models.TextField(blank=True, null=True)  # This field type is a guess.
+    specific_zone = models.CharField(max_length=50, blank=True, null=True)
+    zone_compliance = models.CharField(max_length=60, blank=True, null=True, choices=ZoneCompliance.choices)
     corner_lot = models.BooleanField()
     public_electric = models.BooleanField()
     public_gas = models.BooleanField()
     public_water = models.BooleanField()
     public_sanitary_sewer = models.BooleanField()
     public_storm_sewer = models.BooleanField()
-    topography = models.TextField(blank=True, null=True)
-    size = models.TextField(blank=True, null=True)
-    shape = models.TextField(blank=True, null=True)
-    drainage = models.TextField(blank=True, null=True)
-    view = models.TextField(blank=True, null=True)
-    landscaping = models.TextField(blank=True, null=True)
-    driveway_surface = models.TextField(blank=True, null=True)
-    apparent_easements = models.TextField(blank=True, null=True)
-    fema_flood_hazard = models.BooleanField(blank=True, null=True)
-    fema_zone = models.TextField(blank=True, null=True)
-    fema_map_no = models.TextField(blank=True, null=True)
+    fema_flood_hazard = models.BooleanField()
+    topography = models.CharField(max_length=30, blank=True, null=True)
+    size = models.CharField(max_length=30, blank=True, null=True)
+    shape = models.CharField(max_length=30, blank=True, null=True)
+    drainage = models.CharField(max_length=30, blank=True, null=True)
+    view = models.CharField(max_length=30, blank=True, null=True)
+    landscaping = models.CharField(max_length=30, blank=True, null=True)
+    driveway_surface = models.CharField(max_length=30, blank=True, null=True)
+    apparent_easements = models.CharField(max_length=30, blank=True, null=True)
+
+    fema_zone = models.CharField(max_length=30, blank=True, null=True)
+    fema_map_no = models.CharField(max_length=30, blank=True, null=True)
     map_date = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Offsite(models.Model):
+    class PublicUtilities(models.TextChoices):
+        PUBLIC = 'Public'
+        PRIVATE = 'Private'
+        NEITHER = 'Neither'
     id = models.IntegerField(primary_key=True)
-    offsite_curb_note = models.TextField(blank=True, null=True)
-    offsite_street_note = models.TextField(blank=True, null=True)
-    offsite_sidewalk_note = models.TextField(blank=True, null=True)
-    offsite_streetlight_note = models.TextField(blank=True, null=True)
-    offsite_alley_note = models.TextField(blank=True, null=True)
-    offsite_streetlights = models.TextField()  # This field type is a guess.
-    offsite_curb = models.TextField()  # This field type is a guess.
-    offsite_sidewalk = models.TextField()  # This field type is a guess.
-    offsite_alley = models.TextField()  # This field type is a guess.
-    offsite_street = models.TextField()  # This field type is a guess.
+    offsite_curb_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_street_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_sidewalk_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_streetlight_note = models.CharField(max_length=50,blank=True, null=True)
+    offsite_alley_note = models.CharField(max_length=50, blank=True, null=True)
+    offsite_streetlights = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_curb = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_sidewalk = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_alley = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
+    offsite_street = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
     comments = models.TextField(blank=True, null=True)
     site = models.ForeignKey('Site', models.DO_NOTHING)
 
@@ -212,13 +239,17 @@ class Basement(models.Model):
     materials_conditions = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
 
 class Utilities(models.Model):
+    class Condition(models.TextChoices):
+        GOOD = 'Good'
+        AVERAGE = 'Average'
+        POOR = 'Poor'
     id = models.IntegerField(primary_key=True)
-    heat_type = models.TextField()
+    heat_type = models.TextField(max_length=20,blank=True, null=True)
     washer_dryer = models.BooleanField()
-    heat_fuel = models.TextField()
-    heat_condition = models.TextField()  # This field type is a guess.
-    cooling_type = models.TextField()
-    cooling_condition = models.TextField()  # This field type is a guess.
+    heat_fuel = models.CharField(max_length=20,blank=True, null=True)
+    heat_condition = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    cooling_type = models.CharField(max_length=20,blank=True, null=True)
+    cooling_condition = models.TextField(max_length=10,blank=True, null=True, choices=Condition.choices)
     comments = models.TextField()
     materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
     

@@ -1,14 +1,13 @@
-{% load widget_tweaks %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>General Information</title>
+    <title>Property Information</title>
 </head>
 <header>
     <div class="container">
@@ -35,10 +34,10 @@
     </div>
 </header>
 
+
 <body class="bg-light">
 
-  <div class="container">
-
+    <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
       Open Navigation Menu
@@ -106,7 +105,7 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+                <a class="btn btn-primary" href="../../site">Site Information</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../utilities">Utilities</a>
@@ -121,84 +120,167 @@
       </div>
     </div>
 
-    <h1 class="form-header webappraisal-header">General Information</h1>
+        <h1 class="form-header webappraisal-header">Property Information</h1>
+        <hr>
 
-    <div class="content">
-        <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Current Owner</td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.current_owner|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-        <form method="POST">
-          {% csrf_token %}
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="id_appraisal_status">Appraisal Status</label>
-                    {% render_field form.appraisal_status placeholder=form.appraisal_status.label class="form-control" %}
-                </div>
-            </div><hr>
+          <tr>
+            <td>Borrower</td>
+            <td>
+              {% if property != "empty" %}
+                {{  property.borrower|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-            <div class="form-row">
-                 <div class="form-group col-md-7">
-                 <label for="id_street_address">Street Address</label>
-                   {% render_field form.street_address placeholder=form.street_address.label class="form-control" %}
-                </div>
+          <tr>
+            <td>Occupant</td>
+            <td>
+              {% if property != "empty" %}
+               {{ property.occupant|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-                <div class="form-group col-md-4">
-                    <label for="id_city">City</label>
-                    {% render_field form.city placeholder=form.city.label class="form-control" %}
-                </div>
-            </div>
+          <tr>
+            <td>Sale Price</td>
+            <td>
+              {% if property != "empty" %}
+                 {{ property.sale_price|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-          <div class="form-row">
-            <div class="form-group col-md-3">
-              <label for="id_state">State</label>
-              {% render_field form.state placeholder=form.state.label class="form-control" %}
-            </div>
-              <div class="form-group col-md-5">
-              <label for="id_county">County</label>
-              {% render_field form.county placeholder=form.county.label class="form-control" %}
-            </div>
-            <div class="form-group col-md-3">
-              <label for="id_zip">Zip Code</label>
-              {% render_field form.zip placeholder=form.zip.label class="form-control"%}
-            </div>
-          </div>
+          <tr>
+            <td>Date of Sale</td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.date_of_sale|default_if_none:"" }}
+              {% endif %}
+            </td>
+          </tr>
 
-        <div class="form-row">
-          <div class="form-floating col-md-12 additional-comments">
-            <label for="comments">Leave any additional notes for your customer</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control"%}
-          </div>
-        </div><hr>
+          <tr>
+            <td>Tax Year</td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.tax_year|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-            <div class="row">
-                <button class="btn btn-primary btn-md form-submit-btn" type="submit" name="submit_general_info">Save changes</button><br><br>
-            </div>
-          <hr>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="panel panel-warning cust-info">
-                    <div class="panel panel-heading">
-                      <h4 class="text-center"><span class="glyphicon glyphicon-earphone"></span> Customer Contact Information</h4>
-                    </div>
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <strong>Name:</strong> {{ customer.first_name }} {{ customer.last_name }}
-                      </li>
-                      <li class="list-group-item">
-                        <strong>Email:</strong> {{ customer.email }}
-                      </li>
+          <tr>
+            <td>Real Estate Taxes</td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.re_taxes|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-                      <li class="list-group-item">
-                        <strong>Phone Number:</strong> {{ phone_number }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-        </form>
-    </div>
-    </div>
-  </div>
+          <tr>
+            <td>Homeowner Association Fees</td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.hoa_price|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Property Rights Appraised
+              <a data-toggle="tooltip"
+                   data-original-title="The rights that the property owner has to their estate.
+                   Either Fee Simple (total ownership) or Leasehold (occupancy granted under terms of a lease and for a specified period of time)">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.prop_rights_appraised|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Project Type
+              <a data-toggle="tooltip"
+                   data-original-title="Either Planned Unit Development, Condominum, or Neither">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>
+              {% if property != "empty" %}
+                {{ property.project_type|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Map Reference Number
+              <a data-toggle="tooltip"
+                   data-original-title="Uniquely identifying numbers used to locate the property on a map, commonly in terms of latitude or longitude.">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>
+              {% if property != "empty" %}
+               {{ property.map_ref|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Census Tract
+              <a data-toggle="tooltip"
+                   data-original-title="A geographic region defined for the purpose of taking a census">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>
+              {% if property != "empty" %}
+               {{ property.census_tract|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+
+          <tr>
+            <td>
+              Additional Comments from Appraiser
+              <a data-toggle="tooltip"
+                   data-original-title="This is where your appraiser can post any general comments about the appraisal for you to see">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ property.comments|default_if_none:""}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><br><br>
 </body>
+
 
 <body class="bg-dark flex-column">
   <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
@@ -215,4 +297,9 @@
 
 </body>
 
+<script>
+  $(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+</script>
 </html>
