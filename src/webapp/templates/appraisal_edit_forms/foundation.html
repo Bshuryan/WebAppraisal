@@ -7,7 +7,7 @@
           integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <title>Basement</title>
+    <title>Foundation</title>
 </head>
 <header>
     <div class="container">
@@ -37,7 +37,7 @@
 <body class="bg-light">
 
 <div class="container">
-    <h1 class="form-header webappraisal-header">Basement</h1>
+    <h1 class="form-header webappraisal-header">Foundation</h1>
     <hr>
 
     <div class="btn-group" role="group">
@@ -53,7 +53,6 @@
                 <a class="btn btn-secondary" href="../basement/">Basement</a>
                 <br>
                 <a class="btn btn-secondary" href="../foundation/">Foundation</a>
-
                 <br>
                 <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
                 <a class="btn btn-secondary" href="../general/">General</a>
@@ -63,35 +62,42 @@
     <br><br>
 
     <form method="POST">
+        Does the Property Have a...
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="sump_pump">
+            <label class="checkbox-inline form-check-label" for="sump_pump">Sump Pump</label>
+        </div>
+
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="slab">
+            <label class="checkbox-inline form-check-label" for="slab">Slab</label>
+        </div>
+
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="checkbox" value="" id="crawl_space">
+            <label class="checkbox-inline form-check-label" for="crawl_space">Crawl Space</label>
+        </div>
+
+        <br><br><br>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_area">Area Sq. Ft</label>
-            <textarea class="form-control" placeholder="Notes" id="basement_area"></textarea>
+            <label for="foundation_ext">foundation_ext??</label>
+            <textarea class="form-control" placeholder="Notes" id="foundation_ext"></textarea>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_percent_finished">Percent of Finished Basement</label>
-            <textarea class="form-control" placeholder="Notes" id="basement_percent_finished"></textarea>
+            <label for="dampness">Dampness</label>
+            <textarea class="form-control" placeholder="Notes" id="dampness"></textarea>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_ceiling">Ceiling</label>
-            <textarea class="form-control" placeholder="What form of ceiling does the basement have, if any" id="basement_ceiling"></textarea>
+            <label for="infestation">Infestation</label>
+            <textarea class="form-control" placeholder="Notes" id="infestation"></textarea>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_walls">Walls</label>
-            <textarea class="form-control" placeholder="What form of walls does the basement have" id="basement_walls"></textarea>
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_floor">Floor</label>
-            <textarea class="form-control" placeholder="What form of floor does the basement have, i.e. cement, painted, hardwood" id="basement_floor"></textarea>
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="basement_outside_entry">Outside Entry</label>
-            <textarea class="form-control" placeholder="Does this basement have outside entry" id="basement_outside_entry"></textarea>
+            <label for="settlement">Settlement</label>
+            <textarea class="form-control" placeholder="Notes" id="settlement"></textarea>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
@@ -124,6 +130,7 @@
     </div>
 </footer>
 </body>
+
 
 </body>
 </html>

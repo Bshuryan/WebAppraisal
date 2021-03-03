@@ -1,128 +1,141 @@
-{% load widget_tweaks %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../../static/css/FormStyle.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-
-  <title>Neighborhood</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Neighborhood </title>
 </head>
-<body>
-
 <header>
-  <div class="container">
-    <br>
-    <nav class="navbar navbar-default">
-      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-      <div class="dropdown">
-        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="account-management">
-          <li>
-            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-            </a>
-          </li>
-          <li>
-            <a href="/welcome" class="btn btn-default btn-block text-left">
-              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+    <div class="container">
+      <nav class="navbar navbar-default">
+          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+                </button>
+                   <ul class="dropdown-menu" aria-labelledby="account-management">
+                        <li>
+                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/welcome" class="btn btn-default btn-block text-left">
+                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+                            </a>
+                        </li>
+                   </ul>
+            </div>
+        </nav>
+    </div>
 </header>
 
+
 <body class="bg-light">
+
     <div class="container">
-
-  <h2 class="form-header webappraisal-header">Neighborhood</h2>
-
-  <div class="btn-group" role="group">
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Navigate Pages >
-      </button>
-      <div class="dropdown-menu">
-        <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
-        <a class="btn btn-secondary" href="../property-information/">Property Information</a>
-        <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
-        <a class="btn btn-secondary disabled" href="../site/">Sites</a>
-        <br>
-        <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
-        <a class="btn btn-secondary disabled" href="../general/">General</a>
-      </div>
-    </div>
-  </div>
-
-
-  <hr>
-        <form method="POST">
-            {% csrf_token %}
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="id_neighborhood_name">Neighborhood Name</label>
-                {% render_field form.name placeholder=form.name.label class="form-control"%}
-            </div>
-            <div class="form-group col-md-6">
-                <label for="id_location">Location</label>
-                {% render_field form.location placeholder=form.location.label class="form-control"%}
-            </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="id_property_value">Property Value</label>
-            {% render_field form.property_value placeholder=form.property_value.label class="form-control"%}
+        <h1 class="form-header webappraisal-header">Neighborhood</h1>
+  
+      <div class="btn-group" role="group">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Navigate Pages >
+          </button>
+          <div class="dropdown-menu">
+            <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
+            <a class="btn btn-secondary" href="../property-information/">Property Information</a>
+            <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
+            <a class="btn btn-secondary" href="../site/">Sites</a>
+            <br>
+            <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
+            <a class="btn btn-secondary" href="../general/">General</a>
           </div>
         </div>
+      </div><br><br><hr>
 
+        <form method="POST">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="id_growth_rate">Growth Rate</label>
-                {% render_field form.growth_rate placeholder=form.growth_rate.label class="form-control"%}
-            </div>
-            <div class="form-group col-md-6">
-                <label for="id_demand_supply">Supply/Demand</label>
-                {% render_field form.demand_supply placeholder=form.demand_supply.label class="form-control"%}
+            <div class="form-group col-md-12">
+                <label for="id_neighborhood_name">Neighborhood Name</label>
+                <input id="id_neighborhood_name" type="text" class="form-control">
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="id_built_up">Built Up</label>
-              {% render_field form.built_up placeholder=form.built_up.label class="form-control"%}
+     <label for="id_location">Location</label>
+      <select id="id_location" class="form-control">
+        <option selected>Select...</option>
+            <option value="Urban">Urban</option>
+			<option value="Suburban">Suburban</option>
+			<option value="Rural">Rural</option>
+      </select>
+            </div>
+            <div class="form-group col-md-6">
+     <label for="id_prop_value">Property Value</label>
+      <select id="id_prop_value" class="form-control">
+        <option selected>Select...</option>
+            <option value="Increasing">Increasing</option>
+			<option value="Stable">Stable</option>
+			<option value="Slow">Slow</option>
+      </select>
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     <label for="id_growth_rate">Growth Rate</label>
+      <select id="id_growth_rate" class="form-control">
+        <option selected>Select...</option>
+            <option value="Rapid">Rapid</option>
+			<option value="Stable">Stable</option>
+			<option value="Slow">Slow</option>
+      </select>
+            </div>
+            <div class="form-group col-md-6">
+     <label for="id_supply_demand">Supply/Demand</label>
+      <select id="id_supply_demand" class="form-control">
+        <option selected>Select...</option>
+            <option value="Shortage">Shortage</option>
+			<option value="Stable">Stable</option>
+			<option value="Declining">Declining</option>
+      </select>
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     <label for="id_built_up">Built Up</label>
+      <select id="id_built_up" class="form-control">
+        <option selected>Select...</option>
+            <option value="75">Over 75%</option>
+			<option value="2575">25%-75%</option>
+			<option value="25">Under 25%</option>
+      </select>
             </div>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="marketabilty_factors">Marketability Factors</label>
-            {% render_field form.marketability_factors placeholder=form.marketability_factors.label class="form-control" type="text"%}
+            <textarea class="form-control" placeholder="Notes" id="marketabilty_factors"></textarea>
         </div>
 
-            <div class="form-floating col-md-12 additional-comments">
+        <div class="form-floating col-md-12 additional-comments">
             <label for="market_conditions">Market Conditions</label>
-            {% render_field form.market_conditions placeholder=form.market_conditions.label class="form-control" type="text"%}
+            <textarea class="form-control" placeholder="Notes" id="market_conditions"></textarea>
         </div>
-
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="additional_comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+            <textarea class="form-control" placeholder="Notes" id="additional_comments"></textarea>
         </div>
 
         <br><br><hr>
 
-        <button class="btn btn-primary btn-md form-submit-btn" name="submit_neighborhood_info" type="submit">Save changes</button>
+        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
             <br><br>
     </form>
     </div>
