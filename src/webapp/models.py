@@ -46,14 +46,14 @@ class House(models.Model):
 
 class DescriptionOfImprovements(models.Model):
     id = models.AutoField(primary_key=True)
-    design_style = models.TextField(blank=True, null=True)
-    age = models.IntegerField()
+    design_style = models.CharField(max_length=50, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
     effective_age = models.IntegerField(blank=True, null=True)
-    walls = models.TextField(blank=True, null=True)
-    roof_surface = models.TextField(blank=True, null=True)
-    gutters_downspouts = models.TextField(blank=True, null=True)
-    win_type = models.TextField(blank=True, null=True)
-    storm_screens = models.TextField(blank=True, null=True)
+    walls = models.CharField(max_length=50, blank=True, null=True)
+    roof_surface = models.CharField(max_length=50, blank=True, null=True)
+    gutters_downspouts = models.CharField(max_length=50, blank=True, null=True)
+    win_type = models.CharField(max_length=50, blank=True, null=True)
+    storm_screens = models.CharField(max_length=50, blank=True, null=True)
     roof_insulation = models.BooleanField()
     ceiling_insulation = models.BooleanField()
     walls_insulation = models.BooleanField()
@@ -274,9 +274,9 @@ class Neighborhood(models.Model):
         SLOW = 'Slow'
 
     class BuiltUp(models.TextChoices):
-        OVER75 = 'Over 75%'
-        UNDER75 = '25%-75%'
-        UNDER25 = 'Under 25%'
+        OVER75 = 'Over 75%', _('Over 75%')
+        ABOVE25= 'ABOVE25' , _('25%-75%')
+        UNDER25 = 'UNDER25', _('Under 25%')
 
     class DemandSupply(models.TextChoices):
         SHORTAGE = 'Shortage'

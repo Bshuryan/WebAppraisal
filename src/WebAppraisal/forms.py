@@ -53,7 +53,7 @@ class SiteForm(forms.ModelForm):
         model = Site
         exclude = ['house', 'id']
 
-class DescriptionOfImprovementsForm:
+class DescriptionOfImprovementsForm(forms.ModelForm):
     class Meta:
         model = DescriptionOfImprovements
         exclude = ['house', 'id']

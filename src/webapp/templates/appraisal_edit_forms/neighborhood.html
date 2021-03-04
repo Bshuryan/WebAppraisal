@@ -43,25 +43,90 @@
 
 <body class="bg-light">
     <div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
+        </div>
+      </div>
+    </div>
 
   <h2 class="form-header webappraisal-header">Neighborhood</h2>
 
-  <div class="btn-group" role="group">
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Navigate Pages >
-      </button>
-      <div class="dropdown-menu">
-        <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
-        <a class="btn btn-secondary" href="../property-information/">Property Information</a>
-        <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
-        <a class="btn btn-secondary disabled" href="../site/">Sites</a>
-        <br>
-        <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
-        <a class="btn btn-secondary disabled" href="../general/">General</a>
-      </div>
-    </div>
-  </div>
 
 
   <hr>
