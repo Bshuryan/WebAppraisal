@@ -134,7 +134,11 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="id_map_date">Map Date</label>
-                    {% render_field form.map_date placeholder=form.map_date.label class="form-control"%}
+                    <div class="input-group date" data-provide="datepicker">
+                      {% render_field form.map_date placeholder=form.map_date.label class="form-control" type="text"%}
+                      <div class="input-group-addon">
+                          <span class="glyphicon glyphicon-th"></span>
+                      </div>
                 </div>
             </div>
 
