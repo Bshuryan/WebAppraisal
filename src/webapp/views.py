@@ -11,7 +11,7 @@ from src.webapp.models import *
 
 APPRAISER_ROLE = 'APPRAISER'
 CUSTOMER_ROLE = 'CUSTOMER'
-#swag
+
 # empty url - redirect user to login/welcome page
 def redirect_to_login(request):
     return redirect('/welcome/')
