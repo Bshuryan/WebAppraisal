@@ -68,19 +68,19 @@ class MaterialsAndCondition(models.Model):
         GOOD = 'Good'
         AVERAGE = 'Average'
         POOR = 'Poor'
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     condition_floors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
     material_floors = models.CharField(max_length=50, blank=True, null=True)
     condition_walls = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
     material_walls = models.CharField(max_length=50, blank=True, null=True)
     condition_trim = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_trim = models.CharField(max_length=50, blank=True, null=True)
+    material_trim = models.CharField(max_length=50, blank=True, null=True)
     condition_bath_floor = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_bath_floor = models.CharField(max_length=50, blank=True, null=True)
+    material_bath_floor = models.CharField(max_length=50, blank=True, null=True)
     condition_bath_wainscot = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_bath_wainscot = models.CharField(max_length=50, blank=True, null=True)
+    material_bath_wainscot = models.CharField(max_length=50, blank=True, null=True)
     condition_doors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_doors = models.CharField(max_length=50, blank=True, null=True)
+    material_doors = models.CharField(max_length=50, blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 

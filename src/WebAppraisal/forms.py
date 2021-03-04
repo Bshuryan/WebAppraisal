@@ -53,6 +53,16 @@ class SiteForm(forms.ModelForm):
         model = Site
         exclude = ['house', 'id']
 
+class DescriptionOfImprovementsForm:
+    class Meta:
+        model = DescriptionOfImprovements
+        exclude = ['house', 'id']
+
+class MaterialsConditionForm(forms.ModelForm):
+    class Meta:
+        model = MaterialsAndCondition
+        exclude = ['house', 'id']
+
 class CreateAppraisalForm(forms.ModelForm):
     class Meta:
         model = House

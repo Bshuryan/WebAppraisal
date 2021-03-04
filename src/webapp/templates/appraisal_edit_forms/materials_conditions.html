@@ -1,5 +1,8 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../../static/css/FormStyle.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -9,151 +12,200 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
 
   <title>Materials and Conditions</title>
-
 </head>
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <body class="bg-light">
     <div class="container">
-        <h2 class="form-header webappraisal-header">Materials and Conditions</h2>
-        <hr>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
 
-        <form method="POST">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="wall_materials">Wall Material</label>
-                    <input id="wall_materials" type="text" class="form-control">
-                </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-                <div class="form-group col-md-4">
-                    <label for="wall_condition">Condition</label>
-                    <select id="wall_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="floor_materials">Floor Materials</label>
-                    <input id="floor_materials" type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="floor_condition">Condition</label>
-                    <select id="floor_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
+              </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="door_material">Door Material</label>
-                    <input id="door_material" type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="door_condition">Condition</label>
-                    <select id="door_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="bathroom_floor_material">Bathroom Floor Material</label>
-                    <input id="bathroom_floor_material" type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="bathroom_floor_condition">Condition</label>
-                    <select id="bathroom_floor_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="bathroom_wainscot_material">Bathroom Wainscot Material</label>
-                    <input id="bathroom_wainscot_material" type="text" class="form-control">
-                </div>
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
 
-                <div class="form-group col-md-4">
-                    <label for="bathroom_wainscot_condition">Condition</label>
-                    <select id="bathroom_wainscot_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
+              </div>
             </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="trim_material">Trim Material</label>
-                    <input id="trim_material" type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="trim_condition">Condition</label>
-                    <select id="trim_condition" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="good">Good</option>
-                      <option value="avg">Average</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-floating col-md-12 additional-comments">
-                <label for="comments">Additional Comments</label>
-                <textarea class="form-control" placeholder="Leave any other notes here" id="comments"></textarea>
-            </div>
-
-            <br><br><hr>
-
-            <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button><br><br><br>
-        </form>
+            &nbsp
+          </div>
+        </div>
+      </div>
     </div>
+
+  <h2 class="form-header webappraisal-header">Materials and Conditions</h2>
+  <hr>
+        <form method="POST">
+            {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="id_material_walls">Wall Material</label>
+                {% render_field form.material_walls placeholder='Wall Material' class="form-control" %}
+            </div>
+            <div class="form-group col-md-3">
+                <label for="id_condition_walls">Wall Condition</label>
+                {% render_field form.condition_walls placeholder=form.condition_walls.label class="form-control" %}
+            </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="id_material_floors">Floor Materials</label>
+                {% render_field form.material_floors placeholder='Floor Material' class="form-control" %}
+          </div>
+          <div class="form-group col-md-3">
+            <label for="id_floor_condition">Floor Condition</label>
+                {% render_field form.condition_walls placeholder=form.condition_walls.label class="form-control" %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="id_material_doors">Door Material</label>
+                {% render_field form.material_doors placeholder='Floor Material' class="form-control" %}
+          </div>
+          <div class="form-group col-md-3">
+            <label for="id_condition_doors">Door Condition</label>
+                {% render_field form.condition_doors placeholder=form.condition_doors.label class="form-control" %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="id_material_bath_floor">Bathroom Floor Material</label>
+                {% render_field form.material_bath_floor placeholder='Bathroom Floor Material' class="form-control" %}
+          </div>
+          <div class="form-group col-md-3">
+            <label for="id_condition_bath_floor">Bathroom Floor Condition</label>
+                {% render_field form.condition_bath_floor placeholder=form.condition_bath_floor.label class="form-control" %}
+          </div>
+        </div>
+
+		<div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="id_material_bath_wainscot">Bathroom Wainscot Material</label>
+                {% render_field form.material_bath_wainscot placeholder='Wainscot Material' class="form-control" %}
+          </div>
+          <div class="form-group col-md-3">
+            <label for="id_condition_bath_wainscot">Wainscot Condition</label>
+                {% render_field form.condition_bath_wainscot placeholder=form.condition_bath_wainscot.label class="form-control" %}
+          </div>
+        </div>
+
+		<div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="id_material_trim">Trim Material</label>
+                {% render_field form.material_trim placeholder='Trim Material' class="form-control" %}
+          </div>
+          <div class="form-group col-md-3">
+            <label for="id_condition_trim">Trim Condition</label>
+                {% render_field form.condition_trim placeholder=form.condition_trim.label class="form-control" %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-floating col-md-12 additional-comments">
+            <label for="comments">Additional Comments</label>
+            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+          </div>
+        </div>
+
+        <br><br><hr>
+        <button class="btn btn-primary btn-md form-submit-btn" name="submit_materials_condition_info" type="submit">Save changes</button><br><br>
+    </form>
+    </div>
+
 </body>
 
 <body class="bg-dark flex-column">
@@ -170,6 +222,4 @@
   </footer>
 </body>
 
-
-</body>
 </html>
