@@ -214,17 +214,17 @@ class Foundation(models.Model):
     comments = models.TextField(blank=True, null=True)
     improvements_id = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
     
-class HouseFeatures(models.Model):
-    id = models.IntegerField(primary_key=True)
-    pool = models.TextField()
-    fireplace = models.TextField()
-    patio = models.TextField()
-    deck = models.TextField()
-    fence = models.TextField()
-    garage = models.TextField()
-    basement = models.TextField()
-    attic = models.TextField()
-    comments = models.TextField()
+class Amenities(models.Model):
+    id = models.AutoField(primary_key=True)
+    pool = models.CharField(max_length=50,blank=True, null=True)
+    fireplace = models.CharField(max_length=50,blank=True, null=True)
+    patio = models.CharField(max_length=50,blank=True, null=True)
+    deck = models.CharField(max_length=50,blank=True, null=True)
+    fence = models.CharField(max_length=50,blank=True, null=True)
+    garage = models.CharField(max_length=50,blank=True, null=True)
+    basement = models.CharField(max_length=50,blank=True, null=True)
+    attic = models.CharField(max_length=50,blank=True, null=True)
+    comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Basement(models.Model):
