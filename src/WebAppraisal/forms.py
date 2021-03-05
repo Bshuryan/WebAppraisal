@@ -82,3 +82,18 @@ class UpdateAppraisalForm(forms.ModelForm):
     class Meta:
         model = House
         exclude = ['customer', 'appraiser', 'id']
+
+class RoomsForm(forms.ModelForm):
+    class Meta:
+        model = RoomSummary
+        exclude = ['id', 'house']
+
+class AddRoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        exclude = ['id', 'house']
+
+class EditRoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        exclude = ['id', 'house']
