@@ -1,0 +1,175 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.webappraisal-header {
+  font-family: Georgia, serif;
+  font-size: 50px;
+}
+
+.form-header {
+  text-align: center; !important;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.jumbotron {
+  background-image: url(../../static/img/Header-Test2.PNG);
+  background-size: cover;
+  height: 100%;
+  min-height: 250px;
+  position: relative;
+}
+
+.appraisal-header {
+  font-family: Georgia, serif;
+  font-size: 330%;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  left: 100px;
+}
+
+.appraisal-card {
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #abd4b2;
+}
+
+.dropdown {
+  position: absolute;
+  float: right;
+  display: inline-block;
+}
+
+.dropdown-text {
+  font-family: Georgia, serif;
+  font-size: 50%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #abd4b2;}
+
+.show {display: block;}
+.intro {
+    text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.column1 {
+  float: left;
+  width: 50%;
+}
+
+.column2 {
+  float: right;
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+form {
+    text-align: left;
+    margin: 0 auto;
+    width:1000px;
+}
+
+.form-sub-header {
+  margin-left: 7px;
+  font-family: Georgia, serif;
+  border-bottom: #404633;
+}
+
+.form-submit-btn {
+  margin-left: 15px;
+  margin-bottom: 20px
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+hr {
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color:darkgrey;
+  height: 1px;
+}
+
+.carousel-container {
+  max-height: 300px;
+}
+
+.additional-comments {
+  margin-bottom: 25px
+}
+
+.bg-dark {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: #404633;!important;
+}
+
+.footer {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.cust-info {
+    margin-top:0!important;
+}
+
+
