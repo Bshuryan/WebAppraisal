@@ -539,14 +539,67 @@ def appraisal_view(request):
 
 
 @login_required(login_url='/welcome')
-def amenities_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def amenities_view(request, house_id):
+    # TODO: Add generic error page to redirect to when don't have access
+    # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/amenities.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_amenities_info' in request.POST:
+                # we need to update the object
+                if Amenities.objects.filter(house_id=house_id).exists():
+                    amenities_info = Amenities.objects.get(house_id=house_id)
+                    form = AmenitiesForm(request.POST, instance=amenities_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the amenities information")
+                        return redirect('/amenities/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/amenities/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = AmenitiesForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/amenities/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/amenities/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/amenities/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Amenities.objects.filter(house=house_id).exists():
+                amenities_info = Amenities.objects.get(house=house_id)
+                form = AmenitiesForm(instance=amenities_info)
+            else:
+                form = AmenitiesForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/amenities.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Amenities.objects.filter(house_id=house_id).exists():
+            amenities_info = Amenities.objects.get(house_id=house_id)
+        else:
+            amenities_info = 'empty'
+        return render(request, 'customer_view_forms/view_amenities.html',
+                      context={'improvements': amenities_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
 def sitero_view(request):

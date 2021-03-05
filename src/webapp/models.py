@@ -220,6 +220,7 @@ class Amenities(models.Model):
     fireplace = models.CharField(max_length=50,blank=True, null=True)
     patio = models.CharField(max_length=50,blank=True, null=True)
     deck = models.CharField(max_length=50,blank=True, null=True)
+    porch = models.CharField(max_length=50, blank=True, null=True)
     fence = models.CharField(max_length=50,blank=True, null=True)
     garage = models.CharField(max_length=50,blank=True, null=True)
     basement = models.CharField(max_length=50,blank=True, null=True)

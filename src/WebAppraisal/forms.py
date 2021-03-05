@@ -65,7 +65,7 @@ class MaterialsConditionForm(forms.ModelForm):
 
 class AmenitiesForm(forms.ModelForm):
     class Meta:
-        model = MaterialsAndCondition
+        model = Amenities
         exclude = ['house', 'id']
 
 class CreateAppraisalForm(forms.ModelForm):
