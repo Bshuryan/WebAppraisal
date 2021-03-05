@@ -46,14 +46,14 @@ class House(models.Model):
 
 class DescriptionOfImprovements(models.Model):
     id = models.AutoField(primary_key=True)
-    design_style = models.TextField(blank=True, null=True)
-    age = models.IntegerField()
+    design_style = models.CharField(max_length=50, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
     effective_age = models.IntegerField(blank=True, null=True)
-    walls = models.TextField(blank=True, null=True)
-    roof_surface = models.TextField(blank=True, null=True)
-    gutters_downspouts = models.TextField(blank=True, null=True)
-    win_type = models.TextField(blank=True, null=True)
-    storm_screens = models.TextField(blank=True, null=True)
+    walls = models.CharField(max_length=50, blank=True, null=True)
+    roof_surface = models.CharField(max_length=50, blank=True, null=True)
+    gutters_downspouts = models.CharField(max_length=50, blank=True, null=True)
+    win_type = models.CharField(max_length=50, blank=True, null=True)
+    storm_screens = models.CharField(max_length=50, blank=True, null=True)
     roof_insulation = models.BooleanField()
     ceiling_insulation = models.BooleanField()
     walls_insulation = models.BooleanField()
@@ -68,19 +68,19 @@ class MaterialsAndCondition(models.Model):
         GOOD = 'Good'
         AVERAGE = 'Average'
         POOR = 'Poor'
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     condition_floors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
     material_floors = models.CharField(max_length=50, blank=True, null=True)
     condition_walls = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
     material_walls = models.CharField(max_length=50, blank=True, null=True)
     condition_trim = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_trim = models.CharField(max_length=50, blank=True, null=True)
+    material_trim = models.CharField(max_length=50, blank=True, null=True)
     condition_bath_floor = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_bath_floor = models.CharField(max_length=50, blank=True, null=True)
+    material_bath_floor = models.CharField(max_length=50, blank=True, null=True)
     condition_bath_wainscot = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_bath_wainscot = models.CharField(max_length=50, blank=True, null=True)
+    material_bath_wainscot = models.CharField(max_length=50, blank=True, null=True)
     condition_doors = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    materials_doors = models.CharField(max_length=50, blank=True, null=True)
+    material_doors = models.CharField(max_length=50, blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
@@ -274,9 +274,9 @@ class Neighborhood(models.Model):
         SLOW = 'Slow'
 
     class BuiltUp(models.TextChoices):
-        OVER75 = 'Over 75%'
-        UNDER75 = '25%-75%'
-        UNDER25 = 'Under 25%'
+        OVER75 = 'Over 75%', _('Over 75%')
+        ABOVE25= 'ABOVE25' , _('25%-75%')
+        UNDER25 = 'UNDER25', _('Under 25%')
 
     class DemandSupply(models.TextChoices):
         SHORTAGE = 'Shortage'

@@ -1,148 +1,227 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <title>Description of Improvements</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../static/css/FormStyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+
+  <title>Description of Improvements</title>
 </head>
-
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
-            </div>
-        </nav>
-    </div>
-
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <body class="bg-light">
     <div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
 
-        <div>
-            <h2 class="form-header webappraisal-header">Description of Improvements</h2>
-            <hr>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
         </div>
+      </div>
+    </div>
 
-    <!-- END CAROUSEL -->
-
+  <h2 class="form-header webappraisal-header">Description of Improvements</h2>
+  <hr>
         <form method="POST">
+            {% csrf_token %}
+
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-5">
                 <label for="id_design_style">Design Style</label>
-                <input id="id_design_style" type="text" class="form-control">
+                {% render_field form.design_style placeholder=form.design_style.label class="form-control" %}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="id_age">Age</label>
-                <input id="id_age" type="text" class="form-control">
+            <div class="form-group col-md-5">
+                <label for="id_age">Age (Yrs.)</label>
+                {% render_field form.age placeholder="Yrs." class="form-control" type="number"%}
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
                 <label for="id_effective_age">Effective Age</label>
-                <input id="id_effective_age" type="text" class="form-control">
+                {% render_field form.effective_age placeholder="Yrs." class="form-control" type="number"%}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-5">
                 <label for="id_walls">Walls</label>
-                <input id="id_walls" type="text" class="form-control">
+                {% render_field form.walls placeholder=form.walls.label class="form-control" %}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-5">
                 <label for="id_roof_surface">Roof Surface</label>
-                <input id="id_roof_surface" type="text" class="form-control">
+                {% render_field form.roof_surface placeholder=form.roof_surface.label class="form-control" %}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
-                <label for="id_gutter_downspouts">Gutter Downspouts</label>
-                <input id="id_gutter_downspouts" type="text" class="form-control">
+            <div class="form-group col-md-5">
+                <label for="id_gutter_downspouts">Gutter & Downspouts</label>
+                {% render_field form.gutters_downspouts placeholder=form.gutters_downspouts.label class="form-control" %}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-5">
                 <label for="id_window_type">Window Type</label>
-                <input id="id_window_type" type="text" class="form-control">
+                {% render_field form.win_type placeholder=form.win_type.label class="form-control" %}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-5">
                 <label for="id_storm_screens">Storm Screens</label>
-                <input id="id_storm_screens" type="text" class="form-control">
+                 {% render_field form.storm_screens placeholder=form.storm_screens.label class="form-control" %}
             </div>
         </div>
 
-        <div class="form-sub-header form-row">
-            <h5 class="form-sub-header">Insulation</h5>
+            <hr><h2 class="form-header webappraisal-header">Insulation</h2><hr>
+
+        <div class="form-check col-md-3">
+             <label for="id_roof_insulation">Roof Insulation</label>
+            {% render_field form.roof_insulation placeholder=form.roof_insulation.label class="form-control" %}
         </div>
 
-        <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="insulation_roof">
-            <label class="checkbox-inline form-check-label" for="insulation_roof">Roof</label>
+        <div class="form-check col-md-3">
+          <label for="id_ceiling_insulation">Ceiling Insulation</label>
+          {% render_field form.ceiling_insulation placeholder=form.ceiling_insulation.label class="form-control" %}
         </div>
 
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="insulation_ceiling">
-          <label class="checkbox-inline form-check-label" for="insulation_ceiling">Ceiling</label>
+        <div class="form-check col-md-3">
+          <label for="id_walls_insulation">Walls Insulation</label>
+          {% render_field form.walls_insulation placeholder=form.walls_insulation.label class="form-control" %}
         </div>
 
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="insulation_walls">
-          <label class="checkbox-inline form-check-label" for="insulation_walls">Walls</label>
+        <div class="form-check col-md-3">
+          <label for="id_floor_insulation">Floor Insulation</label>
+          {% render_field form.floor_insulation placeholder=form.floor_insulation.label class="form-control" %}
         </div>
 
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="insulation_floor">
-          <label class="checkbox-inline form-check-label" for="insulation_floor">Floor</label>
-        </div>
-
-        <div class="form-check col-md-12">
-          <input class="form-check-input" type="checkbox" value="" id="insulation_none">
-          <label class="checkbox-inline form-check-label" for="insulation_none">None</label>
+        <div class="form-check col-md-3">
+          <label for="id_none_insulation">No Insulation</label>
+          {% render_field form.none_insulation placeholder=form.none_insulation.label class="form-control" %}
         </div><br>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="id_insulation_other">Other</label>
-                <input id="id_insulation_other" type="text" class="form-control">
-            </div>
+        <div class="form-group col-md-3">
+          <label for="id_ceiling_insulation">Unknown Insulation</label>
+          {% render_field form.unknown_insulation placeholder=form.unknown_insulation.label class="form-control" %}
         </div>
-
+    <div class="form-row">
         <div class="form-floating col-md-12 additional-comments">
             <label for="comments">Additional Comments</label>
-            <textarea class="form-control" placeholder="Leave any other notes here" id="comments"></textarea>
+            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
         </div>
+    </div>
 
         <br><br><hr>
 
-        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button><br><br><br>
+        <button class="btn btn-primary btn-md form-submit-btn" name="submit_improvements_info" type="submit">Save changes</button><br><br>
     </form>
     </div>
 
