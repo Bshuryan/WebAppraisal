@@ -670,12 +670,13 @@ def rooms_view(request, house_id):
                           context={'form': form, 'house_id': house_id,
                                    'rooms': rooms})
     # where customer view will go
-    # else:
-    #     if RoomSummary.objects.filter(house_id=house_id).exists():
-    #         summary = RoomSummary.objects.get(house_id=house_id)
-    #     else:
-    #         summary = 'empty'
-    #     return render(request, 'customer_view_forms/view_rooms.html', context={'summary': summary }
+    else:
+        if RoomSummary.objects.filter(house_id=house_id).exists():
+            summary = RoomSummary.objects.get(house_id=house_id)
+        else:
+            summary = 'empty'
+        return render(request, 'customer_view_forms/view_rooms.html', context={'summary': summary, 'rooms': rooms })
+
 
 @login_required(login_url='/welcome')
 def add_room_view(request, house_id):
