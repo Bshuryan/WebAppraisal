@@ -129,7 +129,14 @@ class Property(models.Model):
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
-    
+class RoomSummary(models.Model):
+    id = models.AutoField(primary_key=True)
+    num_bedrooms = models.IntegerField(blank=True, null=True)
+    num_bathrooms = models.FloatField(blank=True, null=True)
+    num_floors = models.IntegerField(blank=True, null=True)
+    comments = models.TextField(blank=True, null=True)
+    house = models.ForeignKey(House, models.DO_NOTHING)
+
 class Room(models.Model):
     class RoomType(models.TextChoices):
         FOYER = 'Foyer'
@@ -141,10 +148,12 @@ class Room(models.Model):
         RECREATION = 'Recreation Room'
         BEDROOM = 'Bedroom'
         BATH = 'Bathroom'
-        HALFBATH = '1/2 bath'
+        HALFBATH = 'Half bath'
         LAUNDRY = 'Laundry Room'
         BASEMENT = 'Basement'
-    id = models.IntegerField(primary_key=True)
+        OTHER = 'Other'
+
+    id = models.AutoField(primary_key=True)
     room_type = models.CharField(max_length=20, blank=True, null=True, choices=RoomType.choices)
     room_level = models.IntegerField(blank=True, null=True)
     room_area = models.IntegerField(blank=True, null=True)
@@ -215,17 +224,18 @@ class Foundation(models.Model):
     comments = models.TextField(blank=True, null=True)
     improvements_id = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
     
-class HouseFeatures(models.Model):
-    id = models.IntegerField(primary_key=True)
-    pool = models.TextField()
-    fireplace = models.TextField()
-    patio = models.TextField()
-    deck = models.TextField()
-    fence = models.TextField()
-    garage = models.TextField()
-    basement = models.TextField()
-    attic = models.TextField()
-    comments = models.TextField()
+class Amenities(models.Model):
+    id = models.AutoField(primary_key=True)
+    pool = models.CharField(max_length=50,blank=True, null=True)
+    fireplace = models.CharField(max_length=50,blank=True, null=True)
+    patio = models.CharField(max_length=50,blank=True, null=True)
+    deck = models.CharField(max_length=50,blank=True, null=True)
+    porch = models.CharField(max_length=50, blank=True, null=True)
+    fence = models.CharField(max_length=50,blank=True, null=True)
+    garage = models.CharField(max_length=50,blank=True, null=True)
+    basement = models.CharField(max_length=50,blank=True, null=True)
+    attic = models.CharField(max_length=50,blank=True, null=True)
+    comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Basement(models.Model):

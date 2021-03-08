@@ -82,6 +82,10 @@ class FoundationForm(forms.ModelForm):
     class Meta:
         model = Foundation
         exclude = ['improvements_id', 'id']
+class AmenitiesForm(forms.ModelForm):
+    class Meta:
+        model = Amenities
+        exclude = ['house', 'id']
 
 class CreateAppraisalForm(forms.ModelForm):
     class Meta:
@@ -97,3 +101,18 @@ class UpdateAppraisalForm(forms.ModelForm):
     class Meta:
         model = House
         exclude = ['customer', 'appraiser', 'id']
+
+class RoomsForm(forms.ModelForm):
+    class Meta:
+        model = RoomSummary
+        exclude = ['id', 'house']
+
+class AddRoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        exclude = ['id', 'house']
+
+class EditRoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        exclude = ['id', 'house']

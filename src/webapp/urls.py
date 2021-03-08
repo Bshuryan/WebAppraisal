@@ -36,7 +36,7 @@ urlpatterns = [
     path('site/<house_id>', views.site_view),
     path('description-improvements/<house_id>', views.improvements_view),
     path('comments', views.comment_view),
-    path('property-information/<house_id>', views.property_information_view, name='property'),
+    path('property-information/<house_id>', views.property_information_view),
     path('comments', views.comment_view),
     path('materials-conditions/<house_id>', views.materials_condition_view),
     path('kitchen/<house_id>', views.kitchen_view),
@@ -45,7 +45,11 @@ urlpatterns = [
     path('foundation/<house_id>',views.foundation_view),
     path('offsite-information', views.offsite_information_view),
     path('AppraisalPage', views.appraisal_view),
-    path('amenities', views.amenities_view),
+    path('amenities/<house_id>', views.amenities_view),
+    path('rooms/<house_id>', views.rooms_view),
+    path('rooms/<house_id>/add', views.add_room_view),
+    path('rooms/<house_id>/<room_id>', views.single_room_view),
+
 
 
     # adding optional slashes
@@ -64,5 +68,8 @@ urlpatterns = [
     path('foundation/<house_id>/', views.foundation_view),
     path('offsite-information/', views.offsite_information_view),
     path('AppraisalPage/', views.appraisal_view),
-    path('amenities/', views.amenities_view)
+    path('amenities/<house_id>/', views.amenities_view),
+    path('rooms/<house_id>/', views.rooms_view),
+    path('rooms/<house_id>/add/', views.add_room_view),
+    path('rooms/<house_id>/<room_id>/', views.single_room_view)
 ]

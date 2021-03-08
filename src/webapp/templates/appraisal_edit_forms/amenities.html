@@ -1,124 +1,192 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <title>Site Information</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../static/css/FormStyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+
+  <title>Amenities</title>
 </head>
+<body>
+
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
-
 <body class="bg-light">
-
     <div class="container">
-        <h1 class="form-header webappraisal-header">Amenities</h1>
-        <hr>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
 
-      <div class="btn-group" role="group">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Navigate Pages >
-          </button>
-          <div class="dropdown-menu">
-            <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
-            <a class="btn btn-secondary" href="../property-information/">Property Information</a>
-            <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
-            <a class="btn btn-secondary" href="../site/">Sites</a>
-            <br>
-            <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
-            <a class="btn btn-secondary" href="../general/">General</a>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
           </div>
         </div>
-      </div><br><br>
+      </div>
+    </div>
 
+  <h2 class="form-header webappraisal-header">Amenities</h2>
+
+
+
+  <hr>
         <form method="POST">
+            {% csrf_token %}
+
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_pool_name">Pool</label>
-                <input id="id_pool_name" type="text" class="form-control">
+                {% render_field form.pool placeholder=form.pool.label class="form-control"%}
             </div>
-        </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_fireplace_name">Fireplace</label>
-                <input id="id_fireplace_name" type="text" class="form-control">
+                {% render_field form.fireplace placeholder=form.fireplace.label class="form-control"%}
             </div>
         </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="id_patio_name">Patio</label>
-                <input id="id_patio_name" type="text" class="form-control">
+                {% render_field form.patio placeholder=form.patio.label class="form-control"%}
             </div>
-        </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_deck_name">Deck</label>
-                <input id="id_deck_name" type="text" class="form-control">
+                {% render_field form.deck placeholder=form.deck.label class="form-control"%}
             </div>
         </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="id_porch_name">Porch</label>
-                <input id="id_porch_name" type="text" class="form-control">
+                {% render_field form.porch placeholder=form.porch.label class="form-control"%}
             </div>
-        </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_fence_name">Fence</label>
-                <input id="id_fence_name" type="text" class="form-control">
+                {% render_field form.fence placeholder=form.fence.label class="form-control"%}
             </div>
         </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="id_garage_name">Garage</label>
-                <input id="id_garage_name" type="text" class="form-control">
+                {% render_field form.garage placeholder=form.garage.label class="form-control"%}
             </div>
-        </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_basement_name">Basement</label>
-                <input id="id_basement_name" type="text" class="form-control">
+                {% render_field form.basement placeholder=form.basement.label class="form-control"%}
             </div>
-        </div>
-            <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="id_attic_name">Attic</label>
-                <input id="id_attic_name" type="text" class="form-control">
+                {% render_field form.attic placeholder=form.attic.label class="form-control"%}
             </div>
         </div>
-            <div class="form-floating col-md-12 additional-comments">
-            <label for="comments">Additional Comments</label>
-            <textarea class="form-control" placeholder="Leave any other notes here" id="comments"></textarea>
+        <div class="form-floating col-md-12 additional-comments">
+        <label for="comments">Additional Comments</label>
+        {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
         </div>
 <br><br><hr>
 
-        <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button><br><br><br>
+        <button class="btn btn-primary btn-md form-submit-btn" name="submit_amenities_info" type="submit">Save changes</button>
 
 
 <!-- Use this space to create form-->
