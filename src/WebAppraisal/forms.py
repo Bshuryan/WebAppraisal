@@ -63,6 +63,25 @@ class MaterialsConditionForm(forms.ModelForm):
         model = MaterialsAndCondition
         exclude = ['house', 'id']
 
+class BasementForm(forms.ModelForm):
+    class Meta:
+        model = Basement
+        exclude = ['materials_conditions', 'id']
+
+class KitchenForm(forms.ModelForm):
+    class Meta:
+        model = Kitchen
+        exclude = ['materials_conditions', 'id']
+
+class UtilitiesForm(forms.ModelForm):
+    class Meta:
+        model = Utilities
+        exclude = ['materials_conditions', 'id']
+
+class FoundationForm(forms.ModelForm):
+    class Meta:
+        model = Foundation
+        exclude = ['improvements_id', 'id']
 class AmenitiesForm(forms.ModelForm):
     class Meta:
         model = Amenities

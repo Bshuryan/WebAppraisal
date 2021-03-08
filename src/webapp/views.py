@@ -487,35 +487,250 @@ def materials_condition_view(request, house_id):
 
 
 @login_required(login_url='/welcome')
-def kitchen_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def kitchen_view(request, house_id):
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/kitchen.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_kitchen_info' in request.POST:
+                # we need to update the object
+                if Kitchen.objects.filter(house_id=house_id).exists():
+                    kitchen_info = Kitchen.objects.get(house_id=house_id)
+                    form = KitchenForm(request.POST, instance=kitchen_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the the Kitchen")
+                        return redirect('/kitchen/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/kitchen/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = MaterialsConditionForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/kitchen/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/kitchen/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/kitchen/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Kitchen.objects.filter(materials_condition=house_id).exists():
+                kitchen_info = MaterialsAndCondition.objects.get(materials_condition=house_id)
+                form = KitchenForm(instance=kitchen_info)
+            else:
+                form = KitchenForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/kitchen.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Kitchen.objects.filter(house_id=house_id).exists():
+            kitchen_info = Kitchen.objects.get(house_id=house_id)
+        else:
+            kitchen_info = 'empty'
+        return render(request, 'customer_view_forms/view_kitchen.html',
+                      context={'kitchen': kitchen_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
-def basement_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def basement_view(request, house_id):
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/basement.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_basement_info' in request.POST:
+                # we need to update the object
+                if Basement.objects.filter(house_id=house_id).exists():
+                    basement_info = Basement.objects.get(house_id=house_id)
+                    form = BasementForm(request.POST, instance=basement_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/basement/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/basement/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = BasementForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id) # DONT CHANGE
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/basement/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/basement/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/basement/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Basement.objects.filter(materials_conditions=house_id).exists():
+                property_info = Basement.objects.get(materials_conditions=house_id)
+                form = BasementForm(instance=property_info)
+            else:
+                form = BasementForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/basement.html',
+                          context={'form': form, 'house_id': house_id})
+    # else:
+    #     if Property.objects.filter(house_id=house_id).exists():
+    #         property_info = Property.objects.get(house_id=house_id)
+    #     else:
+    #         property_info = 'empty'
+    #       #  TODO: WHATS THIS??
+    #     return render(request, 'customer_view_forms/view_property_information.html',
+    #                   context={'property': property_info, 'house_id': house_id})
+
 
 @login_required(login_url='/welcome')
-def utilities_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def utilities_view(request, house_id):
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/utilities.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_utilities_info' in request.POST:
+                # we need to update the object
+                if Utilities.objects.filter(house_id=house_id).exists():
+                    utilities_info = Utilities.objects.get(house_id=house_id)
+                    form = UtilitiesForm(request.POST, instance=utilities_info)
 
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the Utilities information")
+                        return redirect('/utilities/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/utilities/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = UtilitiesForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the utilities information")
+                        return redirect('/utilities/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/utilities/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/utilities/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Utilities.objects.filter(materials_conditions=house_id).exists():
+                utilities_info = Utilities.objects.get(materials_conditions=house_id)
+                form = UtilitiesForm(instance=utilities_info)
+            else:
+                form = UtilitiesForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/utilities.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Utilities.objects.filter(materials_conditions=house_id).exists():
+            property_info = Utilities.objects.get(materials_conditions=house_id)
+        else:
+            property_info = 'empty'
+        return render(request, 'customer_view_forms/view_utilities.html',
+                      context={'property': property_info, 'house_id': house_id})
+
+@login_required(login_url='/welcome')
+def foundation_view(request, house_id):
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
+
+            # on the button: <input type=submit name=update_account
+            if 'submit_foundation_info' in request.POST:
+                # we need to update the object
+                if Foundation.objects.filter(house_id=house_id).exists():
+                    foundation_info = Foundation.objects.get(house_id=house_id)
+                    form = FoundationForm(request.POST, instance=foundation_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the foundation information")
+                        return redirect('/foundation/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/foundation/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = FoundationForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the foundation information")
+                        return redirect('/foundation/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/foundation/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/foundation/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Foundation.objects.filter(improvements_id=house_id).exists():
+                foundation_info = Utilities.objects.get(improvements_id=house_id)
+                form = UtilitiesForm(instance=foundation_info)
+            else:
+                form = FoundationForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/foundation.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Foundation.objects.filter(improvements_id=house_id).exists():
+            foundation_info = Foundation.objects.get(improvements_id=house_id)
+        else:
+            foundation_info = 'empty'
+        return render(request, 'customer_view_forms/view_foundation.html',
+                      context={'property': foundation_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
 def offsite_information_view(request):
