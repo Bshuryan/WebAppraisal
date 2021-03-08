@@ -89,6 +89,7 @@ class Kitchen(models.Model):
     kitchen_refrig = models.BooleanField()
     kitchen_oven = models.BooleanField()
     kitchen_disposal = models.BooleanField()
+    kitchen_cabinets = models.BooleanField()
     kitchen_dishwasher = models.BooleanField()
     kitchen_fan_hood = models.BooleanField()
     kitchen_microwave = models.BooleanField()
@@ -236,7 +237,7 @@ class Basement(models.Model):
     basement_floor = models.TextField(blank=True, null=True)
     basement_outside_entry = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    materials_conditions = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
+    materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
 
 class Utilities(models.Model):
     class Condition(models.TextChoices):

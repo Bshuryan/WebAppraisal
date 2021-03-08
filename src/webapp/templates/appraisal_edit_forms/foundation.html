@@ -1,12 +1,15 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/FormStyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
-          integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../static/css/FormStyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
     <title>Foundation</title>
 </head>
 <header>
@@ -37,72 +40,133 @@
 <body class="bg-light">
 
 <div class="container">
-    <h1 class="form-header webappraisal-header">Foundation</h1>
-    <hr>
 
-    <div class="btn-group" role="group">
-        <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                Navigate Pages >
+    <div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
-            <div class="dropdown-menu">
-                <a class="btn btn-secondary" href="../neighborhood/">Neighborhood</a>
-                <a class="btn btn-secondary" href="../property-information/">Property Information</a>
-                <a class="btn btn-secondary" href="../description-improvements/">Improvements</a>
-                <a class="btn btn-secondary" href="../site/">Sites</a>
-                <a class="btn btn-secondary" href="../basement/">Basement</a>
-                <br>
-                <a class="btn btn-secondary" href="../foundation/">Foundation</a>
-                <br>
-                <a class="btn btn-secondary disabled" href="../comments/">Comments</a>
-                <a class="btn btn-secondary" href="../general/">General</a>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
             </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
         </div>
+      </div>
     </div>
-    <br><br>
 
     <form method="POST">
         Does the Property Have a...
         <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="sump_pump">
-            <label class="checkbox-inline form-check-label" for="sump_pump">Sump Pump</label>
+            <label class="checkbox-inline form-check-label" for="id_sump_pump">Sump Pump</label>
+            {% render_field form.sump_pump placeholder=form.sump_pump.label class="form-check-label" %}
         </div>
 
         <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="slab">
-            <label class="checkbox-inline form-check-label" for="slab">Slab</label>
+            <label class="checkbox-inline form-check-label" for="id_slab">Slab</label>
+            {% render_field form.slab placeholder=form.slab.label class="form-check-label" %}
+
         </div>
 
         <div class="form-check col-md-12">
-            <input class="form-check-input" type="checkbox" value="" id="crawl_space">
-            <label class="checkbox-inline form-check-label" for="crawl_space">Crawl Space</label>
+            <label class="checkbox-inline form-check-label" for="id_crawl_space">Crawl Space</label>
+            {% render_field form.crawl_space placeholder=form.crawl_space.label class="form-check-label" %}
         </div>
 
         <br><br><br>
 
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="foundation_ext">foundation_ext??</label>
-            <textarea class="form-control" placeholder="Notes" id="foundation_ext"></textarea>
+        <div class="form-floating col-md-14">
+            <label for="id_foundation_ext">foundation_ext</label>
+            {% render_field form.foundation_ext placeholder=form.foundation_ext.label class="form-check-label" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="dampness">Dampness</label>
-            <textarea class="form-control" placeholder="Notes" id="dampness"></textarea>
+            <label for="id_dampness">Dampness</label>
+            {% render_field form.dampness placeholder=form.dampness.label class="form-check-label" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="infestation">Infestation</label>
-            <textarea class="form-control" placeholder="Notes" id="infestation"></textarea>
+            <label for="id_infestation">Infestation</label>
+            {% render_field form.infestation placeholder=form.infestation.label class="form-check-label" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="settlement">Settlement</label>
-            <textarea class="form-control" placeholder="Notes" id="settlement"></textarea>
+            <label for="id_settlement">Settlement</label>
+            {% render_field form.settlement placeholder=form.settlement.label class="form-check-label" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
-            <label for="additional_comments">Additional Comments</label>
-            <textarea class="form-control" placeholder="Notes" id="additional_comments"></textarea>
+            <label for="comments">Additional Comments</label>
+            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
         </div>
 
         <br><br>
