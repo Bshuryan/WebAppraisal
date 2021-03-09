@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Site Information</title>
+    <title>Kitchen</title>
 </head>
 <header>
     <div class="container">
@@ -34,9 +34,9 @@
     </div>
 </header>
 
-
 <body class="bg-light">
-    <div class="container">
+
+  <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
       Open Navigation Menu
@@ -52,62 +52,62 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" >
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
                 <a class="btn btn-primary button-matrix" href="../../amenities">Amenities</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement">Basement</a>
+                <a class="btn btn-primary button-matrix" href="../../basement">Basement</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments">Comments</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
+                <a class="btn btn-primary button-matrix" href="../../comments">Comments</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">Foundation</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
+                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">General</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../rooms/{{ house_id }}">Rooms</a>
+                <a class="btn btn-primary button-matrix" href="../../description-improvements">Improvements</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../site">Site Information</a>
+                <a class="btn btn-primary button-matrix" href="../../kitchen/{{ house_id }}">Kitchen</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../utilities">Utilities</a>
+                <a class="btn btn-primary button-matrix" href="../../materials-conditions">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../offsite-information">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../site">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary button-matrix" href="../../utilities">Utilities</a>
               </div>
               <div class="form-group col-md-4">
 
@@ -119,9 +119,8 @@
       </div>
     </div>
 
-        <h1 class="form-header webappraisal-header">General Information</h1>
-        <hr>
-
+    <h1 class="form-header webappraisal-header">Kitchen</h1>
+    <hr>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -131,81 +130,77 @@
         </thead>
         <tbody>
           <tr>
+            <td>Description</td>
             <td>
-              Appraisal Status
-              <a data-toggle="tooltip"
-                 data-original-title="Your appraiser will update this field throughout the process to either Not Started, In Progress, or Done">
-                <span class="glyphicon glyphicon-info-sign"></span>
-              </a>
-            </td>
-            <td>
-              {{ house.appraisal_status|default_if_none:""}}
+
             </td>
           </tr>
+
           <tr>
-            <td>Street Address</td>
-            <td>{{ house.street_address|default_if_none:""}}</td>
+            <td>Refrigerator</td>
+            <td>
+
+            </td>
           </tr>
 
-        <tr>
-          <td>City</td>
-          <td>{{ house.city|default_if_none:""}}</td>
-        </tr>
+          <tr>
+            <td>Oven</td>
+            <td>
 
-        <tr>
-          <td>State</td>
-          <td>{{ house.state|default_if_none:""}}</td>
-        </tr>
+            </td>
+          </tr>
 
-        <tr>
-          <td>Zip Code</td>
-          <td>{{ house.zip|default_if_none:""}}</td>
-        </tr>
+          <tr>
+            <td>Dishwasher</td>
+            <td>
 
-        <tr>
-          <td>County</td>
-          <td>{{ house.county|default_if_none:""}}</td>
-        </tr>
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            Additional Comments from Appraiser
-            <a data-toggle="tooltip"
-                 data-original-title="This is where your appraiser can post any general comments about the appraisal for you to see">
-                <span class="glyphicon glyphicon-info-sign"></span>
-              </a>
-          </td>
-          <td>{{ house.comments|default_if_none:""}}</td>
-        </tr>
+          <tr>
+            <td>Microwave</td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Cabinets</td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Garbage Disposal</td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Fan Hood
+            </td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Additional Comments from Appraiser
+              <a data-toggle="tooltip"
+                   data-original-title="This is where your appraiser can post any general comments about the appraisal for you to see">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
 
-      <br><hr><br>
-
-
-      <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="panel panel-warning cust-info">
-                    <div class="panel panel-heading">
-                      <h4 class="text-center"><span class="glyphicon glyphicon-earphone"></span> Appraiser Contact Information</h4>
-                    </div>
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <strong>Name:</strong> {{ appraiser.first_name }} {{ appraiser.last_name }}
-                      </li>
-                      <li class="list-group-item">
-                        <strong>Email:</strong> {{ appraiser.email }}
-                      </li>
-
-                      <li class="list-group-item">
-                        <strong>Phone Number:</strong> {{ phone_number }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-    </div><br><br>
+  </div><br><br>
 </body>
 
 

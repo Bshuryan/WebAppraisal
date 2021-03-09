@@ -172,4 +172,7 @@ html, body {
     margin-top:0!important;
 }
 
+.button-matrix {
+  min-width:180px;
+}
 
