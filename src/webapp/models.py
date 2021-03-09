@@ -89,7 +89,7 @@ class Kitchen(models.Model):
     kitchen_refrig = models.BooleanField()
     kitchen_oven = models.BooleanField()
     kitchen_disposal = models.BooleanField()
-    kitchen_cabinets = models.BooleanField()
+    kitchen_cabinets = models.BooleanField(null=True)
     kitchen_dishwasher = models.BooleanField()
     kitchen_fan_hood = models.BooleanField()
     kitchen_microwave = models.BooleanField()
@@ -266,12 +266,12 @@ class Utilities(models.Model):
     
 
 class Appraisal(models.Model):
-    id = models.IntegerField(primary_key=True)
-    house = models.ForeignKey(House, models.DO_NOTHING)
+    id = models.AutoField(primary_key=True)
     positive_features = models.TextField(blank=True, null=True)
     negative_conditions = models.TextField(blank=True, null=True)
     reconciliation = models.TextField(blank=True, null=True)
     appraisal_price = models.IntegerField(blank=True, null=True)
+    house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Neighborhood(models.Model):
     class Location(models.TextChoices):
