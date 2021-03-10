@@ -198,7 +198,7 @@ class Offsite(models.Model):
         PUBLIC = 'Public'
         PRIVATE = 'Private'
         NEITHER = 'Neither'
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     offsite_curb_note = models.CharField(max_length=50,blank=True, null=True)
     offsite_street_note = models.CharField(max_length=50,blank=True, null=True)
     offsite_sidewalk_note = models.CharField(max_length=50,blank=True, null=True)
@@ -210,7 +210,7 @@ class Offsite(models.Model):
     offsite_alley = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
     offsite_street = models.CharField(max_length=10, blank= True, null=True, choices=PublicUtilities.choices)
     comments = models.TextField(blank=True, null=True)
-    site = models.ForeignKey('Site', models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING,default="")
 
 class Foundation(models.Model):
     id = models.IntegerField(primary_key=True)

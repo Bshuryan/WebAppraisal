@@ -73,6 +73,11 @@ class KitchenForm(forms.ModelForm):
         model = Kitchen
         exclude = ['materials_conditions', 'id']
 
+class OffsiteForm(forms.ModelForm):
+    class Meta:
+        model = Offsite
+        exclude = ['house', 'id']
+
 class UtilitiesForm(forms.ModelForm):
     class Meta:
         model = Utilities
