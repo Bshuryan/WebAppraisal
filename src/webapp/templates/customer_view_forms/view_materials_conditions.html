@@ -35,11 +35,182 @@
     </nav>
   </div>
 </header>
+
 <body class="bg-light">
 
+<div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+        <h1 class="form-header webappraisal-header">Materials and Conditions</h1>
+        <hr>
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+
+    <tr>
+        <td>Wall Material</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Wall Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Floor Materials</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Floor Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Door Material</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Door Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Bathroom Floor Material</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Bathroom Floor Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Bathroom Wainscot Material</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Wainscot Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Trim Material</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>Trim Condition</td>
+        <td>info here</td>
+    </tr>
+
+    <tr>
+        <td>
+        Additional Comments from Appraiser
+        <a data-toggle="tooltip"
+                   data-original-title="This is where your appraiser can post any general comments about the materials and conditions for you to see">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+        </td>
+        <td>{{ appraisal.comments|default_if_none:""}}</td>
+    </tr>
+        </tbody>
+</table>
+</div><br><br>
+</div>
 
 </body>
-<body>
+
+<body class="bg-dark flex-column">
  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
     <div class="container text-center">
       <div class="row justify-content-center">
