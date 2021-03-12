@@ -120,7 +120,7 @@
       </div>
     </div>
 
-        <h1 class="form-header webappraisal-header">Site Information</h1>
+        <h1 class="form-header webappraisal-header">Offsite Information</h1>
         <hr>
 
       <table class="table table-striped">
@@ -133,171 +133,49 @@
         <tbody>
 
         <tr>
-            <td>
-              Dimensions
-              <a data-toggle="tooltip"
-                   data-original-title="How we quantify the size of the home">
-                  <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </td>
-            <td>{{ site.dimensions|default_if_none:""}}</td>
-          </tr>
-
-        <tr>
-            <td>
-              Site Area (Sqft.)
-            </td>
-            <td>{{ site.area|default_if_none:""}}</td>
-          </tr>
-
-        <tr>
-            <td>
-              Topography
-              <a data-toggle="tooltip"
-                   data-original-title="Topography is the physical features of the area the home is on">
-                  <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </td>
-            <td>{{ site.topography|default_if_none:""}}</td>
-          </tr>
-
-        <tr>
-            <td>Size</td>
+            <td>Curb Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ site.size|default_if_none:""}}
+                {{ offsite.curb|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <tr>
+            <td>Street Notes</td>
+            <td>
+              {% if property != "empty" %}
+                {{ offsite.street|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <tr>
+            <td>Streetlight Notes</td>
+            <td>
+              {% if property != "empty" %}
+                {{ offsite.streetlight|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
           <tr>
-            <td>Shape</td>
+            <td>Sidewalk Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ site.shape|default_if_none:""}}
+                {{ offsite.sidewalk|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
         <tr>
-            <td>View</td>
+            <td>Alley Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ site.view|default_if_none:""}}
+                {{ offsite.alley|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
-
-        <tr>
-            <td>
-              Landscaping
-              <a data-toggle="tooltip"
-                   data-original-title="Landscaping deals with foliage and plant life surrounding the home and property">
-                  <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </td>
-            <td>{{ site.landscaping|default_if_none:""}}</td>
-          </tr>
-
-        <td>Driveway Surface</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.driveway|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <tr>
-            <td>
-              Apparent Easements
-              <a data-toggle="tooltip"
-                   data-original-title="An apparent easement is a self continuing right to cross or otherwise use someones land for a specified purpose.  An easement can be enjoyed without an act on the part of the person entitled thereto. I.E: a stream, sidewalk, a paved trail, etc.">
-                  <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </td>
-            <td>{{ site.easements|default_if_none:""}}</td>
-          </tr>
-
-        <td>Drainage</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.drainage|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <td>Specific Zone</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.zone|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <td>Zone Compliance</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.compliance|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <td>FEMA Zone</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.fema|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <td>FEMA Map No.</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.map|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <td>Map Date</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.date|default_if_none:""}}
-              {% endif %}
-            </td>
-          </tr>
-
-        <!--start of true false in table-->
-
-      </th>
-      <td>Corner Lot</td>
-      <td>--True or False--</td>
-    </tr>
-
-      </th>
-      <td>Public Electric</td>
-      <td>--True or False--</td>
-    </tr>
-
-      </th>
-      <td>Public Gas</td>
-      <td>--True or False--</td>
-    </tr>
-
-      <td>Public Water</td>
-      <td>--True or False--</td>
-    </tr>
-
-      <td>Public Sanitary Sewer</td>
-      <td>--True or False--</td>
-    </tr>
-
-      <td>Public Storm Sewer</td>
-      <td>--True or False--</td>
-    </tr>
-
-      <td>FEMA Flood Hazard</td>
-      <td>--True or False--</td>
-    </tr>
 
 
         <tr>
@@ -308,7 +186,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.comments|default_if_none:""}}</td>
+            <td>{{ offsite.comments|default_if_none:""}}</td>
           </tr>
 
         </tbody>
