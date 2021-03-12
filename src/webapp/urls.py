@@ -13,10 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
-from django.contrib.auth import views as auth_views
 
 from src.webapp import views
 
@@ -72,4 +72,4 @@ urlpatterns = [
     path('rooms/<house_id>/', views.rooms_view),
     path('rooms/<house_id>/add/', views.add_room_view),
     path('rooms/<house_id>/<room_id>/', views.single_room_view)
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

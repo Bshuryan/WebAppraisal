@@ -309,3 +309,29 @@ class Neighborhood(models.Model):
     market_conditions = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
+
+
+# Where we store images uploaded by users
+class Image(models.Model):
+    class Pages(models.TextChoices):
+        HOME = 'HOME'
+        GENERAL = 'GENERAL'
+        SITE = 'SITE'
+        PROPERTY = 'PROPERTY'
+        OFFSITE = 'OFFSITE'
+        ROOMS = 'ROOMS'
+        AMENITIES = 'AMENITIES'
+        NEIGHBORHOOD = 'NEIGHBORHOOD'
+        UTILITIES = 'UTILITIES'
+        BASEMENT = 'BASEMENT'
+        KITCHEN = 'KITCHEN'
+        FOUNDATION = 'FOUNDATION'
+        MAT_COND = 'MAT_COND'
+        DESC_IMPROV = 'DESC_IMPROV'
+
+    id = models.AutoField(primary_key=True)
+    page = models.CharField(blank=False, null=False, max_length=20, choices=Pages.choices)
+    img = models.FileField(upload_to='images/', null=True, verbose_name='')
+    description = models.CharField(blank=False, null=False, max_length=150, default="")
+    house = models.ForeignKey(House, models.DO_NOTHING)
+

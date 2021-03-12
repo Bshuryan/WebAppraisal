@@ -1,10 +1,10 @@
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect
+from django.shortcuts import render
+from django.template.defaulttags import register
 
 from src.WebAppraisal.forms import *
 from src.webapp.models import *
@@ -56,6 +56,7 @@ def create_account_view(request):
             return redirect('/home/')
     else:
         form = NewUserForm()
+
     return render(request, 'sign-up.html', {'form': form})
 
 # home page for both appraisers and their customers
@@ -63,17 +64,52 @@ def create_account_view(request):
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
     role = Profile.objects.get(user_id=request.user.id).role
+    images = {}
     if request.method == 'POST':
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
+        elif 'img' in request.FILES:
+            # may need to delete previous image
+            form = ImageForm(request.POST, request.FILES)
+            if form.is_valid():
+                house_id = form.cleaned_data['house'].id
+                # remove old instance so previous photos won't show up
+                Image.objects.filter(house_id=house_id).delete()
+                new_img = form.save(commit=False)
+                # set page
+                new_img.page = Image.Pages.HOME
+                # set house id
+                current_house = form.cleaned_data['house']
+                new_img.house = current_house
+                new_img.save()
+
+                return redirect('/home')
+            else:
+                return redirect('/home')
+        else:
+            return redirect('/home')
 
     if role == Profile.Roles.APPRAISER:
+        form = ImageForm()
         houses = list(House.objects.filter(appraiser=current_user))
-    else:
-        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+        for house in houses:
+            if Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).exists():
+                images[house.id] = Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).first()
+            else:
+                images[house.id] = None
 
-    return render(request, 'homepage.html', {'user': current_user, 'role': role.__str__(), 'houses': houses})
+    else:
+        form = ImageForm()
+        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+        for house in houses:
+            if Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).exists():
+                images[house.id] = Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).first()
+            else:
+                images[house.id] = None
+
+    return render(request, 'homepage.html', {'user': current_user, 'role': role.__str__(), 'houses': houses,
+                                             'images': images, 'form': form})
 
 # view where users can change their account information or delete their account
 @login_required(login_url='/welcome')
@@ -1060,3 +1096,8 @@ def single_room_view(request, house_id, room_id):
 
         return render(request, 'appraisal_edit_forms/edit_room.html',
                       context={'form': form})
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)

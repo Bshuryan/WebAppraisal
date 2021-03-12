@@ -127,3 +127,20 @@ class EditRoomForm(forms.ModelForm):
     class Meta:
         model = Room
         exclude = ['id', 'house']
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img', 'house']
+
+    def __init__(self, *args, **kwargs):
+        super(ImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'onchange': 'this.form.submit();'})
+
+class ImageFormWithDescription(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img', 'description']
