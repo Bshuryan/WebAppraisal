@@ -61,10 +61,11 @@
                       <form method="POST" enctype="multipart/form-data" name="img_form" id="img_form">
                         {% csrf_token %}
                         <div style="font-family: Georgia, serif">
-                         <label id="img" class="btn btn-link" style="padding: 5px; color: grey">
+                         <label id="img" class="btn btn-link" style="padding: 5px; color: grey;  text-decoration: none">
                            <span class="glyphicon glyphicon-pencil" style="padding: 0; margin: 0;"></span>
                            {{ form.img }}
-                         </label>Change Image
+                           <span style="color: black; font-size: 110%;"> Change Image</span>
+                         </label>
                           <button type="submit" name="change_img" hidden></button>
                         </div>
                         <input type="hidden" name="house" id="id_house" value="{{ house.id }}">

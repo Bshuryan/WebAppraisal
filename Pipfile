@@ -19,6 +19,11 @@ pytest-django = "*"
 pytest-docker-compose = "*"
 django-localflavor = "==3.0.1"
 python-stdnum = "==1.16"
+pyyaml = "*"
+ua-parser = "*"
+user-agents = "*"
+django-user-agents = "*"
+python-memcached = "*"
 
 [dev-packages]
 

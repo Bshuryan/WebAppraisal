@@ -143,4 +143,36 @@ class ImageForm(forms.ModelForm):
 class ImageFormWithDescription(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ['img', 'description']
+        fields = ['description', 'id']
+
+    def __init__(self, *args, **kwargs):
+        super(ImageFormWithDescription, self).__init__(*args, **kwargs)
+        self.fields['description'].widget.attrs.update({'style': 'height: 50%;',
+                                                        'onchange': 'this.form.submit();'})
+
+class NewImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img']
+
+    def __init__(self, *args, **kwargs):
+        super(NewImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'onchange': 'this.form.submit();'})
+
+class MobileImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img']
+
+    def __init__(self, *args, **kwargs):
+        super(MobileImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'capture': 'environment',
+                                                'accepts': 'image/',
+                                                'onchange': 'this.form.submit();'})
+

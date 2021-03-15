@@ -1,8 +1,8 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 .card-img-top {
-    width: 100%;
-    height: 15vw;
+    width: 20rem;
+    height: 200rem;
     object-fit: cover;
 }
 
@@ -38,6 +38,7 @@
 .appraisal-card {
   padding: 10px;
   margin-top: 15px;
+  background-color: white;
 }
 
 .dropbtn {
@@ -175,4 +176,53 @@ html, body {
 .button-matrix {
   min-width:180px;
 }
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.column1 {
+  float: left;
+  width: 50%;
+}
+
+.column2 {
+  float: right;
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cover {
+  /*object-fit: cover !important;*/
+  width: 100%;
+  height: 100%;
+}
+
+.img-container {
+  max-height: 21.5rem;
+  overflow: hidden;
+}
+
+
+.card {
+  background-color: white; !important;
+  border: 20px grey;
+  border-radius: 20px;
+}
+
+.img-desc {
+  height: 20%;
+}
+
+.upload-photos {
+  display: flex;
+}
+
 

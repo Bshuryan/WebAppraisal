@@ -326,12 +326,12 @@ class Image(models.Model):
         BASEMENT = 'BASEMENT'
         KITCHEN = 'KITCHEN'
         FOUNDATION = 'FOUNDATION'
-        MAT_COND = 'MAT_COND'
+        MATERIALS_CONDITIONS = 'MATERIALS_CONDITIONS'
         DESC_IMPROV = 'DESC_IMPROV'
 
     id = models.AutoField(primary_key=True)
     page = models.CharField(blank=False, null=False, max_length=20, choices=Pages.choices)
     img = models.FileField(upload_to='images/', null=True, verbose_name='')
-    description = models.CharField(blank=False, null=False, max_length=150, default="")
+    description = models.TextField(blank=False, null=False, default="")
     house = models.ForeignKey(House, models.DO_NOTHING)
 
