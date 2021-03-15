@@ -95,7 +95,7 @@ class Kitchen(models.Model):
     kitchen_microwave = models.BooleanField()
     kitchen_description = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    materials_condition = models.ForeignKey('MaterialsAndCondition', models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Property(models.Model):
     class OccupantTypes(models.TextChoices):
@@ -222,7 +222,7 @@ class Foundation(models.Model):
     infestation = models.TextField(blank=True, null=True)
     settlement = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    improvements_id = models.ForeignKey(DescriptionOfImprovements, models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
     
 class Amenities(models.Model):
     id = models.AutoField(primary_key=True)
@@ -247,7 +247,7 @@ class Basement(models.Model):
     basement_floor = models.TextField(blank=True, null=True)
     basement_outside_entry = models.TextField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
-    materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Utilities(models.Model):
     class Condition(models.TextChoices):
@@ -262,7 +262,7 @@ class Utilities(models.Model):
     cooling_type = models.CharField(max_length=20,blank=True, null=True)
     cooling_condition = models.TextField(max_length=10,blank=True, null=True, choices=Condition.choices)
     comments = models.TextField()
-    materials_conditions = models.ForeignKey(MaterialsAndCondition, models.DO_NOTHING)
+    house = models.ForeignKey(House, models.DO_NOTHING)
     
 
 class Appraisal(models.Model):
