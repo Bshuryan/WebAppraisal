@@ -202,6 +202,7 @@
                       </div>
                 </div>
             </div>
+            </div>
 
             <hr>
 
@@ -254,6 +255,60 @@
         <button class="btn btn-primary btn-md form-submit-btn" name="submit_site_info" type="submit">Save changes</button>
     </form>
 
+      <hr><h2 class="form-header webappraisal-header">Photos</h2><hr>
+          <div>
+            <form method="POST" enctype="multipart/form-data" name="img_form" id="img_form" style="margin-left: 5px">
+              {% csrf_token %}
+              <div class="upload-photos" style="font-family: Georgia, serif; font-size: 120%; float: left;">
+                <label id="img" class="btn btn-link" style="padding: 0; color: grey; text-decoration: none">
+                  <span class="glyphicon glyphicon-cloud-upload" style="padding: 0; margin: 0; font-size: 160%"></span>
+                  {{ new_img_form.img }}
+                  <span style="color: black; font-size: 130%"> Upload Image</span></label>
+              </div>
+                <button type="submit" name="change_img" hidden></button>
+            </form>
+          </div>
+
+            {% if is_mobile %}
+              <div>
+                  <form method="POST" enctype="multipart/form-data" name="img_form" id="img_form" style="margin-left: 5px">
+                  {% csrf_token %}
+                  <div class="upload-photos" style="font-family: Georgia, serif; font-size: 120%; padding-left: 5px">
+                    <label id="img" class="btn btn-link" style="padding: 0; color: grey; text-decoration: none">
+                          <span class="glyphicon glyphicon-camera" style="padding-left: 20px; padding-top: 0; margin: 0; font-size: 160%">     </span>
+                      {{ mobile_img_form.img }}
+                      <span style="color: black; font-size: 130%">Take a Picture</span></label>
+                  </div>
+                    <button type="submit" name="change_img" hidden></button>
+                </form>
+              </div>
+            {% endif %}
+          <br><br>
+
+        <div class="row">
+          {% for form in img_forms %}
+              <div class="col-md-4">
+                <div>
+                  <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="img_id" id="id_img_id" value="{{ form.instance.id }}">
+                    <div class="card appraisal-card"
+                        style="width: 30rem; height: 40rem; background-color: white !important; border-radius: 5px !important; border: black 20px !important;">
+                     <div class="img-container">
+                      <img src="{{ MEDIA_URL }}{{ form.instance.img }}" alt="Image of House" class="card-img-top cover"/>
+                     </div>
+                    <hr>
+                      <div class="card-body">
+                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                        <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
+                      </div>
+                  </div>
+                  </form>
+                </div>
+
+              </div>
+          {% endfor %}
+        </div><br><hr><br>
 </div>
 </body>
 

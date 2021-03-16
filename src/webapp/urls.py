@@ -19,6 +19,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from src.webapp import views
+from src.webapp.view import general
+from src.webapp.view import property_information
+from src.webapp.view import neighborhood
+from src.webapp.view import site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,12 +35,12 @@ urlpatterns = [
 
     # Appraisal paths
     path('general/new', views.create_appraisal),
-    path('general/<int:house_id>', views.general_view),
-    path('neighborhood/<house_id>', views.neighborhood_view),
-    path('site/<house_id>', views.site_view),
+    path('general/<int:house_id>', general.view),
+    path('neighborhood/<house_id>', neighborhood.view),
+    path('site/<house_id>', site.view),
     path('description-improvements/<house_id>', views.improvements_view),
     path('comments', views.comment_view),
-    path('property-information/<house_id>', views.property_information_view),
+    path('property-information/<house_id>', property_information.view),
     path('comments', views.comment_view),
     path('materials-conditions/<house_id>', views.materials_condition_view),
     path('kitchen/<house_id>', views.kitchen_view),
@@ -51,15 +55,14 @@ urlpatterns = [
     path('rooms/<house_id>/<room_id>', views.single_room_view),
 
 
-
     # adding optional slashes
     path('general/new/', views.create_appraisal),
-    path('general/<int:house_id>/', views.general_view),
-    path('neighborhood/<house_id>/', views.neighborhood_view),
-    path('site/<house_id>/', views.site_view),
+    path('general/<int:house_id>/', general.view),
+    path('neighborhood/<house_id>/', neighborhood.view),
+    path('site/<house_id>/', site.view),
     path('description-improvements/<house_id>/', views.improvements_view),
     path('comments/', views.comment_view),
-    path('property-information/<house_id>/', views.property_information_view),
+    path('property-information/<house_id>/', property_information.view),
     path('comments/', views.comment_view),
     path('materials-conditions/<house_id>/', views.materials_condition_view),
     path('kitchen/<house_id>/', views.kitchen_view),
