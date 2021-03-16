@@ -128,7 +128,8 @@
     <hr>
     
     <form method="POST">
-    
+      {% csrf_token %}
+
       <div class="form-row">
         
         <div class="form-group col-md-12">
@@ -169,7 +170,7 @@
 
       <br><br><hr>
 
-      <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button>
+        <button class="btn btn-primary btn-md form-submit-btn" name="submit_utilities_info" type="submit">Save changes</button>
       <br><br>
     </form>
   </div>

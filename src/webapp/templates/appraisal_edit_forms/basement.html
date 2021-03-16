@@ -13,34 +13,32 @@
     <title>Basement</title>
 </head>
 <header>
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-            <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="account-management">
-                    <li>
-                        <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                            <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/welcome" class="btn btn-default btn-block text-left">
-                            <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <body class="bg-light">
-
-<div class="container">
-
     <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
@@ -61,13 +59,13 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement">Basement</a>
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments">Comments</a>
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
               </div>
             </div>
 
@@ -85,7 +83,7 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
@@ -97,7 +95,7 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
@@ -128,6 +126,8 @@
     <hr>
 
     <form method="POST">
+        {% csrf_token %}
+
     <div class="form-row">
 
         <div class="form-floating col-md-3">
@@ -136,8 +136,8 @@
         </div>
 
         <div class="form-floating col-md-6">
-            <label for="basement_percent_finished">Percent of Finished Basement</label>
-            <textarea class="form-control" placeholder="CHANGE ME" id="basement_percent_finished"></textarea>
+            <label for="id_basement_percent_finished">Percent of Finished Basement</label>
+            {% render_field form.basement_percent_finished placeholder=form.basement_percent_finished.label class="form-control"%}
         </div>
 
         <div class="form-floating col-md-3 ">
@@ -158,7 +158,7 @@
 
         <div class="form-floating col-md-12 ">
             <label for="id_basement_outside_entry">Outside Entry</label>
-             {% render_field form.basement_floor placeholder=form.basement_floor.label class="form-control"%}
+             {% render_field form.basement_outside_entry placeholder=form.basement_outside_entry.label class="form-control"%}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
@@ -170,7 +170,7 @@
         <hr>
 
         <br><br><hr>
-        <button class="btn btn-primary btn-md form-submit-btn" name="submit_prop_info" type="submit">Save changes</button>
+        <button class="btn btn-primary btn-md form-submit-btn" name="submit_basement_info" type="submit">Save changes</button>
         <br><br>
     </div>
     </form>
