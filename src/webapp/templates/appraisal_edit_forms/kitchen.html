@@ -130,8 +130,8 @@
 
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="description">Description</label>
-                <textarea id="description" type="text" class="form-control"></textarea>
+                <label for="id_kitchen_description">Description</label>
+                {% render_field form.kitchen_description placeholder=form.kitchen_description.label class="form-control" %}
             </div>
         </div>
 

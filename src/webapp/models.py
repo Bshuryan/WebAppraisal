@@ -85,11 +85,11 @@ class MaterialsAndCondition(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Kitchen(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     kitchen_refrig = models.BooleanField()
     kitchen_oven = models.BooleanField()
     kitchen_disposal = models.BooleanField()
-    kitchen_cabinets = models.BooleanField(null=True)
+    kitchen_cabinets = models.BooleanField()
     kitchen_dishwasher = models.BooleanField()
     kitchen_fan_hood = models.BooleanField()
     kitchen_microwave = models.BooleanField()
@@ -213,7 +213,7 @@ class Offsite(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING,default="")
 
 class Foundation(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     sump_pump = models.BooleanField()
     foundation_ext = models.TextField(blank=True, null=True)
     slab = models.BooleanField()
@@ -239,7 +239,7 @@ class Amenities(models.Model):
     house = models.ForeignKey(House, models.DO_NOTHING)
 
 class Basement(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     basement_area = models.IntegerField(blank=True, null=True)
     basement_percent_finished = models.TextField(blank=True, null=True)
     basement_ceiling = models.TextField(blank=True, null=True)
@@ -254,7 +254,7 @@ class Utilities(models.Model):
         GOOD = 'Good'
         AVERAGE = 'Average'
         POOR = 'Poor'
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     heat_type = models.TextField(max_length=20,blank=True, null=True)
     washer_dryer = models.BooleanField()
     heat_fuel = models.CharField(max_length=20,blank=True, null=True)
@@ -263,7 +263,7 @@ class Utilities(models.Model):
     cooling_condition = models.TextField(max_length=10,blank=True, null=True, choices=Condition.choices)
     comments = models.TextField()
     house = models.ForeignKey(House, models.DO_NOTHING)
-    
+
 
 class Appraisal(models.Model):
     id = models.AutoField(primary_key=True)

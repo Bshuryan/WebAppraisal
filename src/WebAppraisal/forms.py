@@ -81,12 +81,12 @@ class OffsiteForm(forms.ModelForm):
 class UtilitiesForm(forms.ModelForm):
     class Meta:
         model = Utilities
-        exclude = ['materials_conditions', 'id']
+        exclude = ['house', 'id']
 
 class FoundationForm(forms.ModelForm):
     class Meta:
         model = Foundation
-        exclude = ['improvements_id', 'id']
+        exclude = ['house', 'id']
 
 class AmenitiesForm(forms.ModelForm):
     class Meta:
