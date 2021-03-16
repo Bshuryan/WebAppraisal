@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Site Information</title>
+    <title>Property Information</title>
 </head>
 <header>
     <div class="container">
@@ -38,212 +38,285 @@
 <body class="bg-light">
 
     <div class="container">
-        <h1 class="form-header webappraisal-header">Site information</h1>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <h1 class="form-header webappraisal-header">Site Information</h1>
         <hr>
 
-      </div><br><br>
-
-        <form method="POST">
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Info</th>
-      <th scope="col">Topic</th>
-      <th scope="col">Result</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-          <a data-toggle="tooltip" data-original-title="How we quantify the size of your home">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-</th>
-      <td>Dimensions</td>
-      <td>--data here--</td>
-    </tr>
-    <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Site area is the estimate size of the land associated with the home">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Site Area (Sqft.)</td>
-      <td>--Data here--</td>
-    </tr>
-      <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Topography is the physical features of the area your home is on.">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Topography</td>
-      <td>--Data here--</td>
-    </tr>
-      <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Size</td>
-      <td>--Data Here--</td>
-    </tr>
-      <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip  text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Shape</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>View</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Landscaping deals with foliage and plant life surrounding the home and property">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Landscaping</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Driveway Surface</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="An apparent easement is a self continuing right to
-                   cross or otherwise use someones land for a specified purpose.  An easement can be enjoyed without an act on the part of the person entitled thereto.
-                   I.E: a stream, sidewalk, a paved trail, etc.">
-
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Apparent easements</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Drainage</td>
-      <td>--Data Here--</td>
-    </tr>
-        <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>Specific Zone</td>
-      <td>--Data Here--</td>
-    </tr>
+      <table class="table table-striped">
+        <thead>
           <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>FEMA Zone</td>
-      <td>--Data Here--</td>
-    </tr>
+            <th scope="col">Category</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>
+              Dimensions
+              <a data-toggle="tooltip"
+                   data-original-title="How we quantify the size of the home">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ site.dimensions|default_if_none:""}}</td>
+          </tr>
+
+        <tr>
+            <td>
+              Site Area (Sqft.)
+            </td>
+            <td>{{ site.area|default_if_none:""}}</td>
+          </tr>
+
+        <tr>
+            <td>
+              Topography
+              <a data-toggle="tooltip"
+                   data-original-title="Topography is the physical features of the area the home is on">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ site.topography|default_if_none:""}}</td>
+          </tr>
+
+        <tr>
+            <td>Size</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.size|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
           <tr>
-      <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
-      <td>FEMA Map no.</td>
-      <td>--Data Here--</td>
-    </tr>
+            <td>Shape</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.shape|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-  <!--start of true false in table-->
+        <tr>
+            <td>View</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.view|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
 
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
+        <tr>
+            <td>
+              Landscaping
+              <a data-toggle="tooltip"
+                   data-original-title="Landscaping deals with foliage and plant life surrounding the home and property">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ site.landscaping|default_if_none:""}}</td>
+          </tr>
+
+        <td>Driveway Surface</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.driveway|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <tr>
+            <td>
+              Apparent Easements
+              <a data-toggle="tooltip"
+                   data-original-title="An apparent easement is a self continuing right to cross or otherwise use someones land for a specified purpose.  An easement can be enjoyed without an act on the part of the person entitled thereto. I.E: a stream, sidewalk, a paved trail, etc.">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ site.easements|default_if_none:""}}</td>
+          </tr>
+
+        <td>Drainage</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.drainage|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <td>Specific Zone</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.zone|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <td>Zone Compliance</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.compliance|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <td>FEMA Zone</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.fema|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <td>FEMA Map No.</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.map|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <td>Map Date</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.date|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+        <!--start of true false in table-->
+
       </th>
       <td>Corner Lot</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
+
       </th>
       <td>Public Electric</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
+
       </th>
       <td>Public Gas</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
+
       <td>Public Water</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
+
       <td>Public Sanitary Sewer</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
+
       <td>Public Storm Sewer</td>
       <td>--True or False--</td>
     </tr>
-        <th scope="row">
-                   <a data-toggle="tooltip" data-original-title="Tooltip text goes here">
-  <span class="glyphicon glyphicon-info-sign"></span>
-</a>
-      </th>
+
       <td>FEMA Flood Hazard</td>
       <td>--True or False--</td>
     </tr>
 
 
+        <tr>
+            <td>
+              Additional Comments from Appraiser
+              <a data-toggle="tooltip"
+                   data-original-title="This is where your appraiser can post any general comments about the appraisal for you to see">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+            <td>{{ site.comments|default_if_none:""}}</td>
+          </tr>
 
+        </tbody>
+      </table>
 
-  </tbody>
-</table>
-<hr>
-
-</form>
-</div>
+    </div><br><br>
 </body>
+
 
 <body class="bg-dark flex-column">
   <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
@@ -257,7 +330,9 @@
       <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
     </div>
   </footer>
+
 </body>
+
 <script>
   $(document).ready(function() {
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });

@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +12,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
 
   <title>Offsite Information</title>
-
 </head>
+<body>
 
 <header>
   <div class="container">
@@ -41,103 +43,159 @@
 
 <body class="bg-light">
     <div class="container">
-        <h2 class="form-header webappraisal-header">Offsite Information</h2>
-        <hr>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+      Open Navigation Menu
+    </button>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../rooms/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+            </div>
+            &nbsp
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <h2 class="form-header webappraisal-header">Offsite Information</h2>
+
+
+
+  <hr>
         <form method="POST">
+            {% csrf_token %}
             <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="street_notes">Street Notes</label>
-                    <input id="street_notes" type="text" class="form-control">
-                </div>
-
                 <div class="form-group col-md-4">
-                    <label for="street_access">Street Access</label>
-                    <select id="street_access" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="public">Public</option>
-                      <option value="private">Private</option>
-                      <option value="neither">Neither</option>
-                    </select>
+                    <label for="offsite_street">Street Access</label>
+                    {% render_field form.offsite_street placeholder=form.offsite_street.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="offsite_street_note">Street Notes</label>
+                    {% render_field form.offsite_street_note placeholder=form.offsite_street_note.label class="form-control"%}
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="sidewalk_notes">Sidewalk Notes</label>
-                    <input id="sidewalk_notes" type="text" class="form-control">
-                </div>
-
                 <div class="form-group col-md-4">
-                    <label for="sidewalk_access">Sidewalk Access</label>
-                    <select id="sidewalk_access" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="public">Public</option>
-                      <option value="private">Private</option>
-                      <option value="neither">Neither</option>
-                    </select>
+                    <label for="offsite_sidewalk">Sidewalk Access</label>
+                    {% render_field form.offsite_sidewalk placeholder=form.offsite_sidewalk.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="offsite_sidewalk_note">Sidewalk Notes</label>
+                    {% render_field form.offsite_sidewalk_note placeholder=form.offsite_sidewalk_note.label class="form-control"%}
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="curb_notes">Curb Notes</label>
-                    <input id="curb_notes" type="text" class="form-control">
-                </div>
-
                 <div class="form-group col-md-4">
-                    <label for="curb_access">Street Access</label>
-                    <select id="curb_access" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="public">Public</option>
-                      <option value="private">Private</option>
-                      <option value="neither">Neither</option>
-                    </select>
+                    <label for="offsite_curb">Curb</label>
+                    {% render_field form.offsite_curb placeholder=form.offsite_curb.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="offsite_curb_note">Curb Notes</label>
+                    {% render_field form.offsite_curb_note placeholder=form.offsite_curb_note.label class="form-control"%}
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="streetlight_notes">Streetlight Notes</label>
-                    <input id="streetlight_notes" type="text" class="form-control">
-                </div>
-
                 <div class="form-group col-md-4">
-                    <label for="streetlight_access">Streetlight Access</label>
-                    <select id="streetlight_access" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="public">Public</option>
-                      <option value="private">Private</option>
-                      <option value="neither">Neither</option>
-                    </select>
+                    <label for="offsite_streetlights">Street Lights</label>
+                    {% render_field form.offsite_streetlights placeholder=form.offsite_streetlights.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="offsite_streetlight_note">Street Lights Notes</label>
+                    {% render_field form.offsite_streetlight_note placeholder=form.offsite_streetlight_note.label class="form-control"%}
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="alley_notes">Alley Notes</label>
-                    <input id="alley_notes" type="text" class="form-control">
-                </div>
-
                 <div class="form-group col-md-4">
-                    <label for="alley_access">Alley Access</label>
-                    <select id="alley_access" class="form-control">
-                      <option selected>Select...</option>
-                      <option value="public">Public</option>
-                      <option value="private">Private</option>
-                      <option value="neither">Neither</option>
-                    </select>
+                    <label for="offsite_alley">Alley's</label>
+                    {% render_field form.offsite_alley placeholder=form.offsite_alley.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="offsite_alley_note">Alley Notes</label>
+                    {% render_field form.offsite_alley_note placeholder=form.offsite_alley_note.label class="form-control"%}
                 </div>
             </div>
-
-            <div class="form-floating col-md-12 additional-comments">
-                <label for="comments">Additional Comments</label>
-                <textarea class="form-control" placeholder="Leave any other notes here" id="comments"></textarea>
+            <div class="form-row">
+                <div class="form-floating col-md-12 additional-comments">
+                    <label for="comments">Additional Comments</label>
+                    {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+                </div>
             </div>
 
             <br><br><hr>
 
-            <button class="btn btn-primary btn-md form-submit-btn" type="submit">Save changes</button><br><br><br>
+            <button class="btn btn-primary btn-md form-submit-btn" name="submit_offsite_info" type="submit">Save changes</button>
         </form>
     </div>
 </body>

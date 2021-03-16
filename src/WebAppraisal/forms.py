@@ -73,6 +73,11 @@ class KitchenForm(forms.ModelForm):
         model = Kitchen
         exclude = ['house', 'id']
 
+class OffsiteForm(forms.ModelForm):
+    class Meta:
+        model = Offsite
+        exclude = ['house', 'id']
+
 class UtilitiesForm(forms.ModelForm):
     class Meta:
         model = Utilities
@@ -82,9 +87,15 @@ class FoundationForm(forms.ModelForm):
     class Meta:
         model = Foundation
         exclude = ['improvements_id', 'id']
+
 class AmenitiesForm(forms.ModelForm):
     class Meta:
         model = Amenities
+        exclude = ['house', 'id']
+
+class AppraisalForm(forms.ModelForm):
+    class Meta:
+        model = Appraisal
         exclude = ['house', 'id']
 
 class CreateAppraisalForm(forms.ModelForm):
@@ -116,3 +127,52 @@ class EditRoomForm(forms.ModelForm):
     class Meta:
         model = Room
         exclude = ['id', 'house']
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img', 'house']
+
+    def __init__(self, *args, **kwargs):
+        super(ImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'onchange': 'this.form.submit();'})
+
+class ImageFormWithDescription(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['description', 'id']
+
+    def __init__(self, *args, **kwargs):
+        super(ImageFormWithDescription, self).__init__(*args, **kwargs)
+        self.fields['description'].widget.attrs.update({'style': 'height: 50%;',
+                                                        'onchange': 'this.form.submit();'})
+
+class NewImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img']
+
+    def __init__(self, *args, **kwargs):
+        super(NewImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'onchange': 'this.form.submit();'})
+
+class MobileImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img']
+
+    def __init__(self, *args, **kwargs):
+        super(MobileImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].widget.attrs.update({'name': 'change_img',
+                                                'id': 'change_img',
+                                                'style': 'display: none;',
+                                                'capture': 'environment',
+                                                'accepts': 'image/',
+                                                'onchange': 'this.form.submit();'})
+

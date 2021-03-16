@@ -34,7 +34,7 @@ SECRET_KEY ='81^z=hztzll#o68sw6&4c6yg-6(=1x)h60qeiuhdgs*owo=1%a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '192.168.1.86']
 
 STATIC_URL = 'webapp/static/'
 
@@ -43,6 +43,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     "src/webapp/static"
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = "/media/"
+
 
 # Application definition
 
@@ -55,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_nose',
     'widget_tweaks',
+    'django_user_agents',
     'src.webapp']
 
 MIDDLEWARE = [
@@ -65,9 +70,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware'
 ]
 
 ROOT_URLCONF = 'src.webapp.urls'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
+USER_AGENTS_CACHE = 'default'
 
 TEMPLATES = [
     {
@@ -81,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },

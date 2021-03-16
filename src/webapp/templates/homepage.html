@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +48,7 @@
           {% if role == "APPRAISER" %}
             <a href="/general/new" style="color: black">
               <span class="glyphicon glyphicon-plus-sign"></span>
-              <h7 style="font-family: Georgia, serif; ">Create new appraisal</h7
+              <h7 style="font-family: Georgia, serif;">Create new appraisal</h7>
             </a><br>
           {% endif %}
         </div>
@@ -54,7 +56,32 @@
           {% for house in houses %}
             <div class="col-md-4">
                  <div class="card appraisal-card" style="width: 18rem">
-                    <img src="../static/img/house1.jpg" class="card-img-top" alt="Image of House"/>
+                  {% if role == "APPRAISER" %}
+                    <div>
+                      <form method="POST" enctype="multipart/form-data" name="img_form" id="img_form">
+                        {% csrf_token %}
+                        <div style="font-family: Georgia, serif">
+                         <label id="img" class="btn btn-link" style="padding: 5px; color: grey;  text-decoration: none">
+                           <span class="glyphicon glyphicon-pencil" style="padding: 0; margin: 0;"></span>
+                           {{ form.img }}
+                           <span style="color: black; font-size: 110%;"> Change Image</span>
+                         </label>
+                          <button type="submit" name="change_img" hidden></button>
+                        </div>
+                        <input type="hidden" name="house" id="id_house" value="{{ house.id }}">
+                      </form>
+                    </div>
+                  {% endif %}
+
+                   {% if images|get_item:house.id != None %}
+                     <div class="img-wrapper">
+                     {% with image=images|get_item:house.id %}
+                       <img src="{{ MEDIA_URL }}{{ image.img }}" alt="Image of House" class="card-img-top"/>
+                     {% endwith %}
+                     </div>
+                   {% else %}
+                     <img src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png" class="card-img-top" alt="Image of House"/>
+                   {% endif %}
                     <div class="card-body">
                         <hr><a href="/general/{{ house.id }}" class="card-title" style="font-family: Georgia, serif; font-size: 20px">
                               <span style="color: black">{{ house.street_address }}</span></a>
@@ -113,4 +140,18 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+<script>
+function submit_form()
+{
+  document.imgform.submit();
+}
+</script>
+
+<script>
+  $('#change_img').change(function(){
+    $('#img_form').submit()
+});
+</script>
+
 </html>

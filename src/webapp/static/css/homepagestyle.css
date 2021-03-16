@@ -112,3 +112,7 @@
 .bg-light {
   background-color: #f8f9fa !important;
 }
+
+.hide-input {
+  display: none; !important;
+}

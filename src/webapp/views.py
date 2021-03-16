@@ -1,10 +1,10 @@
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect
+from django.shortcuts import render
+from django.template.defaulttags import register
 
 from src.WebAppraisal.forms import *
 from src.webapp.models import *
@@ -56,6 +56,7 @@ def create_account_view(request):
             return redirect('/home/')
     else:
         form = NewUserForm()
+
     return render(request, 'sign-up.html', {'form': form})
 
 # home page for both appraisers and their customers
@@ -63,17 +64,55 @@ def create_account_view(request):
 def dashboard_view(request):
     current_user = User.objects.get(pk=request.user.id)
     role = Profile.objects.get(user_id=request.user.id).role
+    images = {}
     if request.method == 'POST':
+        print(str(request.POST))
+        print(str(request.FILES))
+
         if 'user_logout' in request.POST:
             logout(request)
             redirect('/welcome')
 
-    if role == Profile.Roles.APPRAISER:
-        houses = list(House.objects.filter(appraiser=current_user))
-    else:
-        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+        elif 'img' in request.FILES:
+            form = ImageForm(request.POST, request.FILES)
+            if form.is_valid():
+                house_id = form.cleaned_data['house'].id
+                # remove old instance so previous photos won't show up
+                Image.objects.filter(house_id=house_id).delete()
+                new_img = form.save(commit=False)
+                # set page
+                new_img.page = Image.Pages.HOME
+                # set house id
+                current_house = form.cleaned_data['house']
+                new_img.house = current_house
+                new_img.save()
 
-    return render(request, 'homepage.html', {'user': current_user, 'role': role.__str__(), 'houses': houses})
+                return redirect('/home')
+            else:
+                return redirect('/home')
+        else:
+            return redirect('/home')
+
+    if role == Profile.Roles.APPRAISER:
+        form = ImageForm()
+        houses = list(House.objects.filter(appraiser=current_user))
+        for house in houses:
+            if Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).exists():
+                images[house.id] = Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).first()
+            else:
+                images[house.id] = None
+
+    else:
+        form = ImageForm()
+        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+        for house in houses:
+            if Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).exists():
+                images[house.id] = Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).first()
+            else:
+                images[house.id] = None
+
+    return render(request, 'homepage.html', {'user': current_user, 'role': role.__str__(), 'houses': houses,
+                                             'images': images, 'form': form})
 
 # view where users can change their account information or delete their account
 @login_required(login_url='/welcome')
@@ -113,19 +152,48 @@ def account_management_view(request):
                                                              'django_user': user, 'webappraisal_user': additional_user_info,
                                                              'role': additional_user_info.get_display_role() })
 
-
 @login_required(login_url='/welcome')
 def general_view(request, house_id):
     user_role = Profile.objects.get(user_id=request.user.id).role
     house_instance = House.objects.get(id=house_id)
+    images = Image.objects.filter(house_id=house_id, page=Image.Pages.GENERAL)
     if user_role == Profile.Roles.APPRAISER:
+        is_mobile = request.user_agent.is_mobile
+        add_image_form = NewImageForm(request.POST)
+        mobile_img_form = MobileImageForm(request.POST)
         if not House.objects.filter(id=house_id).exists():
             redirect('/general/new')
         else:
             if request.method == 'POST':
+                print(str(request.POST))
+                print(str(request.FILES))
                 if 'user_logout' in request.POST:
                     logout(request)
                     redirect('/welcome')
+
+                elif 'img' in request.FILES:
+                    form = NewImageForm(request.POST, request.FILES)
+                    if form.is_valid():
+                        new_img = form.save(commit=False)
+                        # set page
+                        new_img.page = Image.Pages.GENERAL
+                        # set house id
+                        new_img.house = House.objects.filter(id=house_id).first()
+                        new_img.save()
+                        return redirect('/general/%s' % house_id)
+                    else:
+                        print('invalid form')
+                        return redirect('/general/%s' % house_id)
+
+                elif 'submit_desc' in request.POST:
+                    img_id = request.POST['img_id']
+                    img_instance = Image.objects.get(id=img_id)
+                    form = ImageFormWithDescription(request.POST, instance=img_instance)
+                    if form.is_valid():
+                        form.save()
+                        return redirect('/general/%s' % house_id)
+                    else:
+                        return redirect('/general/%s' % house_id)
 
                 elif 'submit_general_info' in request.POST:
                     form = UpdateAppraisalForm(request.POST, instance=house_instance)
@@ -141,19 +209,23 @@ def general_view(request, house_id):
             # render form using existing info
             else:
                 form = UpdateAppraisalForm(instance=house_instance)
+                img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
                 phone_num = Profile.objects.get(user_id=house_instance.customer.id).phone_number
                 if not phone_num:
                     phone_num = 'Not entered'
 
                 return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
                                                                              'form': form, 'phone_number': phone_num,
-                                                                             'house_id': house_id})
+                                                                             'house_id': house_id, 'role': user_role,
+                                                                             'img_forms': img_forms, 'new_img_form': add_image_form,
+                                                                             'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form })
     # user is a customer
     else:
         phone_num = Profile.objects.get(user_id=house_instance.appraiser.id).phone_number
         return render(request, 'customer_view_forms/view_general.html', context={'appraiser': house_instance.appraiser,
                                                                                  'house': house_instance, 'house_id': house_id,
-                                                                                 'phone_number': phone_num})
+                                                                                 'phone_number': phone_num, 'images': images,
+                                                                                 'role': user_role})
 
 
 @login_required(login_url='/welcome')
@@ -734,24 +806,130 @@ def foundation_view(request, house_id):
                       context={'basement': foundation_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
-def offsite_information_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def offsite_information_view(request,house_id):
+    # TODO: Add generic error page to redirect to when don't have access
+    # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/offsite_information.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_offsite_info' in request.POST:
+                # we need to update the object
+                if Offsite.objects.filter(house_id=house_id).exists():
+                    offsite_info = Offsite.objects.get(house_id=house_id)
+                    form = OffsiteForm(request.POST, instance=offsite_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the offsite information")
+                        return redirect('/offsite-information/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/offsite-information/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = OffsiteForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/offsite-information/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/offsite-information/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/offsite-information/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Offsite.objects.filter(house=house_id).exists():
+                offsite_info = Offsite.objects.get(house=house_id)
+                form = OffsiteForm(instance=offsite_info)
+            else:
+                form = OffsiteForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/offsite_information.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Offsite.objects.filter(house_id=house_id).exists():
+            offsite_info = Offsite.objects.get(house_id=house_id)
+        else:
+            offsite_info = 'empty'
+        return render(request, 'customer_view_forms/view_offsite_information.html',
+                      context={'offsite': offsite_info, 'house_id': house_id})
 
 @login_required(login_url='/welcome')
-def appraisal_view(request):
-    current_user = User.objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        if 'user_logout' in request.POST:
-            logout(request)
-            redirect('/welcome')
+def appraisal_view(request,house_id):
+    # TODO: Add generic error page to redirect to when don't have access
+    # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
+    role = Profile.objects.get(user_id=request.user.id).role
+    if role == Profile.Roles.APPRAISER:
+        if request.method == 'POST':
+            # shared logic among views for user logout
+            if 'user_logout' in request.POST:
+                logout(request)
+                redirect('/welcome')
 
-    return render(request, 'appraisal_edit_forms/AppraisalPage.html', {'user': current_user})
+            # on the button: <input type=submit name=update_account
+            if 'submit_appraisal_info' in request.POST:
+                # we need to update the object
+                if Appraisal.objects.filter(house_id=house_id).exists():
+                    appraisal_info = Appraisal.objects.get(house_id=house_id)
+                    form = AppraisalForm(request.POST, instance=appraisal_info)
+
+                    if form.is_valid():
+                        form.save()
+                        messages.success(request, "We've successfully updated the appraisal information")
+                        return redirect('/AppraisalPage/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/AppraisalPage/%s/' % house_id)
+
+                # we need to create a new instance
+                else:
+                    form = AppraisalForm(request.POST)
+                    if form.is_valid():
+                        new_table_instance = form.save(commit=False)
+                        # Important: set foreign key to house id
+                        new_table_instance.house = House.objects.get(id=house_id)
+                        new_table_instance.save()
+                        messages.success(request, "We've successfully updated the housing information")
+                        return redirect('/AppraisalPage/%s/' % house_id)
+                    # hopefully won't reach here but just in case redirect back to same page
+                    else:
+                        return redirect('/AppraisalPage/%s/' % house_id)
+
+            # hopefully won't reach here but just in case redirect back to same page
+            else:
+                return redirect('/AppraisalPage/%s/' % house_id)
+
+        # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
+        else:
+            if Appraisal.objects.filter(house=house_id).exists():
+                appraisal_info = Appraisal.objects.get(house=house_id)
+                form = AppraisalForm(instance=appraisal_info)
+            else:
+                form = AppraisalForm(request.POST)
+
+            return render(request, 'appraisal_edit_forms/AppraisalPage.html',
+                          context={'form': form, 'house_id': house_id})
+    else:
+        if Appraisal.objects.filter(house_id=house_id).exists():
+            appraisal_info = Appraisal.objects.get(house_id=house_id)
+        else:
+            appraisal_info = 'empty'
+        return render(request, 'customer_view_forms/view_AppraisalPage.html',
+                      context={'appraisal': appraisal_info, 'house_id': house_id})
 
 
 @login_required(login_url='/welcome')
@@ -955,3 +1133,8 @@ def single_room_view(request, house_id, room_id):
 
         return render(request, 'appraisal_edit_forms/edit_room.html',
                       context={'form': form})
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
