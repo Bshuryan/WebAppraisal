@@ -449,7 +449,6 @@ def basement_view(request, house_id):
 
 @login_required(login_url='/welcome')
 def utilities_view(request, house_id):
-    house_instance = House.objects.filter(id=house_id).first()
     # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
     role = Profile.objects.get(user_id=request.user.id).role
     if role == Profile.Roles.APPRAISER:
@@ -462,8 +461,8 @@ def utilities_view(request, house_id):
             # on the button: <input type=submit name=update_account
             if 'submit_utilities_info' in request.POST:
                 # we need to update the object
-                if Utilities.objects.filter(house=house_instance).exists():
-                    utilities_info = Utilities.objects.get(house=house_instance)
+                if Utilities.objects.filter(house_id=house_id).exists():
+                    utilities_info = Utilities.objects.get(house_id=house_id)
                     form = UtilitiesForm(request.POST, instance=utilities_info)
 
                     if form.is_valid():
@@ -494,17 +493,17 @@ def utilities_view(request, house_id):
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
-            if Utilities.objects.filter(house=house_instance).exists():
-                utilities_info = Utilities.objects.get(house=house_instance)
-                form = BasementForm(instance=utilities_info)
+            if Utilities.objects.filter(house=house_id).exists():
+                utilities_info = Utilities.objects.get(house=house_id)
+                form = UtilitiesForm(instance=utilities_info)
             else:
-                form = BasementForm(request.POST)
+                form = UtilitiesForm(request.POST)
 
             return render(request, 'appraisal_edit_forms/utilities.html',
                           context={'form': form, 'house_id': house_id})
     else:
         if Utilities.objects.filter(house_id=house_id).exists():
-            utilities_info = Basement.objects.get(house_id=house_id)
+            utilities_info = Utilities.objects.get(house_id=house_id)
         else:
             utilities_info = 'empty'
         return render(request, 'customer_view_forms/view_utilities.html',
