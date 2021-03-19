@@ -23,6 +23,10 @@ from src.webapp.view import general
 from src.webapp.view import property_information
 from src.webapp.view import neighborhood
 from src.webapp.view import site
+from src.webapp.view import basement
+from src.webapp.view import kitchen
+from src.webapp.view import foundation
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,10 +47,10 @@ urlpatterns = [
     path('property-information/<house_id>', property_information.view),
     path('comments', views.comment_view),
     path('materials-conditions/<house_id>', views.materials_condition_view),
-    path('kitchen/<house_id>', views.kitchen_view),
-    path('basement/<house_id>', views.basement_view),
+    path('kitchen/<house_id>', kitchen.view),
+    path('basement/<house_id>', basement.view),
     path('utilities/<house_id>', views.utilities_view),
-    path('foundation/<house_id>',views.foundation_view),
+    path('foundation/<house_id>',foundation.view),
     path('offsite-information/<house_id>', views.offsite_information_view),
     path('AppraisalPage/<house_id>', views.appraisal_view),
     path('amenities/<house_id>', views.amenities_view),
@@ -64,10 +68,10 @@ urlpatterns = [
     path('comments/<house_id>/', views.comment_view),
     path('property-information/<house_id>/', property_information.view),
     path('materials-conditions/<house_id>/', views.materials_condition_view),
-    path('kitchen/<house_id>/', views.kitchen_view),
-    path('basement/<house_id>/', views.basement_view),
+    path('kitchen/<house_id>/', kitchen.view),
+    path('basement/<house_id>/', basement.view),
     path('utilities/<house_id>/', views.utilities_view),
-    path('foundation/<house_id>/', views.foundation_view),
+    path('foundation/<house_id>/', foundation.view),
     path('offsite-information/<house_id>/', views.offsite_information_view),
     path('AppraisalPage/<house_id>/', views.appraisal_view),
     path('amenities/<house_id>/', views.amenities_view),
