@@ -135,7 +135,7 @@
         <tr>
             <td>Neighborhood Name</td>
             <td>
-              {% if property != "empty" %}
+              {% if neighborhood != "empty" %}
                 {{ neighborhood.name|default_if_none:""}}
               {% endif %}
             </td>
@@ -144,7 +144,7 @@
           <tr>
             <td>Location</td>
             <td>
-              {% if property != "empty" %}
+              {% if neighborhood != "empty" %}
                 {{ neighborhood.location|default_if_none:""}}
               {% endif %}
             </td>
@@ -153,8 +153,8 @@
         <tr>
             <td>Property Value</td>
             <td>
-              {% if property != "empty" %}
-                {{ neighborhood.value|default_if_none:""}}
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.property_value|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -162,8 +162,8 @@
         <tr>
             <td>Growth Rate</td>
             <td>
-              {% if property != "empty" %}
-                {{ neighborhood.growth|default_if_none:""}}
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.growth_rate|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -171,8 +171,8 @@
         <tr>
             <td>Supply/Demand</td>
             <td>
-              {% if property != "empty" %}
-                {{ neighborhood.supplydemand|default_if_none:""}}
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.demand_supply|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -180,8 +180,8 @@
         <tr>
             <td>Built Up</td>
             <td>
-              {% if property != "empty" %}
-                {{ neighborhood.builtup|default_if_none:""}}
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.built_up|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -194,7 +194,11 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ neighborhood.marketability|default_if_none:""}}</td>
+            <td>
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.marketability_factors|default_if_none:""}}
+              {% endif  %}
+            </td>
           </tr>
 
         <tr>
@@ -205,8 +209,21 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ neighborhood.conditions|default_if_none:""}}</td>
+            <td>
+              {% if neighborhood != "empty" %}
+                {{ neighborhood.market_conditions|default_if_none:""}}
+              {% endif %}
+            </td>
           </tr>
+
+        <tr>
+          <td>Comments</td>
+          <td>
+            {% if 'neighborhood' != 'empty' %}
+              {{ neighborhood.comments|default_if_none:""}}
+            {% endif %}
+          </td>
+        </tr>
 
         </tbody>
       </table>

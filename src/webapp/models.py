@@ -328,6 +328,7 @@ class Image(models.Model):
         FOUNDATION = 'FOUNDATION'
         MATERIALS_CONDITIONS = 'MATERIALS_CONDITIONS'
         DESC_IMPROV = 'DESC_IMPROV'
+        APPRAISAL = 'APPRAISAL'
 
     id = models.AutoField(primary_key=True)
     page = models.CharField(blank=False, null=False, max_length=20, choices=Pages.choices)

@@ -83,13 +83,12 @@ def view(request, house_id):
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
+            img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
             if Property.objects.filter(house=house_id).exists():
                 property_info = Property.objects.get(house=house_id)
-                img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
                 form = PropertyInformationForm(instance=property_info)
             else:
                 form = PropertyInformationForm(request.POST)
-                img_forms = []
 
             return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form, 'house_id': house_id,
                                                                                               'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,

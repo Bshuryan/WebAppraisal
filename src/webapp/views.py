@@ -66,8 +66,6 @@ def dashboard_view(request):
     role = Profile.objects.get(user_id=request.user.id).role
     images = {}
     if request.method == 'POST':
-        print(str(request.POST))
-        print(str(request.FILES))
 
         if 'user_logout' in request.POST:
             logout(request)
@@ -104,7 +102,7 @@ def dashboard_view(request):
 
     else:
         form = ImageForm()
-        houses = sorted(list(House.objects.filter(customer=current_user)), key=lambda x: x.street_address)
+        houses = list(House.objects.filter(customer=current_user))
         for house in houses:
             if Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).exists():
                 images[house.id] = Image.objects.filter(page=Image.Pages.HOME, house_id=house.id).first()

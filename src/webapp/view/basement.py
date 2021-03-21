@@ -7,8 +7,6 @@ from django.shortcuts import render
 from src.WebAppraisal.forms import *
 from src.webapp.models import *
 
-
-
 @login_required(login_url='/welcome')
 def view(request, house_id):
     house_instance = House.objects.filter(id=house_id).first()

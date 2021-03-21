@@ -40,8 +40,8 @@
   <div class="container">
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-      Open Navigation Menu
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+      <span class="glyphicon glyphicon-th"></span> Navigate
     </button>
 
     <!-- Modal -->
@@ -49,77 +49,58 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+            <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
           </div>
           <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../amenities/{{ house_id }}" class="btn btn-primary">Amenities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../basement/{{ house_id }}" class="btn btn-primary">Basement</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../comments/{{ house_id }}" class="btn btn-primary">Comments</a></td>
+                  </tr>
 
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
-              </div>
-            </div>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../foundation/{{ house_id }}" class="btn btn-primary">Foundation</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../general/{{ house_id }}" class="btn btn-primary">General</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../description-improvements/{{ house_id }}" class="btn btn-primary">Improvements</a></td>
+                  </tr>
 
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../foundation/{{ house_id }}">Foundation</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
-              </div>
-            </div>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../kitchen/{{ house_id }}" class="btn btn-primary">Kitchen</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../materials-conditions/{{ house_id }}" class="btn btn-primary">Materials and Conditions</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../neighborhood/{{ house_id }}" class="btn btn-primary">Neighborhood</a></td>
+                  </tr>
 
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
-              </div>
-            </div>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../offsite-information/{{ house_id }}" class="btn btn-primary">Offsite Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../property-information/{{ house_id }}" class="btn btn-primary">Property Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../rooms/{{ house_id }}" class="btn btn-primary">Rooms</a></td>
+                  </tr>
 
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../rooms/{{ house_id }}">Rooms</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
-              </div>
-              <div class="form-group col-md-4">
-
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../site/{{ house_id }}" class="btn btn-primary">Site Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../utilities/{{ house_id }}" class="btn btn-primary">Utilities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}" class="btn btn-primary">Appraisal</a></td>
+                  </tr>
+              </tbody>
+          </table>
               </div>
             </div>
             &nbsp
           </div>
         </div>
       </div>
-    </div>
 
     <h1 class="form-header webappraisal-header">General Information</h1>
 
