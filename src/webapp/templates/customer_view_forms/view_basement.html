@@ -34,9 +34,7 @@
     </div>
 </header>
 
-
 <body class="bg-light">
-
     <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
@@ -57,34 +55,34 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement">Basement</a>
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments">Comments</a>
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
+                <a class="btn btn-primary" href="../../foundation/{{ house_id }}">Foundation</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
@@ -93,22 +91,22 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
+                <a class="btn btn-primary" href="../../rooms/{{ house_id }}">Rooms</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../site">Site Information</a>
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../utilities">Utilities</a>
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
               </div>
               <div class="form-group col-md-4">
 
@@ -119,7 +117,6 @@
         </div>
       </div>
     </div>
-
         <h1 class="form-header webappraisal-header">Basement</h1>
         <hr>
 
@@ -136,7 +133,7 @@
             <td>Area (Sqft.)</td>
             <td>
               {% if property != "empty" %}
-                {{ basement.area|default_if_none:""}}
+                {{ basement.basement_area|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -145,7 +142,7 @@
             <td>Ceiling</td>
             <td>
               {% if property != "empty" %}
-                {{ appraisal.ceiling|default_if_none:""}}
+                {{ basement.basement_ceiling|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -154,7 +151,7 @@
             <td>Walls</td>
             <td>
               {% if property != "empty" %}
-                {{ appraisal.walls|default_if_none:""}}
+                {{ basement.basement_walls|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -163,7 +160,7 @@
             <td>Floor</td>
             <td>
               {% if property != "empty" %}
-                {{ basement.floor|default_if_none:""}}
+                {{ basement.basement_floor|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -172,7 +169,7 @@
             <td>Percent Finished</td>
             <td>
               {% if property != "empty" %}
-                {{ basement.finished|default_if_none:""}}
+                {{ basement.basement_percent_finished|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -181,7 +178,7 @@
             <td>Outside Entry</td>
             <td>
               {% if property != "empty" %}
-                {{ basement.entry|default_if_none:""}}
+                {{ basement.basement_outside_entry|default_if_none:""}}
               {% endif %}
             </td>
           </tr>

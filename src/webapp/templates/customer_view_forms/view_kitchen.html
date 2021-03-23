@@ -34,9 +34,8 @@
     </div>
 </header>
 
-<body class="bg-light">
-
-  <div class="container">
+<<body class="bg-light">
+    <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
       Open Navigation Menu
@@ -44,7 +43,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document" style="min-width: 600px">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
@@ -52,62 +51,62 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" >
+          <div class="modal-body">
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../amenities">Amenities</a>
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../basement">Basement</a>
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../comments">Comments</a>
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">Foundation</a>
+                <a class="btn btn-primary" href="../../foundation/{{ house_id }}">Foundation</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">General</a>
+                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../description-improvements">Improvements</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../kitchen/{{ house_id }}">Kitchen</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../materials-conditions">Materials and Conditions</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
+                <a class="btn btn-primary" href="../../description-improvements/{{ house_id }}">Improvements</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../offsite-information">Offsite Information</a>
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../property-information/{{ house_id }}">Property Information</a>
+                <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../general/{{ house_id }}">Rooms</a>
+                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
               </div>
             </div>
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../site">Site Information</a>
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary button-matrix" href="../../utilities">Utilities</a>
+                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../rooms/{{ house_id }}">Rooms</a>
+              </div>
+            </div>
+
+            <div class="form-row text-center">
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../site/{{ house_id }}">Site Information</a>
+              </div>
+              <div class="form-group col-md-4">
+                <a class="btn btn-primary" href="../../utilities/{{ house_id }}">Utilities</a>
               </div>
               <div class="form-group col-md-4">
 
@@ -132,49 +131,63 @@
           <tr>
             <td>Description</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_description|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Refrigerator</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_refrig|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Oven</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_oven|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Dishwasher</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_dishwasher|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Microwave</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_microwave|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Cabinets</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_cabinets|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Garbage Disposal</td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_disposal|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
@@ -183,7 +196,9 @@
               Fan Hood
             </td>
             <td>
-
+              {% if property != "empty" %}
+                {{  kitchen.kitchen_fan_hood|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
@@ -195,7 +210,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td></td>
+            <td>{{ kitchen.comments|default_if_none:""}}</td>
           </tr>
         </tbody>
       </table>

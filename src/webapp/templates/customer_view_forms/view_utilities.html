@@ -131,43 +131,55 @@
         <tbody>
           <tr>
             <td>Washer/Dryer</td>
-            <td>
-
+           <td>
+              {% if property != "empty" %}
+                {{ utilities.washer_dryer|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Heat Type</td>
             <td>
-
+              {% if property != "empty" %}
+                {{ utilities.heat_type|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Heating Fuel</td>
             <td>
-
+              {% if property != "empty" %}
+                {{ utilities.heat_fuel|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Heating Condition</td>
             <td>
-
+              {% if property != "empty" %}
+                {{ utilities.heat_condition|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Cooling Type</td>
             <td>
-
+              {% if property != "empty" %}
+                {{ utilities.cooling_type|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
           <tr>
             <td>Cooling Condition</td>
             <td>
-
+              {% if property != "empty" %}
+                {{ utilities.cooling_condition|default_if_none:""}}
+              {% endif %}
             </td>
           </tr>
 
@@ -179,7 +191,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td></td>
+            <td>{{ utilities.comments|default_if_none:""}}</td>
           </tr>
         </tbody>
       </table>

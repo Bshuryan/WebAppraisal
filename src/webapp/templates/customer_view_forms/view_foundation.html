@@ -140,7 +140,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ foundation.exterior|default_if_none:""}}</td>
+            <td>{{ foundation.foundation_ext|default_if_none:""}}</td>
           </tr>
 
         <tr>
@@ -158,7 +158,7 @@
             <td>Crawl Space</td>
             <td>
               {% if property != "empty" %}
-                {{ foundation.crawl|default_if_none:""}}
+                {{ foundation.crawl_space|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -176,7 +176,7 @@
             <td>Sump Pump</td>
             <td>
               {% if property != "empty" %}
-                {{ foundation.pump|default_if_none:""}}
+                {{ foundation.sump_pump|default_if_none:""}}
               {% endif %}
             </td>
           </tr>

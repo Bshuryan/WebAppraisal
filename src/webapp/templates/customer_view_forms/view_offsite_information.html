@@ -136,7 +136,7 @@
             <td>Curb Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ offsite.curb|default_if_none:""}}
+                {{ offsite.offsite_curb_note|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -145,7 +145,7 @@
             <td>Street Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ offsite.street|default_if_none:""}}
+                {{ offsite.offsite_street_note|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -154,7 +154,7 @@
             <td>Streetlight Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ offsite.streetlight|default_if_none:""}}
+                {{ offsite.offsite_streetlight_note|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -163,7 +163,7 @@
             <td>Sidewalk Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ offsite.sidewalk|default_if_none:""}}
+                {{ offsite.offsite_sidewalk_note|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -172,7 +172,7 @@
             <td>Alley Notes</td>
             <td>
               {% if property != "empty" %}
-                {{ offsite.alley|default_if_none:""}}
+                {{ offsite.offsite_alley|default_if_none:""}}
               {% endif %}
             </td>
           </tr>

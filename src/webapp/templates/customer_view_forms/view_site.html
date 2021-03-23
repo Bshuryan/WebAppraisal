@@ -147,7 +147,7 @@
             <td>
               Site Area (Sqft.)
             </td>
-            <td>{{ site.area|default_if_none:""}}</td>
+            <td>{{ site.site_area|default_if_none:""}}</td>
           </tr>
 
         <tr>
@@ -202,7 +202,7 @@
         <td>Driveway Surface</td>
             <td>
               {% if property != "empty" %}
-                {{ site.driveway|default_if_none:""}}
+                {{ site.driveway_surface|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -215,7 +215,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.easements|default_if_none:""}}</td>
+            <td>{{ site.apparent_easements|default_if_none:""}}</td>
           </tr>
 
         <td>Drainage</td>
@@ -229,7 +229,7 @@
         <td>Specific Zone</td>
             <td>
               {% if property != "empty" %}
-                {{ site.zone|default_if_none:""}}
+                {{ site.specific_zone|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -237,7 +237,7 @@
         <td>Zone Compliance</td>
             <td>
               {% if property != "empty" %}
-                {{ site.compliance|default_if_none:""}}
+                {{ site.zone_compliance|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -245,7 +245,7 @@
         <td>FEMA Zone</td>
             <td>
               {% if property != "empty" %}
-                {{ site.fema|default_if_none:""}}
+                {{ site.fema_zone|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -253,7 +253,7 @@
         <td>FEMA Map No.</td>
             <td>
               {% if property != "empty" %}
-                {{ site.map|default_if_none:""}}
+                {{ site.fema_zone|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -261,7 +261,7 @@
         <td>Map Date</td>
             <td>
               {% if property != "empty" %}
-                {{ site.date|default_if_none:""}}
+                {{ site.map_date|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
@@ -270,34 +270,62 @@
 
       </th>
       <td>Corner Lot</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.corner_lot|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       </th>
       <td>Public Electric</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.public_electric|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       </th>
       <td>Public Gas</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.public_gas|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       <td>Public Water</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.public_water|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       <td>Public Sanitary Sewer</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.public_sanitary_sewer|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       <td>Public Storm Sewer</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.public_storm_sewer|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
       <td>FEMA Flood Hazard</td>
-      <td>--True or False--</td>
-    </tr>
+            <td>
+              {% if property != "empty" %}
+                {{ site.fema_flood_hazard|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
 
         <tr>
