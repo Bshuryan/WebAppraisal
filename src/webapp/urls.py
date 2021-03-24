@@ -30,6 +30,7 @@ from src.webapp.view import foundation
 from src.webapp.view import offsite
 from src.webapp.view import amenities
 from src.webapp.view import appraisal
+from src.webapp.view import utilities
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,7 +53,7 @@ urlpatterns = [
     path('materials-conditions/<house_id>', views.materials_condition_view),
     path('kitchen/<house_id>', kitchen.view),
     path('basement/<house_id>', basement.view),
-    path('utilities/<house_id>', views.utilities_view),
+    path('utilities/<house_id>', utilities.view),
     path('foundation/<house_id>', foundation.view),
     path('offsite-information/<house_id>', offsite.view),
     path('appraisal/<house_id>', appraisal.view),
@@ -72,7 +73,7 @@ urlpatterns = [
     path('materials-conditions/<house_id>/', views.materials_condition_view),
     path('kitchen/<house_id>/', kitchen.view),
     path('basement/<house_id>/', basement.view),
-    path('utilities/<house_id>/', views.utilities_view),
+    path('utilities/<house_id>/', utilities.view),
     path('foundation/<house_id>/', foundation.view),
     path('offsite-information/<house_id>/', offsite.view),
     path('appraisal/<house_id>/', appraisal.view),
