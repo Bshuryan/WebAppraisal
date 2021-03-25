@@ -140,15 +140,23 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.dimensions|default_if_none:""}}</td>
+            <td>
+              {% if property != "empty" %}
+                {{ site.dimensions|default_if_none:""}}
+              {% endif %}
+            </td>
           </tr>
 
         <tr>
             <td>
               Site Area (Sqft.)
             </td>
-            <td>{{ site.site_area|default_if_none:""}}</td>
-          </tr>
+            <td>
+              {% if site != "empty" %}
+                {{ site.site_area|default_if_none:""}}
+              {% endif %}
+            </td>
+        </tr>
 
         <tr>
             <td>
@@ -158,13 +166,17 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.topography|default_if_none:""}}</td>
+            <td>
+              {% if site != "empty" %}
+                {{ site.topography|default_if_none:""}}
+              {% endif %}
+            </td>
           </tr>
 
         <tr>
             <td>Size</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.size|default_if_none:""}}
               {% endif %}
             </td>
@@ -173,7 +185,7 @@
           <tr>
             <td>Shape</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.shape|default_if_none:""}}
               {% endif %}
             </td>
@@ -182,7 +194,7 @@
         <tr>
             <td>View</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.view|default_if_none:""}}
               {% endif %}
             </td>
@@ -196,18 +208,23 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.landscaping|default_if_none:""}}</td>
-          </tr>
-
-        <td>Driveway Surface</td>
             <td>
-              {% if property != "empty" %}
-                {{ site.driveway_surface|default_if_none:""}}
+              {% if site != "empty" %}
+                {{ site.landscaping|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
         <tr>
+          <td>Driveway Surface</td>
+            <td>
+              {% if site != "empty" %}
+                {{ site.driveway_surface|default_if_none:""}}
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr>
             <td>
               Apparent Easements
               <a data-toggle="tooltip"
@@ -215,52 +232,62 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ site.apparent_easements|default_if_none:""}}</td>
+            <td>
+              {% if site != "empty" %}
+                {{ site.apparent_easements|default_if_none:""}}
+              {% endif %}
+            </td>
           </tr>
 
-        <td>Drainage</td>
+        <tr>
+          <td>Drainage</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.drainage|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
-        <td>Specific Zone</td>
+        <tr>
+          <td>Specific Zone</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.specific_zone|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
-        <td>Zone Compliance</td>
+        <tr>
+          <td>Zone Compliance</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.zone_compliance|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
-        <td>FEMA Zone</td>
+        <tr>
+          <td>FEMA Zone</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.fema_zone|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
-        <td>FEMA Map No.</td>
+        <tr>
+          <td>FEMA Map No.</td>
             <td>
-              {% if property != "empty" %}
-                {{ site.fema_zone|default_if_none:""}}
+              {% if site != "empty" %}
+                {{ site.fema_map_no|default_if_none:""}}
               {% endif %}
             </td>
           </tr>
 
-        <td>Map Date</td>
+        <tr>
+          <td>Map Date</td>
             <td>
-              {% if property != "empty" %}
+              {% if site != "empty" %}
                 {{ site.map_date|default_if_none:""}}
               {% endif %}
             </td>
@@ -268,69 +295,73 @@
 
         <!--start of true false in table-->
 
-      </th>
-      <td>Corner Lot</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.corner_lot|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>Corner Lot</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.corner_lot|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      </th>
-      <td>Public Electric</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.public_electric|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>Public Electric</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.public_electric|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      </th>
-      <td>Public Gas</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.public_gas|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>Public Gas</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.public_gas|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      <td>Public Water</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.public_water|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>Public Water</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.public_water|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      <td>Public Sanitary Sewer</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.public_sanitary_sewer|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>Public Sanitary Sewer</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.public_sanitary_sewer|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      <td>Public Storm Sewer</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.public_storm_sewer|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+       <td>Public Storm Sewer</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.public_storm_sewer|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
-      <td>FEMA Flood Hazard</td>
-            <td>
-              {% if property != "empty" %}
-                {{ site.fema_flood_hazard|default_if_none:""}}
-              {% endif %}
-            </td>
-        </tr>
+      <tr>
+        <td>FEMA Flood Hazard</td>
+        <td>
+          {% if site != "empty" %}
+            {{ site.fema_flood_hazard|default_if_none:""}}
+          {% endif %}
+        </td>
+      </tr>
 
 
         <tr>
             <td>
-              Additional Comments from Appraiser
+              Additional Comments
               <a data-toggle="tooltip"
                    data-original-title="This is where your appraiser can post any general comments about the appraisal for you to see">
                   <span class="glyphicon glyphicon-info-sign"></span>

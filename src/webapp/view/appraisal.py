@@ -100,5 +100,5 @@ def view(request,house_id):
             appraisal_info = Appraisal.objects.get(house_id=house_id)
         else:
             appraisal_info = 'empty'
-        return render(request, 'customer_view_forms/view_AppraisalPage.html',
+        return render(request, 'customer_view_forms/view_appraisal.html',
                       context={'appraisal': appraisal_info, 'house_id': house_id})
