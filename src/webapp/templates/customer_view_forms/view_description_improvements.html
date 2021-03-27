@@ -135,8 +135,8 @@
         <tr>
             <td>Design Style</td>
             <td>
-              {% if descriptionofimprovements != "empty" %}
-                {{  descriptionofimprovements.design_style|default_if_none:""}}
+              {% if improvements != "empty" %}
+                {{  improvements.design_style|default_if_none:""}}
               {% endif %}
             </td>
         </tr>
@@ -144,8 +144,8 @@
         <tr>
             <td>Age (Years)</td>
         <td>
-            {% if descriptionofimprovements != "empty" %}
-                {{ descriptionofimprovements.age|default_if_none:""}}
+            {% if improvements != "empty" %}
+                {{ improvements.age|default_if_none:""}}
             {% endif %}
         </td>
         </tr>
@@ -153,8 +153,8 @@
         <tr>
             <td>Effective Age</td>
         <td>
-            {% if descriptionofimprovements != "empty" %}
-                {{ descriptionofimprovements.effective_age|default_if_none:""}}
+            {% if improvements != "empty" %}
+                {{ improvements.effective_age|default_if_none:""}}
             {% endif %}
         </td>
         </tr>
@@ -162,8 +162,8 @@
         <tr>
             <td>Walls</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.walls|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.walls|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -171,8 +171,8 @@
         <tr>
             <td>Roof Surface</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.roof_surface|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.roof_surface|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -180,8 +180,8 @@
         <tr>
             <td>Gutter Downspouts</td>
             <td>
-             {% if descriptionofimprovements != "empty" %}
-                {{ descriptionofimprovements.gutters_downspouts|default_if_none:""}}
+             {% if improvements != "empty" %}
+                {{ improvements.gutters_downspouts|default_if_none:""}}
              {% endif %}
             </td>
         </tr>
@@ -189,8 +189,8 @@
         <tr>
             <td>Window Type</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.win_type|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.win_type|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -198,8 +198,8 @@
         <tr>
             <td>Storm Screens</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.storm_screens|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.storm_screens|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -222,8 +222,8 @@
         <tr>
             <td>Roof</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ DescriptionOfImprovements.roof_insulation|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.roof_insulation|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -231,8 +231,8 @@
         <tr>
             <td>Ceiling</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.ceiling_insulation|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.ceiling_insulation|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -240,8 +240,8 @@
         <tr>
             <td>Walls</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.walls_insulation|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.walls_insulation|default_if_none:""}}
                 {% endif %}
             </td>
         <tr>
@@ -249,8 +249,8 @@
         <tr>
             <td>Floor</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.floor_insulation|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.floor_insulation|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -258,8 +258,8 @@
         <tr>
             <td>None</td>
             <td>
-                {% if descriptionofimprovements != "empty" %}
-                    {{ descriptionofimprovements.none_insulation|default_if_none:""}}
+                {% if improvements != "empty" %}
+                    {{ improvements.none_insulation|default_if_none:""}}
                 {% endif %}
             </td>
         </tr>
@@ -271,7 +271,7 @@
                    data-original-title="This is where your appraiser can post any general comments about the description of improvements for you to see">
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a></td>
-        <td>{{ descriptionofimprovements.comment|default_if_none:""}}</td>
+        <td>{{ improvements.comments|default_if_none:""}}</td>
         </tr>
 
         </tbody>

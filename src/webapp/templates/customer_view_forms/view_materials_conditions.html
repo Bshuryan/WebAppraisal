@@ -135,8 +135,8 @@
     <tr>
         <td>Wall Material</td>
         <td>
-            {% if MaterialsAndCondition != "empty" %}
-                {{ MaterialsAndCondition.material_walls|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_walls|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -144,8 +144,8 @@
     <tr>
         <td>Wall Condition</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.condition_walls|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_walls|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -153,8 +153,8 @@
     <tr>
         <td>Floor Materials</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.material_floors|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_floors|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -162,8 +162,8 @@
     <tr>
         <td>Floor Condition</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.condition_floors|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_floors|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -171,8 +171,8 @@
     <tr>
         <td>Door Material</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.material_door|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_doors|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -180,8 +180,8 @@
     <tr>
         <td>Door Condition</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.condition_doors|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_doors|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -189,8 +189,8 @@
     <tr>
         <td>Bathroom Floor Material</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.material_bath_floor|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_bath_floor|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -198,8 +198,8 @@
     <tr>
         <td>Bathroom Floor Condition</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.condition_bath_floor|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_bath_floor|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -207,8 +207,8 @@
     <tr>
         <td>Bathroom Wainscot Material</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.material_bath_wainscot|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_bath_wainscot|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -216,8 +216,8 @@
     <tr>
         <td>Wainscot Condition</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.condition_bath_wainscot|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_bath_wainscot|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -225,8 +225,8 @@
     <tr>
         <td>Trim Material</td>
         <td>
-            {% if materialsandcondition != "empty" %}
-                {{ materialsandcondition.material_trim|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_trim|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -234,8 +234,8 @@
     <tr>
         <td>Trim Condition</td>
         <td>
-            {% if MaterialsAndCondition != "empty" %}
-                {{ MaterialsAndCondition.condition_walls|default_if_none:""}}
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_walls|default_if_none:""}}
             {% endif %}
         </td>
     </tr>
@@ -248,7 +248,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
         </td>
-        <td>{{ MaterialsAndCondition.comments|default_if_none:""}}</td>
+        <td>{{ materials_conditions.comments|default_if_none:""}}</td>
     </tr>
         </tbody>
 </table>

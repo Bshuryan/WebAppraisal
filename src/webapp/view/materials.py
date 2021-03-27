@@ -34,9 +34,9 @@ def view(request, house_id):
                     # set house id
                     new_img.house = House.objects.filter(id=house_id).first()
                     new_img.save()
-                    return redirect('/materials_conditions/%s/' % house_id)
+                    return redirect('/materials-conditions/%s/' % house_id)
                 else:
-                    return redirect('/materials_conditions/%s/' % house_id)
+                    return redirect('/materials-conditions/%s/' % house_id)
 
             elif 'submit_desc' in request.POST:
                 img_id = request.POST['img_id']
@@ -44,24 +44,24 @@ def view(request, house_id):
                 form = ImageFormWithDescription(request.POST, instance=img_instance)
                 if form.is_valid():
                     form.save()
-                    return redirect('/materials_conditions/%s/' % house_id)
+                    return redirect('/materials-conditions/%s/' % house_id)
                 else:
-                    return redirect('/materials_conditions/%s/' % house_id)
+                    return redirect('/materials-conditions/%s/' % house_id)
 
             # on the button: <input type=submit name=update_account
-            if 'submit_materials_conditions_info' in request.POST:
+            if 'submit_materials_condition_info' in request.POST:
                 # we need to update the object
                 if MaterialsAndCondition.objects.filter(house_id=house_id).exists():
-                    amenities_info = MaterialsAndCondition.objects.get(house_id=house_id)
-                    form = MaterialsConditionForm(request.POST, instance=amenities_info)
+                    materials_conditions_instance = MaterialsAndCondition.objects.get(house_id=house_id)
+                    form = MaterialsConditionForm(request.POST, instance=materials_conditions_instance)
 
                     if form.is_valid():
                         form.save()
                         messages.success(request, "We've successfully updated the materials conditions information")
-                        return redirect('/materials_conditions/%s/' % house_id)
+                        return redirect('/materials-conditions/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/materials_conditions/%s/' % house_id)
+                        return redirect('/materials-conditions/%s/' % house_id)
 
                 # we need to create a new instance
                 else:
@@ -72,21 +72,21 @@ def view(request, house_id):
                         new_table_instance.house = House.objects.get(id=house_id)
                         new_table_instance.save()
                         messages.success(request, "We've successfully updated the materials conditions information")
-                        return redirect('/amenities/%s/' % house_id)
+                        return redirect('/materials-conditions/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/materials_conditions/%s/' % house_id)
+                        return redirect('/materials-conditions/%s/' % house_id)
 
             # hopefully won't reach here but just in case redirect back to same page
             else:
-                return redirect('/materials_conditions/%s/' % house_id)
+                return redirect('/materials-conditions/%s/' % house_id)
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
             img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
 
             if MaterialsAndCondition.objects.filter(house=house_id).exists():
-                materials_conditions_info = Amenities.objects.get(house=house_id)
+                materials_conditions_info = MaterialsAndCondition.objects.get(house=house_id)
                 form = MaterialsConditionForm(instance=materials_conditions_info)
             else:
                 form = MaterialsConditionForm(request.POST)
