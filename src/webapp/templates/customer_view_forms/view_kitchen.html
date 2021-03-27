@@ -131,7 +131,7 @@
           <tr>
             <td>Description</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_description|default_if_none:""}}
               {% endif %}
             </td>
@@ -140,7 +140,7 @@
           <tr>
             <td>Refrigerator</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_refrig|default_if_none:""}}
               {% endif %}
             </td>
@@ -149,7 +149,7 @@
           <tr>
             <td>Oven</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_oven|default_if_none:""}}
               {% endif %}
             </td>
@@ -158,7 +158,7 @@
           <tr>
             <td>Dishwasher</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_dishwasher|default_if_none:""}}
               {% endif %}
             </td>
@@ -167,7 +167,7 @@
           <tr>
             <td>Microwave</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_microwave|default_if_none:""}}
               {% endif %}
             </td>
@@ -176,7 +176,7 @@
           <tr>
             <td>Cabinets</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_cabinets|default_if_none:""}}
               {% endif %}
             </td>
@@ -185,7 +185,7 @@
           <tr>
             <td>Garbage Disposal</td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_disposal|default_if_none:""}}
               {% endif %}
             </td>
@@ -196,7 +196,7 @@
               Fan Hood
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if kitchen != "empty" %}
                 {{  kitchen.kitchen_fan_hood|default_if_none:""}}
               {% endif %}
             </td>

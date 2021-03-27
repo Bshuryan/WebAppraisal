@@ -12,7 +12,7 @@ def view(request, house_id):
     # TODO: Add generic error page to redirect to when don't have access
     # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
     role = Profile.objects.get(user_id=request.user.id).role
-    images = Image.objects.filter(house_id=house_id, page=Image.Pages.SITE)
+    images = Image.objects.filter(house_id=house_id, page=Image.Pages.MATERIALS_CONDITIONS)
 
     if role == Profile.Roles.APPRAISER:
         is_mobile = request.user_agent.is_mobile
@@ -30,13 +30,13 @@ def view(request, house_id):
                 if form.is_valid():
                     new_img = form.save(commit=False)
                     # set page
-                    new_img.page = Image.Pages.SITE
+                    new_img.page = Image.Pages.MATERIALS_CONDITIONS
                     # set house id
                     new_img.house = House.objects.filter(id=house_id).first()
                     new_img.save()
-                    return redirect('/site/%s/' % house_id)
+                    return redirect('/materials_conditions/%s/' % house_id)
                 else:
-                    return redirect('/site/%s/' % house_id)
+                    return redirect('/materials_conditions/%s/' % house_id)
 
             elif 'submit_desc' in request.POST:
                 img_id = request.POST['img_id']
@@ -44,61 +44,61 @@ def view(request, house_id):
                 form = ImageFormWithDescription(request.POST, instance=img_instance)
                 if form.is_valid():
                     form.save()
-                    return redirect('/site/%s/' % house_id)
+                    return redirect('/materials_conditions/%s/' % house_id)
                 else:
-                    return redirect('/site/%s/' % house_id)
+                    return redirect('/materials_conditions/%s/' % house_id)
 
             # on the button: <input type=submit name=update_account
-            if 'submit_site_info' in request.POST:
+            if 'submit_materials_conditions_info' in request.POST:
                 # we need to update the object
-                if Site.objects.filter(house_id=house_id).exists():
-                    site_info = Site.objects.get(house_id=house_id)
-                    form = SiteForm(request.POST, instance=site_info)
+                if MaterialsAndCondition.objects.filter(house_id=house_id).exists():
+                    amenities_info = MaterialsAndCondition.objects.get(house_id=house_id)
+                    form = MaterialsConditionForm(request.POST, instance=amenities_info)
 
                     if form.is_valid():
                         form.save()
-                        messages.success(request, "We've successfully updated the site information")
-                        return redirect('/site/%s/' % house_id)
+                        messages.success(request, "We've successfully updated the materials conditions information")
+                        return redirect('/materials_conditions/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/site/%s/' % house_id)
+                        return redirect('/materials_conditions/%s/' % house_id)
 
                 # we need to create a new instance
                 else:
-                    form = BasementForm(request.POST)
+                    form = MaterialsConditionForm(request.POST)
                     if form.is_valid():
                         new_table_instance = form.save(commit=False)
                         # Important: set foreign key to house id
                         new_table_instance.house = House.objects.get(id=house_id)
                         new_table_instance.save()
-                        messages.success(request, "We've successfully updated the site information")
-                        return redirect('/site/%s/' % house_id)
+                        messages.success(request, "We've successfully updated the materials conditions information")
+                        return redirect('/amenities/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/site/%s/' % house_id)
+                        return redirect('/materials_conditions/%s/' % house_id)
 
             # hopefully won't reach here but just in case redirect back to same page
             else:
-                return redirect('/site/%s/' % house_id)
+                return redirect('/materials_conditions/%s/' % house_id)
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
             img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
 
-            if Site.objects.filter(house=house_id).exists():
-                site_info = Site.objects.get(house=house_id)
-                form = SiteForm(instance=site_info)
+            if MaterialsAndCondition.objects.filter(house=house_id).exists():
+                materials_conditions_info = Amenities.objects.get(house=house_id)
+                form = MaterialsConditionForm(instance=materials_conditions_info)
             else:
-                form = SiteForm(request.POST)
+                form = MaterialsConditionForm(request.POST)
 
-            return render(request, 'appraisal_edit_forms/site.html',
+            return render(request, 'appraisal_edit_forms/materials_conditions.html',
                           context={'form': form, 'house_id': house_id,
                                    'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,
                                    'img_forms': img_forms, 'new_img_form': add_image_form})
     else:
-        if Site.objects.filter(house_id=house_id).exists():
-            site_info = Site.objects.get(house_id=house_id)
+        if MaterialsAndCondition.objects.filter(house_id=house_id).exists():
+            materials_conditions_info = MaterialsAndCondition.objects.get(house_id=house_id)
         else:
-            site_info = 'empty'
-        return render(request, 'customer_view_forms/view_site.html',
-                      context={'site': site_info, 'house_id': house_id})
+            materials_conditions_info = 'empty'
+        return render(request, 'customer_view_forms/view_materials_conditions.html',
+                      context={'materials_conditions': materials_conditions_info, 'house_id': house_id})

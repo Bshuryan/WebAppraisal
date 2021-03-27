@@ -132,7 +132,7 @@
           <tr>
             <td>Washer/Dryer</td>
            <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.washer_dryer|default_if_none:""}}
               {% endif %}
             </td>
@@ -141,7 +141,7 @@
           <tr>
             <td>Heat Type</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_type|default_if_none:""}}
               {% endif %}
             </td>
@@ -150,7 +150,7 @@
           <tr>
             <td>Heating Fuel</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_fuel|default_if_none:""}}
               {% endif %}
             </td>
@@ -159,7 +159,7 @@
           <tr>
             <td>Heating Condition</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_condition|default_if_none:""}}
               {% endif %}
             </td>
@@ -168,7 +168,7 @@
           <tr>
             <td>Cooling Type</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.cooling_type|default_if_none:""}}
               {% endif %}
             </td>
@@ -177,7 +177,7 @@
           <tr>
             <td>Cooling Condition</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.cooling_condition|default_if_none:""}}
               {% endif %}
             </td>

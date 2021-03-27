@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Description Improvements</title>
-
 </head>
-
 <header>
       <div class="container">
       <nav class="navbar navbar-default">
@@ -136,51 +134,84 @@
 
         <tr>
             <td>Design Style</td>
-            <td>info here</td>
+            <td>
+              {% if descriptionofimprovements != "empty" %}
+                {{  descriptionofimprovements.design_style|default_if_none:""}}
+              {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Age (Years)</td>
-            <td>info here</td>
+        <td>
+            {% if descriptionofimprovements != "empty" %}
+                {{ descriptionofimprovements.age|default_if_none:""}}
+            {% endif %}
+        </td>
         </tr>
 
         <tr>
             <td>Effective Age</td>
-            <td>info here</td>
+        <td>
+            {% if descriptionofimprovements != "empty" %}
+                {{ descriptionofimprovements.effective_age|default_if_none:""}}
+            {% endif %}
+        </td>
         </tr>
 
         <tr>
             <td>Walls</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.walls|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Roof Surface</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.roof_surface|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Gutter Downspouts</td>
-            <td>info here</td>
+            <td>
+             {% if descriptionofimprovements != "empty" %}
+                {{ descriptionofimprovements.gutters_downspouts|default_if_none:""}}
+             {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Window Type</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.win_type|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Storm Screens</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.storm_screens|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         </tbody>
     </table>
-      </div><br>
+    <br>
 
     <h1 class="form-header webappraisal-header">Insulation</h1>
         <hr>
     <table class="table table-striped">
+
         <thead>
          <tr>
             <th scope="col">Category</th>
@@ -190,27 +221,47 @@
         <tbody>
         <tr>
             <td>Roof</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ DescriptionOfImprovements.roof_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Ceiling</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.ceiling_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Walls</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.walls_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         <tr>
 
         <tr>
             <td>Floor</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.floor_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>None</td>
-            <td>info here</td>
+            <td>
+                {% if descriptionofimprovements != "empty" %}
+                    {{ descriptionofimprovements.none_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
@@ -220,7 +271,7 @@
                    data-original-title="This is where your appraiser can post any general comments about the description of improvements for you to see">
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a></td>
-        <td>{{ appraisal.comments|default_if_none:""}}</td>
+        <td>{{ descriptionofimprovements.comment|default_if_none:""}}</td>
         </tr>
 
         </tbody>

@@ -157,7 +157,7 @@
         <tr>
             <td>Crawl Space</td>
             <td>
-              {% if property != "empty" %}
+              {% if foundation != "empty" %}
                 {{ foundation.crawl_space|default_if_none:""}}
               {% endif %}
             </td>
@@ -166,7 +166,7 @@
           <tr>
             <td>Slab</td>
             <td>
-              {% if property != "empty" %}
+              {% if foundation != "empty" %}
                 {{ foundation.slab|default_if_none:""}}
               {% endif %}
             </td>
@@ -175,7 +175,7 @@
         <tr>
             <td>Sump Pump</td>
             <td>
-              {% if property != "empty" %}
+              {% if foundation != "empty" %}
                 {{ foundation.sump_pump|default_if_none:""}}
               {% endif %}
             </td>
@@ -189,7 +189,11 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
             </td>
-            <td>{{ foundation.dampness|default_if_none:""}}</td>
+            <td>
+                {% if foundation != "empty" %}
+                 {{ foundation.dampness|default_if_none:""}}
+                {% endif %}
+            </td>
           </tr>
 
         <tr>
