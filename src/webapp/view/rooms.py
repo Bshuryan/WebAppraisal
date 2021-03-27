@@ -137,7 +137,7 @@ def rooms_view(request, house_id):
         else:
             summary = 'empty'
         return render(request, 'customer_view_forms/view_rooms.html', context={'summary': summary, 'rooms': rooms,
-                                                                               'house_id': house_id })
+                                                                               'house_id': house_id, 'images': images })
 
 
 @login_required(login_url='/welcome')

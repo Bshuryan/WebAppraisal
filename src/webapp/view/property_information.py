@@ -98,4 +98,5 @@ def view(request, house_id):
             property_info = Property.objects.get(house_id=house_id)
         else:
             property_info = 'empty'
-        return render(request, 'customer_view_forms/view_property_information.html', context={'property': property_info, 'house_id': house_id})
+        return render(request, 'customer_view_forms/view_property_information.html', context={'property': property_info, 'house_id': house_id,
+                                                                                              'images': images})

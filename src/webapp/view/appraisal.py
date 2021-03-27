@@ -101,4 +101,4 @@ def view(request,house_id):
         else:
             appraisal_info = 'empty'
         return render(request, 'customer_view_forms/view_appraisal.html',
-                      context={'appraisal': appraisal_info, 'house_id': house_id})
+                      context={'appraisal': appraisal_info, 'house_id': house_id, 'images': images})
