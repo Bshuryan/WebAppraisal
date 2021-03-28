@@ -13,6 +13,9 @@
 </head>
 
 <header>
+
+    <!-- Old style nav, looks better but opens off-screen in mobile 
+    
     <div class="container">
       <nav class="navbar navbar-default">
           <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
@@ -35,6 +38,30 @@
             </div>
         </nav>
     </div>
+    
+    -->
+    
+    <nav class="navbar navbar-default">
+    <a href="/home" class="navbar-brand">WebAppraisal</a>
+       
+    <div class="dropdown pull-right">
+      <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
+        <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+      </button>
+          
+      <div class="dropdown-menu" aria-labelledby="account-management">
+        <a href="/account-management" class="dropdown-item btn btn-secondary">
+          <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+        </a>
+        <br>
+        <a href="/welcome" class="dropdown-item btn btn-secondary">
+          <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+        </a>
+      </div>
+    </div>  
+  </nav>
+  
+  
 </header>
 
 <body class="bg-light">
