@@ -47,12 +47,13 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
-            <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
+            </button><br>
           </div>
           <div class="modal-body">
+            <div class="row">
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -63,36 +64,37 @@
               </thead>
               <tbody>
                   <tr>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../amenities/{{ house_id }}" class="btn btn-primary">Amenities</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../basement/{{ house_id }}" class="btn btn-primary">Basement</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../comments/{{ house_id }}" class="btn btn-primary">Comments</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../amenities/{{ house_id }}" >Amenities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../basement/{{ house_id }}">Basement</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../comments/{{ house_id }}">Comments</a></td>
                   </tr>
 
                   <tr>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../foundation/{{ house_id }}" class="btn btn-primary">Foundation</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../general/{{ house_id }}" class="btn btn-primary">General</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../description-improvements/{{ house_id }}" class="btn btn-primary">Improvements</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../foundation/{{ house_id }}" >Foundation</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../general/{{ house_id }}">General</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../description-improvements/{{ house_id }}" >Improvements</a></td>
                   </tr>
 
                   <tr>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../kitchen/{{ house_id }}" class="btn btn-primary">Kitchen</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../materials-conditions/{{ house_id }}" class="btn btn-primary">Materials and Conditions</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../neighborhood/{{ house_id }}" class="btn btn-primary">Neighborhood</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../kitchen/{{ house_id }}" >Kitchen</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../neighborhood/{{ house_id }}" >Neighborhood</a></td>
                   </tr>
 
                   <tr>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../offsite-information/{{ house_id }}" class="btn btn-primary">Offsite Information</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../property-information/{{ house_id }}" class="btn btn-primary">Property Information</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../rooms/{{ house_id }}" class="btn btn-primary">Rooms</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../offsite-information/{{ house_id }}" >Offsite Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../property-information/{{ house_id }}" >Property Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../rooms/{{ house_id }}">Rooms</a></td>
                   </tr>
 
                   <tr>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../site/{{ house_id }}" class="btn btn-primary">Site Information</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../utilities/{{ house_id }}" class="btn btn-primary">Utilities</a></td>
-                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}" class="btn btn-primary">Appraisal</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../site/{{ house_id }}">Site Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../utilities/{{ house_id }}">Utilities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}">Appraisal</a></td>
                   </tr>
               </tbody>
           </table>
+            </div>
               </div>
             </div>
             &nbsp

@@ -101,4 +101,4 @@ def view(request, house_id):
             neighborhood_instance = 'empty'
 
         return render(request, 'customer_view_forms/view_neighborhood.html',
-                      context={'neighborhood': neighborhood_instance, 'house_id': house_id})
+                      context={'neighborhood': neighborhood_instance, 'house_id': house_id, 'images': images})

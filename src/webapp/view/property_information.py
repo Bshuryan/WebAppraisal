@@ -9,6 +9,7 @@ from src.webapp.models import *
 
 @login_required(login_url='/welcome')
 def view(request, house_id):
+    # TODO: Add generic error page to redirect to when don't have access
     # assert hasAccessToAppraisal(user_id=request.user.id, house_id=house_id) is True
     role = Profile.objects.get(user_id=request.user.id).role
     images = Image.objects.filter(house_id=house_id, page=Image.Pages.PROPERTY)
@@ -83,17 +84,15 @@ def view(request, house_id):
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
             img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
-
             if Property.objects.filter(house=house_id).exists():
                 property_info = Property.objects.get(house=house_id)
                 form = PropertyInformationForm(instance=property_info)
             else:
                 form = PropertyInformationForm(request.POST)
 
-            return render(request, 'appraisal_edit_forms/property_information.html',
-                          context={'form': form, 'house_id': house_id,
-                                   'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,
-                                   'img_forms': img_forms, 'new_img_form': add_image_form})
+            return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form, 'house_id': house_id,
+                                                                                              'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,
+                                                                                              'img_forms': img_forms, 'new_img_form': add_image_form })
     else:
         if Property.objects.filter(house_id=house_id).exists():
             property_info = Property.objects.get(house_id=house_id)
