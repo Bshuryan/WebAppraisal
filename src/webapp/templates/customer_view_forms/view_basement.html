@@ -99,7 +99,8 @@
             &nbsp
           </div>
         </div>
-
+      </div>
+    </div>
         <h1 class="form-header webappraisal-header">Basement</h1>
         <hr>
 
@@ -115,7 +116,7 @@
         <tr>
             <td>Area (Sqft.)</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_area|default_if_none:""}}
               {% endif %}
             </td>
@@ -124,7 +125,7 @@
           <tr>
             <td>Ceiling</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_ceiling|default_if_none:""}}
               {% endif %}
             </td>
@@ -133,7 +134,7 @@
         <tr>
             <td>Walls</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_walls|default_if_none:""}}
               {% endif %}
             </td>
@@ -142,7 +143,7 @@
         <tr>
             <td>Floor</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_floor|default_if_none:""}}
               {% endif %}
             </td>
@@ -151,7 +152,7 @@
         <tr>
             <td>Percent Finished</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_percent_finished|default_if_none:""}}
               {% endif %}
             </td>
@@ -160,7 +161,7 @@
         <tr>
             <td>Outside Entry</td>
             <td>
-              {% if property != "empty" %}
+              {% if basement != "empty" %}
                 {{ basement.basement_outside_entry|default_if_none:""}}
               {% endif %}
             </td>

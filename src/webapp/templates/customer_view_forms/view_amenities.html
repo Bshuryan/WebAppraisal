@@ -36,6 +36,7 @@
 
 
 <body class="bg-light">
+
     <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
@@ -116,7 +117,7 @@
         <tr>
             <td>Pool</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.pool|default_if_none:""}}
               {% endif %}
             </td>
@@ -125,7 +126,7 @@
           <tr>
             <td>Fireplace</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{  amenities.fireplace|default_if_none:""}}
               {% endif %}
             </td>
@@ -134,7 +135,7 @@
           <tr>
             <td>Patio</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                {{ amenities.patio|default_if_none:""}}
               {% endif %}
             </td>
@@ -143,7 +144,7 @@
           <tr>
             <td>Deck</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                  {{ amenities.deck|default_if_none:""}}
               {% endif %}
             </td>
@@ -152,7 +153,7 @@
           <tr>
             <td>Porch</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.porch|default_if_none:"" }}
               {% endif %}
             </td>
@@ -161,7 +162,7 @@
           <tr>
             <td>Fence</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.fence|default_if_none:""}}
               {% endif %}
             </td>
@@ -170,7 +171,7 @@
           <tr>
             <td>Garage</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.garage|default_if_none:""}}
               {% endif %}
             </td>
@@ -179,7 +180,7 @@
           <tr>
             <td>Basement</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.basement|default_if_none:""}}
               {% endif %}
             </td>
@@ -188,7 +189,7 @@
         <tr>
             <td>Attic</td>
             <td>
-              {% if property != "empty" %}
+              {% if amenities != "empty" %}
                 {{ amenities.attic|default_if_none:""}}
               {% endif %}
             </td>

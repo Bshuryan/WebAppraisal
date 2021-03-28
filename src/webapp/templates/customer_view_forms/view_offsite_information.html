@@ -117,12 +117,12 @@
         <tr>
             <td>Curb</td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_curb|default_if_none:""}}
               {% endif %}
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_curb_note|default_if_none:""}}
               {% endif %}
             </td>
@@ -131,12 +131,12 @@
         <tr>
             <td>Street</td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_street|default_if_none:""}}
               {% endif %}
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_street_note|default_if_none:""}}
               {% endif %}
             </td>
@@ -145,12 +145,12 @@
         <tr>
             <td>Streetlight</td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_streetlights|default_if_none:""}}
               {% endif %}
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_streetlight_note|default_if_none:""}}
               {% endif %}
             </td>
@@ -159,12 +159,12 @@
           <tr>
             <td>Sidewalk</td>
               <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_sidewalk|default_if_none:""}}
               {% endif %}
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_sidewalk_note|default_if_none:""}}
               {% endif %}
             </td>
@@ -173,12 +173,12 @@
         <tr>
             <td>Alley</td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_alley|default_if_none:""}}
               {% endif %}
             </td>
             <td>
-              {% if property != "empty" %}
+              {% if offsite != "empty" %}
                 {{ offsite.offsite_alley_note|default_if_none:""}}
               {% endif %}
             </td>

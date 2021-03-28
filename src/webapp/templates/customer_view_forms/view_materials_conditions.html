@@ -117,62 +117,110 @@
 
     <tr>
         <td>Wall Material</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_walls|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Wall Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_walls|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Floor Materials</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_floors|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Floor Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_floors|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Door Material</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_doors|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Door Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_doors|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Bathroom Floor Material</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_bath_floor|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Bathroom Floor Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_bath_floor|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Bathroom Wainscot Material</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_bath_wainscot|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Wainscot Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_bath_wainscot|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Trim Material</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.material_trim|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
         <td>Trim Condition</td>
-        <td>info here</td>
+        <td>
+            {% if materials_conditions != "empty" %}
+                {{ materials_conditions.condition_walls|default_if_none:""}}
+            {% endif %}
+        </td>
     </tr>
 
     <tr>
@@ -183,7 +231,7 @@
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a>
         </td>
-        <td>{{ appraisal.comments|default_if_none:""}}</td>
+        <td>{{ materials_conditions.comments|default_if_none:""}}</td>
     </tr>
         </tbody>
 </table>

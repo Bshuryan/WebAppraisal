@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../../static/css/FormStyle.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <title>Utilities</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/FormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Utilites</title>
 </head>
 <header>
-  <div class="container">
-    <nav class="navbar navbar-default">
-      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-      <div class="dropdown">
-        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="account-management">
-          <li>
-            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-            </a>
-          </li>
-          <li>
-            <a href="/welcome" class="btn btn-default btn-block text-left">
-              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+    <div class="container">
+      <nav class="navbar navbar-default">
+          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+                </button>
+                   <ul class="dropdown-menu" aria-labelledby="account-management">
+                        <li>
+                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/welcome" class="btn btn-default btn-block text-left">
+                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+                            </a>
+                        </li>
+                   </ul>
+            </div>
+        </nav>
+    </div>
 </header>
 
 <body class="bg-light">
+
     <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
@@ -114,7 +115,7 @@
           <tr>
             <td>Washer/Dryer</td>
            <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.washer_dryer|default_if_none:""}}
               {% endif %}
             </td>
@@ -123,7 +124,7 @@
           <tr>
             <td>Heat Type</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_type|default_if_none:""}}
               {% endif %}
             </td>
@@ -132,7 +133,7 @@
           <tr>
             <td>Heating Fuel</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_fuel|default_if_none:""}}
               {% endif %}
             </td>
@@ -141,7 +142,7 @@
           <tr>
             <td>Heating Condition</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.heat_condition|default_if_none:""}}
               {% endif %}
             </td>
@@ -150,7 +151,7 @@
           <tr>
             <td>Cooling Type</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.cooling_type|default_if_none:""}}
               {% endif %}
             </td>
@@ -159,7 +160,7 @@
           <tr>
             <td>Cooling Condition</td>
             <td>
-              {% if property != "empty" %}
+              {% if utilities != "empty" %}
                 {{ utilities.cooling_condition|default_if_none:""}}
               {% endif %}
             </td>

@@ -34,9 +34,9 @@ def view(request, house_id):
                     # set house id
                     new_img.house = House.objects.filter(id=house_id).first()
                     new_img.save()
-                    return redirect('/property-information/%s' % house_id)
+                    return redirect('/property_information/%s/' % house_id)
                 else:
-                    return redirect('/property-information/%s' % house_id)
+                    return redirect('/property_information/%s/' % house_id)
 
             elif 'submit_desc' in request.POST:
                 img_id = request.POST['img_id']
@@ -44,9 +44,9 @@ def view(request, house_id):
                 form = ImageFormWithDescription(request.POST, instance=img_instance)
                 if form.is_valid():
                     form.save()
-                    return redirect('/property-information/%s' % house_id)
+                    return redirect('/property_information/%s/' % house_id)
                 else:
-                    return redirect('/property-information/%s' % house_id)
+                    return redirect('/property_information/%s/' % house_id)
 
             # on the button: <input type=submit name=update_account
             if 'submit_prop_info' in request.POST:
@@ -57,11 +57,11 @@ def view(request, house_id):
 
                     if form.is_valid():
                         form.save()
-                        messages.success(request, "We've successfully updated the housing information")
-                        return redirect('/property-information/%s/' % house_id)
+                        messages.success(request, "We've successfully updated the property information")
+                        return redirect('/property_information/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/property-information/%s/' % house_id)
+                        return redirect('/property_information/%s/' % house_id)
 
                 # we need to create a new instance
                 else:
@@ -71,15 +71,15 @@ def view(request, house_id):
                         # Important: set foreign key to house id
                         new_table_instance.house = House.objects.get(id=house_id)
                         new_table_instance.save()
-                        messages.success(request, "We've successfully updated the housing information")
-                        return redirect('/property-information/%s/' % house_id)
+                        messages.success(request, "We've successfully updated the property information")
+                        return redirect('/property_information/%s/' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
-                        return redirect('/property-information/%s/' % house_id)
+                        return redirect('/property_information/%s/' % house_id)
 
             # hopefully won't reach here but just in case redirect back to same page
             else:
-                return redirect('/property-information/%s/' % house_id)
+                return redirect('/property_information/%s/' % house_id)
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
@@ -98,5 +98,5 @@ def view(request, house_id):
             property_info = Property.objects.get(house_id=house_id)
         else:
             property_info = 'empty'
-        return render(request, 'customer_view_forms/view_property_information.html', context={'property': property_info, 'house_id': house_id,
-                                                                                              'images': images})
+        return render(request, 'customer_view_forms/view_property_information.html',
+                      context={'property': property_info, 'house_id': house_id})
