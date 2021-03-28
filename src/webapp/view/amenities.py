@@ -101,4 +101,4 @@ def view(request, house_id):
         else:
             amenities_info = 'empty'
         return render(request, 'customer_view_forms/view_amenities.html',
-                      context={'improvements': amenities_info, 'house_id': house_id})
+                      context={'amenities': amenities_info, 'house_id': house_id})
