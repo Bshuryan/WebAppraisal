@@ -1,4 +1,5 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
 .card-img-top {
     width: 100%;
@@ -7,7 +8,7 @@
 }
 
 .webappraisal-header {
-  font-family: Georgia, serif;
+  font-family: 'Raleway', serif;
 }
 
 .jumbotron {
@@ -49,7 +50,7 @@
 }
 
 .dropdown-text {
-  font-family: Georgia, serif;
+  font-family: 'Raleway', serif;
   font-size: 50%;
 }
 

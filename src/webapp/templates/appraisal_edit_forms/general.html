@@ -9,31 +9,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="../static/img/webappraisal_logo.png">
     <title>General Information</title>
 </head>
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <link rel="stylesheet" href="../../static/css/FormStyle.css">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" href="../static/css/homepagestyle.css">#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">#}
+{#    <link rel="preconnect" href="https://fonts.gstatic.com">#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+{#    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>#}
+{#    <title>Homepage</title>#}
+{#    <link rel="icon" href="../static/img/webappraisal_logo.png">#}
+{#</head>#}
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
+  <div class="container">
+      <nav class="navbar navbar-default" style="border: none;">
+        <div>
+          <a href="/home" class="navbar-brand webappraisal-header">
+                  <span style="font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130% ">
+                    <img src="../static/img/webappraisal_logo.png" width="52" height="45" class="d-inline-block align-top" alt="">
+                    <strong> WebAppraisal</strong>
+                  </span>
+                </a><br>
+
+          <div class="dropdown pull-right">
+            <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
+              <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="account-management">
+              <a href="/account-management" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+              </a>
+              <br>
+              <a href="/welcome" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+              </a>
             </div>
-        </nav>
-    </div>
+          </div><br>
+        </div>
+      </nav></div><br>
 </header>
 
 <body class="bg-light">

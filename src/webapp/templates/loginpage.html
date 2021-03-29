@@ -7,45 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body style="background-color: rgba(0,0,0,0)">
- 
-    <!-------------------------- NAV BAR ------------------->
-    
-  <nav class="navbar navbar-default">
-        <a href="/home" class="navbar-brand">WebAppraisal</a>
-       
-          <div class="dropdown pull-right">
-            <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
-              <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-            </button>
-          
-          <div class="dropdown-menu" aria-labelledby="account-management">
-              <a href="/account-management" class="dropdown-item btn btn-secondary">
-                <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
-              </a>
-              <br>
-              <a href="/welcome" class="dropdown-item btn btn-secondary">
-                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
-              </a>
-          </div>
-        </div>
-      </div>
-    </div>  
-  </nav>
-      
-      <!---------------- LOGIN FORM --------------->
-      
-  <br><br><br>
-  <div class="container">
+  <div class="container"><br><br>
     <div class="container" style="max-width:300px; border-radius:10px; background-color: rgba(220, 220, 220, 0.8)">
-      
+      <br>
         <form method="POST">
           {% csrf_token %}
-          <h1 style="font-family: Georgia, serif; text-align:left">Welcome</h1>
-          
+            <span style="font-family: 'Raleway', sans-serif; font-size: 150%">
+              <img src="../static/img/webappraisal_logo_dark.png" width="55" height="45" class="d-inline-block align-top" alt="">
+              <bold>WebAppraisal</bold>
+            </span>
           <hr>
           <div>
             <div>
@@ -85,7 +61,7 @@
           
           <hr>
           
-          <h3 style="font-family: Georgia, serif; text-align:center">Or</h3>
+          <h3 style="font-family: 'Raleway', serif; text-align:center">Or</h3>
           
           <hr>
           
@@ -95,13 +71,14 @@
         </form>
     </div>
   </div>
-  
-  
-  <footer class="" style="width:100%; position:absolute; bottom:0; background-color:rgba(200, 200, 200, 0.0)">
-    <div class="container text-center">
-      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
-    </div>
-  </footer>
+
+<!-- Footer doesn't look great on mobile view, disabling for all pages becasue it isn't really necessary -->
+
+{#  <footer class="" style="width:100%; position:absolute; bottom:0; background-color:rgba(200, 200, 200, 0.0)">#}
+{#    <div class="container text-center">#}
+{#      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>#}
+{#    </div>#}
+{#  </footer>#}
   
   
 </body>
