@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/FormStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Description Improvements</title>
+    <title>Description of Improvements</title>
 
 </head>
-
 <header>
       <div class="container">
       <nav class="navbar navbar-default">
@@ -36,11 +36,10 @@
     </div>
 </header>
 <body class="bg-light">
-
-<div class="container">
+    <div class="container">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-      Open Navigation Menu
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+      <span class="glyphicon glyphicon-th"></span> Navigate
     </button>
 
     <!-- Modal -->
@@ -48,77 +47,60 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Appraisal Pages</h3>
+            <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button><br>
           </div>
           <div class="modal-body">
+            <div class="row">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../amenities/{{ house_id }}" >Amenities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../basement/{{ house_id }}">Basement</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../comments/{{ house_id }}">Comments</a></td>
+                  </tr>
 
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../amenities">Amenities</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement">Basement</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments">Comments</a>
-              </div>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../foundation/{{ house_id }}" >Foundation</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../general/{{ house_id }}">General</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../description-improvements/{{ house_id }}" >Improvements</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../kitchen/{{ house_id }}" >Kitchen</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../neighborhood/{{ house_id }}" >Neighborhood</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../offsite-information/{{ house_id }}" >Offsite Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../property-information/{{ house_id }}" >Property Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../rooms/{{ house_id }}">Rooms</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../site/{{ house_id }}">Site Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../utilities/{{ house_id }}">Utilities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}">Appraisal</a></td>
+                  </tr>
+              </tbody>
+          </table>
             </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">Foundation</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">General</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../description-improvements">Improvements</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../materials-conditions">Materials and Conditions</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../neighborhood/{{ house_id }}">Neighborhood</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../general/{{ house_id }}">Rooms</a>
-              </div>
-            </div>
-
-            <div class="form-row text-center">
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../site">Site Information</a>
-              </div>
-              <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../utilities">Utilities</a>
-              </div>
-              <div class="form-group col-md-4">
-
               </div>
             </div>
             &nbsp
           </div>
         </div>
-      </div>
-    </div>
+
 
 <div class="container">
         <h1 class="form-header webappraisal-header">Description of Improvements</h1>
@@ -136,47 +118,79 @@
 
         <tr>
             <td>Design Style</td>
-            <td>info here</td>
+            <td>
+              {% if improvements != "empty" %}
+                {{  improvements.design_style|default_if_none:""}}
+              {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Age (Years)</td>
-            <td>info here</td>
+        <td>
+            {% if improvements != "empty" %}
+                {{ improvements.age|default_if_none:""}}
+            {% endif %}
+        </td>
         </tr>
 
         <tr>
             <td>Effective Age</td>
-            <td>info here</td>
+        <td>
+            {% if improvements != "empty" %}
+                {{ improvements.effective_age|default_if_none:""}}
+            {% endif %}
+        </td>
         </tr>
 
         <tr>
             <td>Walls</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.walls|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Roof Surface</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.roof_surface|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Gutter Downspouts</td>
-            <td>info here</td>
+            <td>
+             {% if improvements != "empty" %}
+                {{ improvements.gutters_downspouts|default_if_none:""}}
+             {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Window Type</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.win_type|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Storm Screens</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.storm_screens|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         </tbody>
     </table>
-      </div><br>
+    <br>
 
     <h1 class="form-header webappraisal-header">Insulation</h1>
         <hr>
@@ -190,27 +204,47 @@
         <tbody>
         <tr>
             <td>Roof</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.roof_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Ceiling</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.ceiling_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>Walls</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.walls_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         <tr>
 
         <tr>
             <td>Floor</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.floor_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
             <td>None</td>
-            <td>info here</td>
+            <td>
+                {% if improvements != "empty" %}
+                    {{ improvements.none_insulation|default_if_none:""}}
+                {% endif %}
+            </td>
         </tr>
 
         <tr>
@@ -220,7 +254,7 @@
                    data-original-title="This is where your appraiser can post any general comments about the description of improvements for you to see">
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </a></td>
-        <td>{{ appraisal.comments|default_if_none:""}}</td>
+        <td>{{ improvements.comments|default_if_none:""}}</td>
         </tr>
 
         </tbody>

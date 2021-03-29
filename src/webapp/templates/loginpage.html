@@ -1,73 +1,86 @@
 {% load widget_tweaks %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%; background-repeat:no-repeat; background-image: url('https://www.cvfhomes.com/wp-content/uploads/2019/03/631-simple-way-san-antonio-tx-1-High-Res-2.jpg');background-size: cover;" >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <head>
- <link rel="stylesheet" href="../static/css/loginstyle.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-<div style="vertical-align: middle; height:1200px; background-image: url('https://www.cvfhomes.com/wp-content/uploads/2019/03/631-simple-way-san-antonio-tx-1-High-Res-2.jpg');background-size: cover;" >
-	<div class="container-div">
-		<div class="innerdiv" style="text-align:center">
-			<font color="#ffffff" size="15px"><h1 style="font-family: Georgia, serif; font-size: 150%">WebAppraisal</h1></font>
-			<div class="box" style="display:block; text-align:center; min-width:300px">
-				<form method="POST">
-                    {% csrf_token %}
-							<h1 style="font-family: Georgia, serif">Sign In</h1>
+<body style="background-color: rgba(0,0,0,0)">
+  <div class="container"><br><br>
+    <div class="container" style="max-width:300px; border-radius:10px; background-color: rgba(220, 220, 220, 0.8)">
+      <br>
+        <form method="POST">
+          {% csrf_token %}
+            <span style="font-family: 'Raleway', sans-serif; font-size: 150%">
+              <img src="../static/img/webappraisal_logo_dark.png" width="55" height="45" class="d-inline-block align-top" alt="">
+              <bold>WebAppraisal</bold>
+            </span>
+          <hr>
+          <div>
+            <div>
+              {% render_field form.username placeholder=form.username.label %}
+              <label style="text-align:left" for="id_username"></label>
+              {% for error in form.username.errors %}
+              <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+              </div>
+              {% endfor %}
+              <br><br>
+            </div>
+            <div>
+              {% render_field form.password placeholder=form.password.label  %}
+              <label for="id_password"></label>
+              {% for error in form.password.errors %}
+              <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+            <br>
+              {% if form.errors %}
+              {% for field in form %}
+              {% for error in field.errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+              {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+              {% endfor %}
+              {% endif %}
+              <button class="btn btn-primary" style="width:100%" type="submit">Sign In</button>
+          </div>
+          
+          <hr>
+          
+          <h3 style="font-family: 'Raleway', serif; text-align:center">Or</h3>
+          
+          <hr>
+          
+          <a href="/create-account" class="btn btn-primary" style="width:100%" >Create account</a>
+          
+          <br><br><br>
+        </form>
+    </div>
+  </div>
 
-							<p>Enter your username and password to sign in as an Appraiser or Customer.</p>
-							<hr>
-							<div>
-								<div class="divContainer">
-                                    {% render_field form.username placeholder=form.username.label %}
-									<label style="text-align:left" for="id_username"></label>
-                                    {% for error in form.username.errors %}
-                                        <div class="alert alert-danger">
-                                            <strong>{{ error|escape }}</strong>
-                                        </div>
-                                    {% endfor %}
-                                <br><br>
-								</div>
-								<div>
-                                    {% render_field form.password placeholder=form.password.label  %}
-									<label for="id_password"></label>
-                                    {% for error in form.password.errors %}
-                                        <span class="text-danger">{{ error }}</span>
-                                    {% endfor %}
-								</div><br>
-                                    {% if form.errors %}
-                                        {% for field in form %}
-                                            {% for error in field.errors %}
-                                                <div class="alert alert-danger">
-                                                    <strong>{{ error|escape }}</strong>
-                                                </div>
-                                            {% endfor %}
-                                        {% endfor %}
-                                        {% for error in form.non_field_errors %}
-                                            <div class="alert alert-danger">
-                                                <strong>{{ error|escape }}</strong>
-                                            </div>
-                                        {% endfor %}
-                                    {% endif %}
-							</div>
-                            <br>
-							<button class="signinbtn" style="font-family: Georgia, serif; color: white" type="submit" onclick="">Sign In</button>
-						<hr>
-						
-						<div style="margin:auto">
-							<h3 style="font-family: Georgia, serif">Not a member?</h3><br>
-							<a href="/create-account" style="font-family: Georgia, serif" class="createaccount">Create account</a>
-							<br><br><br>
-						</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-	
+<!-- Footer doesn't look great on mobile view, disabling for all pages becasue it isn't really necessary -->
+
+{#  <footer class="" style="width:100%; position:absolute; bottom:0; background-color:rgba(200, 200, 200, 0.0)">#}
+{#    <div class="container text-center">#}
+{#      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>#}
+{#    </div>#}
+{#  </footer>#}
+  
+  
 </body>
 
 </html>

@@ -4,43 +4,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../static/css/FormStyle.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-  <title>Utilities</title>
+
+  <title>Offsite Information</title>
 </head>
+<body>
+
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+      <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
+      <div class="dropdown">
+        <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+          <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="account-management">
+          <li>
+            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
+              <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
+            </a>
+          </li>
+          <li>
+            <a href="/welcome" class="btn btn-default btn-block text-left">
+              <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <body class="bg-light">
-
-<div class="container">
-
     <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
@@ -61,13 +63,13 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../amenities">Amenities</a>
+                <a class="btn btn-primary" href="../../amenities/{{ house_id }}">Amenities</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../basement">Basement</a>
+                <a class="btn btn-primary" href="../../basement/{{ house_id }}">Basement</a>
               </div>
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../comments">Comments</a>
+                <a class="btn btn-primary" href="../../comments/{{ house_id }}">Comments</a>
               </div>
             </div>
 
@@ -85,7 +87,7 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../kitchen">Kitchen</a>
+                <a class="btn btn-primary" href="../../kitchen/{{ house_id }}">Kitchen</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../materials-conditions/{{ house_id }}">Materials and Conditions</a>
@@ -97,7 +99,7 @@
 
             <div class="form-row text-center">
               <div class="form-group col-md-4">
-                <a class="btn btn-primary" href="../../offsite-information">Offsite Information</a>
+                <a class="btn btn-primary" href="../../offsite-information/{{ house_id }}">Offsite Information</a>
               </div>
               <div class="form-group col-md-4">
                 <a class="btn btn-primary" href="../../property-information/{{ house_id }}">Property Information</a>
@@ -124,57 +126,56 @@
       </div>
     </div>
 
-        <h1 class="form-header webappraisal-header">Utilities</h1>
-    <hr>
-    
-    <form method="POST">
-      {% csrf_token %}
+  <h2 class="form-header webappraisal-header">Utilities</h2>
 
-      <div class="form-row">
-        
-        <div class="form-group col-md-12">
-          <label for="id_washer_dryer">Washer/Dryer</label>
-          {% render_field form.washer_dryer placeholder=form.washer_dryer.label class="form-control" %}
-        </div>
-        
-        <div class="form-group col-md-4">
-          <label for="id_heat_type">Heat Type</label>
-          {% render_field form.heat_type placeholder=form.heat_type.label class="form-control" %}
-        </div>
-        <div class="form-group col-md-4">
-          <label for="id_heat_fuel">Heating Fuel</label>
-          {% render_field form.heat_fuel placeholder=form.heat_fuel.label class="form-control" %}
-        </div>
 
-        <div class="form-group col-md-4">
-          <label for="id_heat_condition">Heating Condition</label>
-          {% render_field form.heat_condition placeholder=form.heat_condition.label class="form-control" %}
-        </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="id_cooling_type">Cooling Type</label>
-          {% render_field form.cooling_type placeholder=form.cooling_type.label class="form-control" %}
-        </div>
-        <div class="form-group col-md-6">
-          <label for="id_cooling_condition">Cooling Condition</label>
-          {% render_field form.cooling_condition placeholder=form.cooling_condition.label class="form-control" %}
-        </div>
-      </div>
-      
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
-        </div>
 
-      <br><br><hr>
+  <hr>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="id_washer_dryer">Washer/Dryer</label>
+                    {% render_field form.washer_dryer  placeholder=form.washer_dryer.label class="form-control"%}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="id_heat_type">Heat Type</label>
+                    {% render_field form.heat_type placeholder=form.heat_type.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_heat_fuel">Heat Fuel</label>
+                    {% render_field form.heat_fuel  placeholder=form.heat_fuel.label class="form-control"%}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_heat_condition">Heat Condition</label>
+                    {% render_field form.heat_condition  placeholder=form.heat_condition.label class="form-control"%}
+                </div>
+            </div>
+            <div class="form-row">
+               <div class="form_group col-md-6">
+                   <label for="id_cooling_type">Cooling Type</label>
+                   {% render_field form.cooling_type  placeholder=form.cooling_type.label class="form-control"%}
+               </div>
+                <div class="form_group col-md-6">
+                   <label for="id_cooling_condition">Cooling Type</label>
+                   {% render_field form.cooling_condition  placeholder=form.cooling_condition.label class="form-control"%}
+                </div>
+            </div>
 
-        <button class="btn btn-primary btn-md form-submit-btn" name="submit_utilities_info" type="submit">Save changes</button>
-      <br><br>
-    </form>
-  </div>
+            <div class="form-row">
+                <div class="form-floating col-md-12 additional-comments">
+                    <label for="comments">Additional Comments</label>
+                    {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+                </div>
+            </div>
 
+            <br><br><hr>
+
+            <button class="btn btn-primary btn-md form-submit-btn" name="submit_utilities_info" type="submit">Save changes</button>
+        </form>
+    </div>
 </body>
 
 <body class="bg-dark flex-column">
@@ -190,5 +191,4 @@
     </div>
   </footer>
 </body>
-
 </html>

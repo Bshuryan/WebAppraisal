@@ -255,12 +255,12 @@ class Utilities(models.Model):
         AVERAGE = 'Average'
         POOR = 'Poor'
     id = models.AutoField(primary_key=True)
-    heat_type = models.TextField(max_length=20,blank=True, null=True)
     washer_dryer = models.BooleanField()
-    heat_fuel = models.CharField(max_length=20,blank=True, null=True)
+    heat_type = models.TextField(max_length=20,blank=True, null=True)
+    heat_fuel = models.TextField(max_length=20,blank=True, null=True)
     heat_condition = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
-    cooling_type = models.CharField(max_length=20,blank=True, null=True)
-    cooling_condition = models.TextField(max_length=10,blank=True, null=True, choices=Condition.choices)
+    cooling_type = models.TextField(max_length=20,blank=True, null=True)
+    cooling_condition = models.CharField(max_length=10,blank=True, null=True, choices=Condition.choices)
     comments = models.TextField()
     house = models.ForeignKey(House, models.DO_NOTHING)
 
@@ -328,6 +328,7 @@ class Image(models.Model):
         FOUNDATION = 'FOUNDATION'
         MATERIALS_CONDITIONS = 'MATERIALS_CONDITIONS'
         DESC_IMPROV = 'DESC_IMPROV'
+        APPRAISAL = 'APPRAISAL'
 
     id = models.AutoField(primary_key=True)
     page = models.CharField(blank=False, null=False, max_length=20, choices=Pages.choices)

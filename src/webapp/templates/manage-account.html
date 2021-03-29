@@ -1,122 +1,142 @@
 {% load widget_tweaks %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%; background-repeat:no-repeat; background-image: url('https://www.cvfhomes.com/wp-content/uploads/2019/03/631-simple-way-san-antonio-tx-1-High-Res-2.jpg');background-size: cover;" >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../static/css/accountstyle.css">
-
-  
-  <script>
-    showConfirm = function()
-    {
-      document.getElementById("confirm").style.visibility = "visible";
-      document.getElementById("mainView").style.visibility = "hidden";
-      const nobtn = document.createElement('button');
-      const yesbtn = document.createElement('button');
-      const warning = document.createElement('h1');
-      
-      warning.innerText = "Are you sure you want to delete your account?";
-      
-      nobtn.innerText = "No (return to page)";
-      nobtn.setAttribute('class', 'confirmBtn');
-      nobtn.setAttribute('onclick', 'location.reload()');
-      yesbtn.setAttribute('class', 'confirmBtn');
-      yesbtn.setAttribute('name', 'delete_account_confirm');
-      yesbtn.innerText = "Yes";
-  
-      document.getElementById("confirm").appendChild(warning);
-      document.getElementById("confirm").appendChild(yesbtn);
-      document.getElementById("confirm").appendChild(nobtn);
-    }
-  </script>
 </head>
 
-<body>
-  <div style="vertical-align: middle; height:1200px; background-image: url('https://www.cvfhomes.com/wp-content/uploads/2019/03/631-simple-way-san-antonio-tx-1-High-Res-2.jpg');background-size: cover;" >
-    <div class="topnav">
+<body style="background-color: rgba(0,0,0,0)">
+ 
+    <!-------------------------- NAV BAR ------------------->
+    
+  <nav class="navbar navbar-default">
+    <a href="/home" class="navbar-brand">WebAppraisal</a>
+       
+    <div class="dropdown pull-right">
+      <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
+        <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+      </button>
+          
+      <div class="dropdown-menu" aria-labelledby="account-management">
+        <a href="/account-management" class="dropdown-item btn btn-secondary">
+          <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+        </a>
+        <br>
+        <a href="/welcome" class="dropdown-item btn btn-secondary">
+          <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+        </a>
+      </div>
+    </div>  
+  </nav>
+      
+  <!-- Where success message will appear -->
+    
+  <div>
+    {% if messages %}
+        {% for message in messages %}
+           <div class="success-msg">{{message}}</div><br>
+        {% endfor %}
+    {% endif %}
+  </div>
+  
+  <!---------------- FORM --------------->
+    
+  <div class="container" style="border-radius:10px; background-color: rgba(220, 220, 220, 0.9);">
+ 
+    <form method="POST">
+      {% csrf_token %}
+      <div class="confirm" id="confirm">
 
-      <form action="/home">
-        <input class="backlink" type="submit" value="Back to Home"></input>
-      </form>
-
+      </div>
+    </form>
+    
+    <div class="text-center">
+      <hr>
+      <h1>Account Details</h1>
+      <hr>
     </div>
-    <div class="container">
-      <div style="text-align:center" id="mainView">
-        <font color="#ffffff" size="12px"><h1>Welcome, {{ django_user.username }}</h1></font>
+    
+    <form method="POST">
+    {% csrf_token %}
+     <div class="container" style="max-width:70%;">
+      <div class="form-row">
+        <div class="form-group col-md-6">                         
+          <label for="id_username"><b>Username</b></label>
+          {% render_field user_form.username placeholder=user_form.username.label class="form-control" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="id_email"><b>Email</b></label>
+          {% render_field user_form.email placeholder=user_form.email.label class="form-control" %}
+        </div> 
+      </div> 
 
-          <div>
-            {% if messages %}
-                {% for message in messages %}
-                   <div class="success-msg">{{message}}</div><br>
-                {% endfor %}
-            {% endif %}
-          </div>
-
-            </div>
-        <div class="box" style="display:block; text-align:center; min-width:900px">
-          <div class="container" style="">
-            <div style="margin:auto">
-
-                <form method="POST">
-                  {% csrf_token %}
-                  <div class="confirm" id="confirm">
-
-                    </div>
-                </form>
-
-              <h2>Account type: <span name="acctType">{{ role }}</span></h2>
-              <hr>
-              <h1 style="margin:25px 25px 25px 25px" >Edit account information</h1>
-              <hr>
-              <form method="POST">
-              {% csrf_token %}
-                <div id="left_block" style="width:48%; float:left; padding:10px; border-right:1px solid black">
-                   <div>
-                        <label for="id_username"><b>Username</b></label>
-                        {% render_field user_form.username placeholder=user_form.username.label %}
-                  </div>
-
-                  <div>
-                    <label for="id_first_name"><b>First Name</b></label>
-                    {% render_field user_form.first_name placeholder=user_form.first_name.label %}
-                  </div>
-
-                  <div>
-                    <label for="id_phone_number"><b>Phone</b></label>
-                    {% render_field phone_num_form.phone_number placeholder=phone_num_form.phone_number.label %}
-                  </div>
-                </div> <!-- END LEFT BLOCK -->
-
-                <div id="right_block" style="width:48%; float:left">
-                  <div>
-                    <label for="id_email"><b>Email</b></label>
-                    {% render_field user_form.email placeholder=user_form.email.label %}
-                  </div>
-
-                  <div>
-                    <label for="id_last_name"><b>Last Name</b></label>
-                    {% render_field user_form.last_name placeholder=user_form.last_name.label %}
-                  </div>
-
-                </div> <!-- END RIGHT BLOCK -->
-
-                <button class="submitchanges" type="submit" onclick="" name="update_account">Submit Changes</button>
-              </form>
-              <hr class="separator">
-              <form method="POST">
-                {% csrf_token %}
-                <button class="delete_account" type="button" onclick="showConfirm()" >Delete Account</button>
-              </form>
-            </div>
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="id_first_name"><b>First Name</b></label>
+          {% render_field user_form.first_name placeholder=user_form.first_name.label class="form-control" %}
+        </div> 
+        <div class="form-group col-md-4">
+          <label for="id_last_name"><b>Last Name</b></label>
+          {% render_field user_form.last_name placeholder=user_form.last_name.label class="form-control" %}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="id_phone_number"><b>Phone</b></label>
+          {% render_field phone_num_form.phone_number placeholder=phone_num_form.phone_number.label class="form-control" %}
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" type="submit" name="update_account">Submit Changes</button>
+      </div>
+    </form>
+    
+    <hr class="separator">
+    <div class="text-center">
+      <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmModal">Delete Account</button>
+      </form>
+      <br><br>
+    </div>
+    
+    </div>
+    
+  </div>  
+  
+  <!-- Delete Account confirmation modal -->
+  
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="label">Account Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body strong">
+          Are you sure you want to delete your account, {{ django_user.username }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger btn-lg">Delete</button>
         </div>
       </div>
     </div>
-    
   </div>
-
+  
+  <footer class="" style="width:100%; position:absolute; bottom:0; background-color:rgba(200, 200, 200, 0.0)">
+    <div class="container text-center">
+      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+  </footer>
+  
 </body>
 
 </html>
