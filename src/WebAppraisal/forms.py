@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from src.webapp.models import *
+from localflavor.us.forms import USZipCodeField
+from django.core.validators import RegexValidator
 
 # Form for creating a new user - this includes all fields for the built-in Django User object
 # and three additional fields on top of it: email, phone number, and user role
@@ -176,3 +178,9 @@ class MobileImageForm(forms.ModelForm):
                                                 'accepts': 'image/',
                                                 'onchange': 'this.form.submit();'})
 
+class ComparableSearchForm(forms.Form):
+    zip = USZipCodeField()
+
+    def __init__(self, *args, **kwargs):
+        super(ComparableSearchForm, self).__init__(*args, **kwargs)
+        self.fields['zip'].label = "Enter a zip code"

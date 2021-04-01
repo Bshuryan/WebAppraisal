@@ -248,3 +248,9 @@ hr {
   max-width:80vw;
 }
 
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+

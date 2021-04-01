@@ -33,10 +33,7 @@ from src.webapp.view import appraisal
 from src.webapp.view import utilities
 from src.webapp.view import materials
 from src.webapp.view import desc_of_improvements
-
-
-
-
+from src.webapp.view import comparables
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -67,6 +64,8 @@ urlpatterns = [
     path('rooms/<house_id>', rooms.rooms_view),
     path('rooms/<house_id>/add', rooms.add_room_view),
     path('rooms/<house_id>/<room_id>', rooms.single_room_view),
+    path('comparables/<zip_code>', comparables.comparables_results_view),
+    path('comparables', comparables.search_view),
 
     # adding optional slashes
     path('general/new/', views.create_appraisal),
@@ -86,5 +85,8 @@ urlpatterns = [
     path('amenities/<house_id>/', amenities.view),
     path('rooms/<house_id>/', rooms.rooms_view),
     path('rooms/<house_id>/add/', rooms.add_room_view),
-    path('rooms/<house_id>/<room_id>/', rooms.single_room_view)
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('rooms/<house_id>/<room_id>/', rooms.single_room_view),
+    path('comparables/<zip_code>/', comparables.comparables_results_view),
+    path('comparables/', comparables.search_view)
+
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
