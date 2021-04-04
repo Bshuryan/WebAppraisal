@@ -137,53 +137,53 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_neighborhood_name">Neighborhood Name</label>
-                {% render_field form.name placeholder=form.name.label class="form-control"%}
+                {% render_field form.name placeholder=form.name.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_location">Location</label>
-                {% render_field form.location placeholder=form.location.label class="form-control"%}
+                {% render_field form.location placeholder=form.location.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="id_property_value">Property Value</label>
-            {% render_field form.property_value placeholder=form.property_value.label class="form-control"%}
+            {% render_field form.property_value placeholder=form.property_value.label class="form-control capped-input"%}
           </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_growth_rate">Growth Rate</label>
-                {% render_field form.growth_rate placeholder=form.growth_rate.label class="form-control"%}
+                {% render_field form.growth_rate placeholder=form.growth_rate.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_demand_supply">Supply/Demand</label>
-                {% render_field form.demand_supply placeholder=form.demand_supply.label class="form-control"%}
+                {% render_field form.demand_supply placeholder=form.demand_supply.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="id_built_up">Built Up</label>
-              {% render_field form.built_up placeholder=form.built_up.label class="form-control"%}
+              {% render_field form.built_up placeholder=form.built_up.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="marketabilty_factors">Marketability Factors</label>
-            {% render_field form.marketability_factors placeholder=form.marketability_factors.label class="form-control" type="text"%}
+            {% render_field form.marketability_factors placeholder=form.marketability_factors.label class="form-control capped-input" type="text"%}
         </div>
 
             <div class="form-floating col-md-12 additional-comments">
             <label for="market_conditions">Market Conditions</label>
-            {% render_field form.market_conditions placeholder=form.market_conditions.label class="form-control" type="text"%}
+            {% render_field form.market_conditions placeholder=form.market_conditions.label class="form-control capped-input" type="text"%}
         </div>
 
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="additional_comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
         </div>
 
         <br><br><hr>
@@ -236,7 +236,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>

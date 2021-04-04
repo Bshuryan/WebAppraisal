@@ -137,53 +137,53 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_pool_name">Pool</label>
-                {% render_field form.pool placeholder=form.pool.label class="form-control"%}
+                {% render_field form.pool placeholder=form.pool.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_fireplace_name">Fireplace</label>
-                {% render_field form.fireplace placeholder=form.fireplace.label class="form-control"%}
+                {% render_field form.fireplace placeholder=form.fireplace.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_patio_name">Patio</label>
-                {% render_field form.patio placeholder=form.patio.label class="form-control"%}
+                {% render_field form.patio placeholder=form.patio.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_deck_name">Deck</label>
-                {% render_field form.deck placeholder=form.deck.label class="form-control"%}
+                {% render_field form.deck placeholder=form.deck.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_porch_name">Porch</label>
-                {% render_field form.porch placeholder=form.porch.label class="form-control"%}
+                {% render_field form.porch placeholder=form.porch.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_fence_name">Fence</label>
-                {% render_field form.fence placeholder=form.fence.label class="form-control"%}
+                {% render_field form.fence placeholder=form.fence.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_garage_name">Garage</label>
-                {% render_field form.garage placeholder=form.garage.label class="form-control"%}
+                {% render_field form.garage placeholder=form.garage.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_basement_name">Basement</label>
-                {% render_field form.basement placeholder=form.basement.label class="form-control"%}
+                {% render_field form.basement placeholder=form.basement.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_attic_name">Attic</label>
-                {% render_field form.attic placeholder=form.attic.label class="form-control"%}
+                {% render_field form.attic placeholder=form.attic.label class="form-control capped-input"%}
             </div>
         </div>
         <div class="form-floating col-md-12 additional-comments">
         <label for="comments">Additional Comments</label>
-        {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+        {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
         </div>
 <br><br><hr>
 
@@ -240,7 +240,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>

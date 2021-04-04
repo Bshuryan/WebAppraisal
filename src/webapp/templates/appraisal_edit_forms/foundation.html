@@ -129,45 +129,45 @@
         Does the Property Have a...
         <div class="form-check col-md-12">
             <label class="checkbox-inline form-check-label" for="id_sump_pump">Sump Pump</label>
-            {% render_field form.sump_pump placeholder=form.sump_pump.label class="form-check-label" %}
+            {% render_field form.sump_pump placeholder=form.sump_pump.label class="form-check-label capped-input" %}
         </div>
 
         <div class="form-check col-md-12">
             <label class="checkbox-inline form-check-label" for="id_slab">Slab</label>
-            {% render_field form.slab placeholder=form.slab.label class="form-check-label" %}
+            {% render_field form.slab placeholder=form.slab.label class="form-check-label capped-input" %}
 
         </div>
 
         <div class="form-check col-md-12">
             <label class="checkbox-inline form-check-label" for="id_crawl_space">Crawl Space</label>
-            {% render_field form.crawl_space placeholder=form.crawl_space.label class="form-check-label" %}
+            {% render_field form.crawl_space placeholder=form.crawl_space.label class="form-check-label capped-input" %}
         </div>
 
         <br><br><br>
 
         <div class="form-floating col-md-14">
             <label for="id_foundation_ext">foundation_ext</label>
-            {% render_field form.foundation_ext placeholder=form.foundation_ext.label class="form-check-label" %}
+            {% render_field form.foundation_ext placeholder=form.foundation_ext.label class="form-check-label capped-input" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="id_dampness">Dampness</label>
-            {% render_field form.dampness placeholder=form.dampness.label class="form-check-label" %}
+            {% render_field form.dampness placeholder=form.dampness.label class="form-check-label capped-input" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="id_infestation">Infestation</label>
-            {% render_field form.infestation placeholder=form.infestation.label class="form-check-label" %}
+            {% render_field form.infestation placeholder=form.infestation.label class="form-check-label capped-input" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="id_settlement">Settlement</label>
-            {% render_field form.settlement placeholder=form.settlement.label class="form-check-label" %}
+            {% render_field form.settlement placeholder=form.settlement.label class="form-check-label capped-input" %}
         </div>
 
         <div class="form-floating col-md-12 additional-comments">
             <label for="comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
         </div>
 
         <br><br>
@@ -221,7 +221,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>

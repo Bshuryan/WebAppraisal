@@ -130,57 +130,57 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="id_dimensions">Dimensions</label>
-                {% render_field form.dimensions placeholder=form.dimensions.label class="form-control"%}
+                {% render_field form.dimensions placeholder=form.dimensions.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-3">
                 <label for="id_site_area">Site Area (Acres)</label>
-                {% render_field form.site_area placeholder="Acres" class="form-control"%}
+                {% render_field form.site_area placeholder="Acres" class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-3">
                 <label for="id_topography">Topography</label>
-                {% render_field form.topography placeholder=form.topography.label class="form-control"%}
+                {% render_field form.topography placeholder=form.topography.label class="form-control capped-input"%}
             </div>
             <div class="form-group col-md-3">
                 <label for="id_size">Size</label>
-                {% render_field form.size placeholder=form.size.label class="form-control"%}
+                {% render_field form.size placeholder=form.size.label class="form-control capped-input"%}
             </div>
         </div>
 
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="id_shape">Shape</label>
-                    {% render_field form.shape placeholder=form.shape.label class="form-control"%}
+                    {% render_field form.shape placeholder=form.shape.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_view">View</label>
-                    {% render_field form.view placeholder=form.view.label class="form-control"%}
+                    {% render_field form.view placeholder=form.view.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_landscaping">Landscaping</label>
-                     {% render_field form.landscaping placeholder=form.landscaping.label class="form-control"%}
+                     {% render_field form.landscaping placeholder=form.landscaping.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_driveway">Driveway Surface</label>
-                    {% render_field form.driveway_surface placeholder=form.driveway_surface.label class="form-control"%}
+                    {% render_field form.driveway_surface placeholder=form.driveway_surface.label class="form-control capped-input"%}
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="id_easements">Apparent easements</label>
-                    {% render_field form.apparent_easements placeholder=form.apparent_easements.label class="form-control"%}
+                    {% render_field form.apparent_easements placeholder=form.apparent_easements.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_drainage">Drainage</label>
-                    {% render_field form.drainage placeholder=form.drainage.label class="form-control"%}
+                    {% render_field form.drainage placeholder=form.drainage.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_specific_zone">Specific Zone</label>
-                    {% render_field form.specific_zone placeholder=form.specific_zone.label class="form-control"%}
+                    {% render_field form.specific_zone placeholder=form.specific_zone.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-3">
                     <label for="id_zone_compliance">Zone Compliance</label>
-                    {% render_field form.zone_compliance placeholder=form.zone_compliance.label class="form-control"%}
+                    {% render_field form.zone_compliance placeholder=form.zone_compliance.label class="form-control capped-input"%}
                 </div>
             </div>
 
@@ -188,16 +188,16 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="id_fema_zone">FEMA Zone</label>
-                    {% render_field form.fema_zone placeholder=form.fema_zone.label class="form-control"%}
+                    {% render_field form.fema_zone placeholder=form.fema_zone.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-4">
                     <label for="id_fema_map">FEMA Map No.</label>
-                    {% render_field form.fema_map_no placeholder=form.fema_map_no.label class="form-control"%}
+                    {% render_field form.fema_map_no placeholder=form.fema_map_no.label class="form-control capped-input"%}
                 </div>
                 <div class="form-group col-md-4">
                     <label for="id_map_date">Map Date</label>
                     <div class="input-group date" data-provide="datepicker">
-                      {% render_field form.map_date placeholder=form.map_date.label class="form-control" type="text"%}
+                      {% render_field form.map_date placeholder=form.map_date.label class="form-control capped-input" type="text"%}
                       <div class="input-group-addon">
                           <span class="glyphicon glyphicon-th"></span>
                       </div>
@@ -213,42 +213,42 @@
 
         <div class="form-check col-md-1">
             <label for="id_corner_lot">Corner Lot</label>
-            {% render_field form.corner_lot placeholder=form.map_date.label class="form-control"%}
+            {% render_field form.corner_lot placeholder=form.map_date.label class="form-control capped-input"%}
         </div>
 
             <div class="form-check col-md-1">
                 <label for="id_public_electric">Public Electric</label>
-                {% render_field form.public_electric placeholder=form.public_electric.label class="form-control"%}
+                {% render_field form.public_electric placeholder=form.public_electric.label class="form-control capped-input"%}
         </div>
 
             <div class="form-check col-md-1">
                 <label for="id_public_gas">Public Gas</label>
-                {% render_field form.public_gas placeholder=form.public_gas.label class="form-control"%}
+                {% render_field form.public_gas placeholder=form.public_gas.label class="form-control capped-input"%}
         </div>
 
         <div class="form-check col-md-1">
                 <label for="id_public_water">Public Water</label>
-                {% render_field form.public_water placeholder=form.public_water.label class="form-control"%}
+                {% render_field form.public_water placeholder=form.public_water.label class="form-control capped-input"%}
         </div>
 
         <div class="form-check col-md-2">
                 <label for="id_public_sanitary_sewer">Public Sanitary Sewer</label>
-                {% render_field form.public_sanitary_sewer placeholder=form.public_sanitary_sewer.label class="form-control"%}
+                {% render_field form.public_sanitary_sewer placeholder=form.public_sanitary_sewer.label class="form-control capped-input"%}
         </div>
 
         <div class="form-check col-md-2">
                 <label for="id_public_storm_sewer">Public Storm Sewer</label>
-                {% render_field form.public_storm_sewer placeholder=form.public_storm_sewer.label class="form-control"%}
+                {% render_field form.public_storm_sewer placeholder=form.public_storm_sewer.label class="form-control capped-input"%}
         </div>
 
         <div class="form-check col-md-3">
             <label for="id_fema_flood_hazard">FEMA Flood Hazard</label>
-            {% render_field form.fema_flood_hazard placeholder=form.fema_flood_hazard.label class="form-control"%}
+            {% render_field form.fema_flood_hazard placeholder=form.fema_flood_hazard.label class="form-control capped-input"%}
         </div><br><br><hr>
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
           </div>
         </div>
 
@@ -300,7 +300,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>

@@ -51,48 +51,48 @@
           <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="id_customer_username">Customer Username</label>
-                    {% render_field form.customer_username placeholder=form.customer_username.label class="form-control" %}
+                    {% render_field form.customer_username placeholder=form.customer_username.label class="form-control capped-input" %}
                 </div>
           </div>
 
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="id_appraisal_status">Appraisal Status</label>
-                    {% render_field form.appraisal_status placeholder=form.appraisal_status.label class="form-control" %}
+                    {% render_field form.appraisal_status placeholder=form.appraisal_status.label class="form-control capped-input" %}
                 </div>
             </div><hr>
 
             <div class="form-row">
                  <div class="form-group col-md-7">
                  <label for="id_street_address">Street Address</label>
-                   {% render_field form.street_address placeholder=form.street_address.label class="form-control" %}
+                   {% render_field form.street_address placeholder=form.street_address.label class="form-control capped-input" %}
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="id_city">City</label>
-                    {% render_field form.city placeholder=form.city.label class="form-control" %}
+                    {% render_field form.city placeholder=form.city.label class="form-control capped-input" %}
                 </div>
             </div>
 
           <div class="form-row">
             <div class="form-group col-md-3">
               <label for="id_state">State</label>
-              {% render_field form.state placeholder=form.state.label class="form-control" %}
+              {% render_field form.state placeholder=form.state.label class="form-control capped-input" %}
             </div>
               <div class="form-group col-md-5">
               <label for="id_county">County</label>
-              {% render_field form.county placeholder=form.county.label class="form-control" %}
+              {% render_field form.county placeholder=form.county.label class="form-control capped-input" %}
             </div>
             <div class="form-group col-md-3">
               <label for="id_zip">Zip Code</label>
-              {% render_field form.zip placeholder=form.zip.label class="form-control"%}
+              {% render_field form.zip placeholder=form.zip.label class="form-control capped-input"%}
             </div>
           </div>
 
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="comments">Leave any additional notes for your customer</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input"%}
           </div>
         </div><hr>
 

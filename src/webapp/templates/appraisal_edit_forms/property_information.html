@@ -132,27 +132,27 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_current_owner">Current Owner</label><br>
-                {% render_field form.current_owner placeholder=form.current_owner.label class="form-control" %}
+                {% render_field form.current_owner placeholder=form.current_owner.label class="form-control capped-input" %}
             </div>
             <div class="form-group col-md-6">
                 <label for="id_borrower">Borrower</label><br>
-                {% render_field form.borrower placeholder=form.borrower.label class="form-control"%}
+                {% render_field form.borrower placeholder=form.borrower.label class="form-control capped-input"%}
             </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="id_occupant">Occupant</label>
-          {% render_field form.occupant placeholder=form.occupant.label class="form-control"%}
+          {% render_field form.occupant placeholder=form.occupant.label class="form-control capped-input"%}
           </div>
           <div class="form-group col-md-3">
             <label for="id_sale_price">Sale Price</label>
-            {% render_field form.sale_price placeholder="$" class="form-control"%}
+            {% render_field form.sale_price placeholder="$" class="form-control capped-input"%}
           </div>
           <div class="form-group col-md-6">
             <label for="id_date_of_sale">Date of Sale</label>
             <div class="input-group date" data-provide="datepicker">
-              {% render_field form.date_of_sale placeholder=form.date_of_sale.label class="form-control" type="text"%}
+              {% render_field form.date_of_sale placeholder=form.date_of_sale.label class="form-control capped-input" type="text"%}
               <div class="input-group-addon">
                   <span class="glyphicon glyphicon-th"></span>
               </div>
@@ -163,41 +163,41 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="id_tax_year">Tax Year</label>
-              {% render_field form.tax_year placeholder=form.tax_year.label class="form-control"%}
+              {% render_field form.tax_year placeholder=form.tax_year.label class="form-control capped-input"%}
           </div>
           <div class="form-group col-md-3">
             <label for="id_re_taxes">Real Estate Taxes</label>
-            {% render_field form.re_taxes placeholder="$" class="form-control" type="number" placeholder="$"%}
+            {% render_field form.re_taxes placeholder="$" class="form-control capped-input" type="number" placeholder="$"%}
           </div>
           <div class="form-group col-md-3">
             <label for="id_hoa_price">Homeowners Association Fees</label>
-            {% render_field form.hoa_price placeholder="$" class="form-control" type="number"%}
+            {% render_field form.hoa_price placeholder="$" class="form-control capped-input" type="number"%}
           </div>
           <div class="form-group col-md-3">
             <label for="id_prop_rights_appraised">Property Rights Appraised</label>
-            {% render_field form.prop_rights_appraised placeholder=form.prop_rights_appraised.label class="form-control"%}
+            {% render_field form.prop_rights_appraised placeholder=form.prop_rights_appraised.label class="form-control capped-input"%}
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="project_type">Project Type</label>
-            {% render_field form.project_type placeholder=form.project_type.label class="form-control"%}
+            {% render_field form.project_type placeholder=form.project_type.label class="form-control capped-input"%}
           </div>
           <div class="form-group col-md-4">
             <label for="id_map_ref">Map Reference Number</label>
-            {% render_field form.map_ref placeholder=form.map_ref.label class="form-control" type="text"%}
+            {% render_field form.map_ref placeholder=form.map_ref.label class="form-control capped-input" type="text"%}
           </div>
           <div class="form-group col-md-4">
             <label for="id_census_tract">Census Tract</label>
-            {% render_field form.census_tract placeholder=form.census_tract.label class="form-control" type="text"%}
+            {% render_field form.census_tract placeholder=form.census_tract.label class="form-control capped-input" type="text"%}
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="comments">Additional Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control" type="text"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
           </div>
         </div>
 

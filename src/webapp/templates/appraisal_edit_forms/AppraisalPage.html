@@ -138,28 +138,28 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="appraisal">Appraised Price</label>
-            {% render_field form.appraisal_price placeholder="$" class="form-control" type="integer"%}
+            {% render_field form.appraisal_price placeholder="$" class="form-control capped-input" type="integer"%}
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="positive">Positive Features</label>
-            {% render_field form.positive_features placeholder=form.positive_features.label class="form-control" type="text"%}
+            {% render_field form.positive_features placeholder=form.positive_features.label class="form-control capped-input" type="text"%}
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="negative">Negative Conditions</label>
-            {% render_field form.negative_conditions placeholder=form.negative_conditions.label class="form-control" type="text"%}
+            {% render_field form.negative_conditions placeholder=form.negative_conditions.label class="form-control capped-input" type="text"%}
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="reconciliation">Reconciliation</label>
-            {% render_field form.reconciliation placeholder=form.reconciliation.label class="form-control" type="text"%}
+            {% render_field form.reconciliation placeholder=form.reconciliation.label class="form-control capped-input" type="text"%}
           </div>
         </div>
 
@@ -213,7 +213,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>

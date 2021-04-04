@@ -48,16 +48,16 @@
             <h3 style="padding-left: 12px"><span class="glyphicon glyphicon-home"></span>  House Summary</h3>
               <div class="form-group col-md-3">
                   <label for="id_num_bedrooms">Number of Bedrooms</label>
-                  {% render_field form.num_bedrooms placeholder=form.num_bedrooms.label class="form-control" %}
+                  {% render_field form.num_bedrooms placeholder=form.num_bedrooms.label class="form-control capped-input" %}
               </div>
               <div class="form-group col-md-3">
                   <label for="id_num_bathrooms">Number of Bathrooms</label>
-                  {% render_field form.num_bathrooms placeholder=form.num_bathrooms.label class="form-control"%}
+                  {% render_field form.num_bathrooms placeholder=form.num_bathrooms.label class="form-control capped-input"%}
               </div>
 
               <div class="form-group col-md-3">
                   <label for="id_num_floors">Number of Floors</label>
-                  {% render_field form.num_floors placeholder=form.num_floors.label class="form-control"%}
+                  {% render_field form.num_floors placeholder=form.num_floors.label class="form-control capped-input"%}
               </div><br><br>
           </div>
 
@@ -65,7 +65,7 @@
         <div class="form-row">
           <div class="form-floating col-md-12 additional-comments">
             <label for="comments">General Comments</label>
-            {% render_field form.comments placeholder=form.comments.label class="form-control"%}
+            {% render_field form.comments placeholder=form.comments.label class="form-control capped-input"%}
           </div>
         </div>
         <br>
@@ -163,7 +163,7 @@
                      </div>
                     <hr>
                       <div class="card-body">
-                      {% render_field form.description placeholder=form.description.label class="form-control" style="height: 90px;" %}
+                      {% render_field form.description placeholder=form.description.label class="form-control capped-input" style="height: 90px;" %}
                         <button style="margin-top: 5px; color: grey" type="submit" name="submit_desc" class="btn btn-default">Save</button>
                       </div>
                   </div>
