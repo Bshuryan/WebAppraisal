@@ -9,38 +9,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>General Information</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="../static/img/webappraisal_logo.png">
+    <title>Create Appraisal</title>
 </head>
 <header>
-    <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="../../static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
+  <div class="container">
+      <nav class="navbar navbar-default" style="border: none;">
+        <div>
+          <a href="/home" class="navbar-brand webappraisal-header">
+                  <span style="font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130% ">
+                    <img src="../static/img/webappraisal_logo.png" width="52" height="45" class="d-inline-block align-top" alt="">
+                    <strong> WebAppraisal</strong>
+                  </span>
+                </a><br>
+
+          <div class="dropdown pull-right">
+            <button class="btn btn-default dropdown-toggle" style="background-color: transparent; border: none" type="button" id="account-management" data-toggle="dropdown">
+              <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="account-management">
+              <a href="/account-management" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+              </a>
+              <br>
+              <a href="/welcome" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+              </a>
             </div>
-        </nav>
-    </div>
+          </div><br>
+        </div>
+      </nav></div><br>
 </header>
 
 <body class="bg-light">
 
   <div class="container">
   
-    <h1 class="form-header webappraisal-header">General Information</h1>
+    <h1 class="form-header webappraisal-header">
+      <span class="glyphicon glyphicon-remove-sign" style="-webkit-transform: rotate(225deg);"></span>
+      Create your Appraisal</h1><hr><br>
 
     <div class="content">
         <div class="container">
@@ -107,7 +117,7 @@
 
 <body class="bg-dark flex-column">
   <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
+    <div class="container text-left">
       <div class="row justify-content-center">
         <div class="col-md-7">
           <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>

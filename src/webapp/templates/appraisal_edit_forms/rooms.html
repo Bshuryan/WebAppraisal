@@ -17,7 +17,7 @@
       <nav class="navbar navbar-default">
           <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
               <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
+                <button class="btn btn-default" type="button" style="background-color: transparent; border: none" id="account-management" data-toggle="dropdown">
                     <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
                 </button>
                    <ul class="dropdown-menu" aria-labelledby="account-management">
@@ -39,6 +39,70 @@
 
 <body class="bg-light">
  <div class="container">
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+      <span class="glyphicon glyphicon-th"></span> Navigate
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
+          </div>
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                  <th style="width: 33%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../amenities/{{ house_id }}" class="btn btn-primary">Amenities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../basement/{{ house_id }}" class="btn btn-primary">Basement</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../comparables/" class="btn btn-primary">Comparables</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../foundation/{{ house_id }}" class="btn btn-primary">Foundation</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../general/{{ house_id }}" class="btn btn-primary">General</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../description-improvements/{{ house_id }}" class="btn btn-primary">Improvements</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../kitchen/{{ house_id }}" class="btn btn-primary">Kitchen</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../materials-conditions/{{ house_id }}" class="btn btn-primary">Materials and Conditions</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../neighborhood/{{ house_id }}" class="btn btn-primary">Neighborhood</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../offsite-information/{{ house_id }}" class="btn btn-primary">Offsite Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../property-information/{{ house_id }}" class="btn btn-primary">Property Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../rooms/{{ house_id }}" class="btn btn-primary">Rooms</a></td>
+                  </tr>
+
+                  <tr>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../site/{{ house_id }}" class="btn btn-primary">Site Information</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../utilities/{{ house_id }}" class="btn btn-primary">Utilities</a></td>
+                    <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}" class="btn btn-primary">Appraisal</a></td>
+                  </tr>
+              </tbody>
+          </table>
+              </div>
+            </div>
+            &nbsp
+          </div>
+        </div>
+
         <h1 class="form-header webappraisal-header">Rooms</h1>
         <hr>
 
@@ -179,7 +243,7 @@
 
 <body class="bg-dark flex-column">
   <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
+    <div class="container text-left">
       <div class="row justify-content-center">
         <div class="col-md-7">
           <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>

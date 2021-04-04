@@ -10,31 +10,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="../static/img/webappraisal_logo.png">
     <title>Rooms</title>
 </head>
+<!-- navbar specific for customer views -->
 <header>
+  <div class="container">
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center" style="padding-bottom: 10px;">
     <div class="container">
-      <nav class="navbar navbar-default">
-          <a href="/home" class="navbar-brand webappraisal-header">WebAppraisal</a>
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="account-management" data-toggle="dropdown">
-                    <img src="../../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-                </button>
-                   <ul class="dropdown-menu" aria-labelledby="account-management">
-                        <li>
-                            <a href="/account-management" class="dropdown-text btn btn-default btn-block text-left">
-                                <img src="../static/img/person.svg" width="24" height="24" alt=""> User Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/welcome" class="btn btn-default btn-block text-left">
-                                <img src="/static/img/sign-out.svg" width="24" height="24" alt=""> Log out
-                            </a>
-                        </li>
-                   </ul>
+      <a href="/home" class="navbar-brand navbar-left d-flex w-100 ms-auto webappraisal-header">
+        <img src="../static/img/webappraisal_logo.png" width="45" height="38" class="d-inline-block align-top" alt="">
+        <p style="padding-top: 9px; padding-left: 2px; font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130%;"> WebAppraisal</p>
+      </a>
+
+      <div class="dropdown pull-right">
+            <button class="btn btn-default dropdown-toggle" style="background-color: transparent; border: none" type="button" id="account-management" data-toggle="dropdown">
+              <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="account-management">
+              <a href="/account-management" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+              </a>
+              <br>
+              <a href="/welcome" class="dropdown-item btn btn-secondary">
+                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+              </a>
             </div>
-        </nav>
+          </div><br>
     </div>
+  </nav>
+  </div><br>
 </header>
 
 <body class="bg-light">

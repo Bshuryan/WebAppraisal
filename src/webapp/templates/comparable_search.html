@@ -26,17 +26,17 @@
                   </span>
                 </a><br>
 
-          <div class="dropdown pull-right">
-            <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
+          <div class="dropdown pull-right" style="display: flex">
+            <button class="btn btn-default dropdown-toggle" style="background-color: transparent; border: none" type="button" id="account-management" data-toggle="dropdown">
               <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
             </button>
 
             <div class="dropdown-menu" aria-labelledby="account-management">
-              <a href="/account-management" class="dropdown-item btn btn-secondary">
+              <a href="/account-management" class="dropdown-item btn btn-secondary" style="flex: 1">
                 <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
               </a>
               <br>
-              <a href="/welcome" class="dropdown-item btn btn-secondary">
+              <a href="/welcome" class="dropdown-item btn btn-secondary" style="flex: 1">
                 <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
               </a>
             </div>
@@ -46,15 +46,18 @@
 </header>
 
 <body class="bg-light">
-
-  <h1 class="form-header webappraisal-header">Search for Comparable Houses</h1>
-  <hr>
+<div class="page-container">
   <div class="container">
+    <div class="content content-wrap">
+      <h1 class="form-header webappraisal-header">
+        <span class="glyphicon glyphicon-transfer" style="-webkit-transform: rotate(180deg);"></span>
+        Search for Comparable Houses</h1>
+      <hr>
       <form role="search" method="POST">
         {% csrf_token %}
-        <div class="row">
+        <div class="row" style="margin-left: 155px">
           {% if errors %}
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-12">
               <div class="form-group has-error" style="padding: 0; margin: 0">
              <div class="input-group">
 {#              <div class="form-group has-error" style="padding: 0; margin: 0">#}
@@ -67,9 +70,9 @@
               </div>
              </div>
           {% else %}
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-9">
              <div class="input-group">
-              {% render_field form.zip placeholder=form.zip.label class="form-control center-block" %}
+                 {% render_field form.zip placeholder=form.zip.label class="form-control center-block capped-input" %}
               <div class="input-group-btn">
                 <button class="btn btn-default" type="submit" name="search_comps"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -79,12 +82,11 @@
         </div>
       </form>
     </div>
+  </div>
   <br><br>
-</body>
 
-<body class="bg-dark flex-column">
-  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
+ <footer id="webappr-footer" class="small-footer py-4 bg-dark text-white-50" style="position: absolute; bottom: 0; width: 100%">
+    <div class="container text-left">
       <div class="row justify-content-center">
         <div class="col-md-7">
           <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
@@ -94,6 +96,8 @@
       <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
     </div>
   </footer>
+</div>
+
 </body>
 
 
