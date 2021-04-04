@@ -2,6 +2,9 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 
 from src.WebAppraisal.forms import *
+from src.WebAppraisal.zillow1 import *
+
+
 
 
 def search_view(request):
@@ -22,4 +25,5 @@ def search_view(request):
 
 
 def comparables_results_view(request, zip_code):
-    return render(request, "comparable_results.html", context={'zip_code': zip_code, 'errors': False})
+    comparables_list = find_my_comparables(zip_code)
+    return render(request, "comparable_results.html", context={'comparables': comparables_list, 'errors': False})

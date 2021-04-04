@@ -28,11 +28,11 @@ def create_url(zipcode, filter):
     # Creating Zillow URL based on the filter.
 
     if filter == "newest":
-        url = "https://www.zillow.com/homes/recently_sold/{0}/0_singlestory/days_sort".format(zipcode)
+        url = "https://www.zillow.com/homes/for_sale/{0}/0_singlestory/days_sort".format(zipcode)
     elif filter == "cheapest":
-        url = "https://www.zillow.com/homes/recently_sold/{0}/0_singlestory/pricea_sort/".format(zipcode)
+        url = "https://www.zillow.com/homes/for_sale/{0}/0_singlestory/pricea_sort/".format(zipcode)
     else:
-        url = "https://www.zillow.com/homes/recently_sold/{0}_rb/?fromHomePage=true&shouldFireSellPageImplicitClaimGA=false&fromHomePageTab=buy".format(zipcode)
+        url = "https://www.zillow.com/homes/sold/{0}_rb/?fromHomePage=true&shouldFireSellPageImplicitClaimGA=false&fromHomePageTab=buy".format(zipcode)
     print(url)
     return url
 
@@ -48,7 +48,7 @@ def write_data_to_csv(data):
     # saving scraped data to csv.
 
     with open("properties-%s.csv" % (zipcode), 'wb') as csvfile:
-        fieldnames = ['title', 'address', 'city', 'state', 'postal_code', 'price', 'facts and features', 'real estate provider', 'url']
+        fieldnames = ['title', 'address', 'city', 'state', 'postal_code', 'price','bedrooms','bathrooms','area', 'facts and features', 'real estate provider', 'url']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for row in data:
@@ -81,7 +81,7 @@ def get_data_from_json(raw_json_data):
         search_results = json_data.get('cat1').get('searchResults').get('listResults', [])
 
         for properties in search_results:
-            address = properties.get('addressWithZip')
+            address = properties.get('address')
             property_info = properties.get('hdpData', {}).get('homeInfo')
             city = property_info.get('city')
             state = property_info.get('state')
@@ -100,7 +100,9 @@ def get_data_from_json(raw_json_data):
                     'state': state,
                     'postal_code': postal_code,
                     'price': price,
-                    'facts and features': info,
+                    'bedrooms': bedrooms,
+                    'bathrooms': bathrooms,
+                    'area': area,
                     'real estate provider': broker,
                     'url': property_url,
                     'title': title}
@@ -168,23 +170,13 @@ def parse(zipcode, filter=None):
     return properties_list
 
 
-if __name__ == "__main__":
-    # Reading arguments
 
-    argparser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
-    argparser.add_argument('zipcode', help='')
-    sortorder_help = """
-    available sort orders are :
-    newest : Latest property details,
-    cheapest : Properties with cheapest price
-    """
+zipcode = input('enter a zip code')
+print ("Fetching data for %s" % (zipcode))
+scraped_data = parse(zipcode)
+if scraped_data:
+    print ("Writing data to output file")
+    write_data_to_csv(scraped_data)
 
-    argparser.add_argument('sort', nargs='?', help=sortorder_help, default='Homes For You')
-    args = argparser.parse_args()
-    zipcode = args.zipcode
-    sort = args.sort
-    print ("Fetching data for %s" % (zipcode))
-    scraped_data = parse(zipcode, sort)
-    if scraped_data:
-        print ("Writing data to output file")
-        write_data_to_csv(scraped_data)
+
+

@@ -24,6 +24,9 @@ ua-parser = "*"
 user-agents = "*"
 django-user-agents = "*"
 python-memcached = "*"
+argparse = "==1.4.0"
+unicodecsv = "==0.14.1"
+requests = "==2.25.1"
 
 [dev-packages]
 
