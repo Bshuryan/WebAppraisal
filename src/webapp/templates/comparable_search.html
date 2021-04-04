@@ -57,10 +57,9 @@
         {% csrf_token %}
         <div class="row" style="margin-left: 155px">
           {% if errors %}
-            <div class="col-md-12">
+            <div class="col-md-9">
               <div class="form-group has-error" style="padding: 0; margin: 0">
              <div class="input-group">
-{#              <div class="form-group has-error" style="padding: 0; margin: 0">#}
                 {% render_field form.zip placeholder=form.zip.label class="form-control" %}
                 <div class="input-group-btn" style="padding: 0; margin: 0">
                   <button class="btn btn-default" style="border: 1px solid #963d40 !important;" type="submit" name="search_comps"><i class="glyphicon glyphicon-search"></i></button>

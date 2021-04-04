@@ -5,8 +5,6 @@ from src.WebAppraisal.forms import *
 from src.WebAppraisal.zillow1 import *
 
 
-
-
 def search_view(request):
     if request.method == "POST":
         if 'search_comps' in request.POST:
@@ -25,5 +23,5 @@ def search_view(request):
 
 
 def comparables_results_view(request, zip_code):
-    comparables_list = find_my_comparables(zip_code)
-    return render(request, "comparable_results.html", context={'comparables': comparables_list, 'errors': False})
+    comparables_list = find_comparables_by_zip(zip_code)
+    return render(request, "comparable_results.html", context={'comparables': comparables_list, 'errors': False, 'zip': zip_code})

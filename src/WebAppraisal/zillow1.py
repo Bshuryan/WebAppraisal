@@ -5,7 +5,7 @@ import argparse
 import json
 import io
 
-class Property:
+class ComparableHouse:
    #def __init__(self,prop_num, address,price,bedrooms,bathrooms,area,url):
     def __init__(self,house):
         for k,v in house.items():
@@ -156,21 +156,21 @@ def parse(zipcode):
     return properties_list
 
 
-def find_my_comparables(zipcode):
+def find_comparables_by_zip(zipcode):
     print ("Fetching data for %s" % (zipcode))
     scraped_data = parse(zipcode)
     comparables = []
     if scraped_data:
         
-        house1 = Property(scraped_data[0])
-        house2 = Property(scraped_data[1])
-        house3 = Property(scraped_data[2])
-        house4 = Property(scraped_data[3])
-        house5 = Property(scraped_data[4])
-        house6 = Property(scraped_data[5])
-        house7 = Property(scraped_data[6])
-        house8 = Property(scraped_data[7])
-        house9 = Property(scraped_data[8])
+        house1 = ComparableHouse(scraped_data[0])
+        house2 = ComparableHouse(scraped_data[1])
+        house3 = ComparableHouse(scraped_data[2])
+        house4 = ComparableHouse(scraped_data[3])
+        house5 = ComparableHouse(scraped_data[4])
+        house6 = ComparableHouse(scraped_data[5])
+        house7 = ComparableHouse(scraped_data[6])
+        house8 = ComparableHouse(scraped_data[7])
+        house9 = ComparableHouse(scraped_data[8])
         comparables.append(house1)
         comparables.append(house2)
         comparables.append(house3)

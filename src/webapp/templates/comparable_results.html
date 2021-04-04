@@ -44,7 +44,12 @@
 </header>
 
 <body>
-  <h1>Results for: {{ zip_code }}</h1>
+  <div class="container">
+     <h2>Results for {{ zip }}:</h2>
+    {% for comparable in comparables %}
+      <p>{{ comparable.address }}, {{ comparable.price }}</p>
+    {% endfor %}
+  </div>
 </body>
 
 </html>

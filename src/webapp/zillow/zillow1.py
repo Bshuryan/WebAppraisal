@@ -5,7 +5,6 @@ import argparse
 import json
 import io
 
-
 def clean(text):
     if text:
         return ' '.join(' '.join(text).split())
