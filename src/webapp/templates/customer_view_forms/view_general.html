@@ -21,7 +21,7 @@
     <div class="container">
       <a href="/home" class="navbar-brand navbar-left d-flex w-100 ms-auto webappraisal-header">
         <img src="../static/img/webappraisal_logo.png" width="45" height="38" class="d-inline-block align-top" alt="">
-        <p style="padding-top: 9px; padding-left: 2px; font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130%;"> WebAppraisal</p>
+        <p style="padding-top: 9px; padding-left: 2px; font-family: 'Raleway', sans-serif; color: #464646; font-size: 130%;"> WebAppraisal</p>
       </a>
 
       <div class="dropdown pull-right">
@@ -110,6 +110,12 @@
             &nbsp
           </div>
         </div>
+
+      {% if house.zip != None %}
+        <a href="/comparables/{{ house.zip }}" class="btn btn-primary btn-lg pull-right" title="Find similar houses in the area">
+          <span class="glyphicon glyphicon-search"></span> Comparables
+        </a>
+      {% endif %}
 
         <h1 class="form-header webappraisal-header">
           <span class="glyphicon glyphicon-edit"> </span> General Information</h1>
@@ -222,20 +228,17 @@
 </body>
 
 
-<body class="bg-dark flex-column">
-  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+<footer id="webappr-footer" class="py-4 text-white-50" style="background-color: rgb(27,41,66)">
     <div class="container text-left">
       <div class="row">
         <div class="col-md-7">
-          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
-          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: 'Raleway', serif; text-align: left">Webappraisal</h1>
+          <p class="text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
         </div>
       </div>
       <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
     </div>
   </footer>
-
-</body>
 
 <script>
   $(document).ready(function() {

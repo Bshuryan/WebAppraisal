@@ -22,7 +22,7 @@
       <nav class="navbar navbar-default" style="border: none;">
         <div>
           <a href="/home" class="navbar-brand webappraisal-header">
-                  <span style="font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130% ">
+                  <span style="font-family: 'Raleway', sans-serif; color: #464646; font-size: 130% ">
                     <img src="../static/img/webappraisal_logo.png" width="52" height="45" class="d-inline-block align-top" alt="">
                     <strong> WebAppraisal</strong>
                   </span>
@@ -110,6 +110,12 @@
             &nbsp
           </div>
         </div>
+
+      {% if zip != None %}
+        <a href="/comparables/{{ zip }}" class="btn btn-primary btn-lg pull-right" title="Find similar houses in the area">
+          <span class="glyphicon glyphicon-search"></span> Comparables
+        </a>
+      {% endif %}
 
   <h2 class="form-header webappraisal-header">
     <span class="glyphicon glyphicon-globe"> </span>
@@ -251,18 +257,16 @@
     </div>
 </body>
 
-<body class="bg-dark flex-column">
-  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+<footer id="webappr-footer" class="py-4 bg-dark text-white-50" style="background-color: rgb(27,41,66)">
     <div class="container text-left">
-      <div class="row justify-content-center">
+      <div class="row">
         <div class="col-md-7">
-          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: Georgia, serif">Webappraisal</h1>
-          <p class="lead text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: 'Raleway', serif; text-align: left">Webappraisal</h1>
+          <p class="text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
         </div>
       </div>
       <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
     </div>
   </footer>
-</body>
 
 </html>

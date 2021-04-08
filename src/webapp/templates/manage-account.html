@@ -9,20 +9,28 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../static/css/accountstyle.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" href="../static/img/webappraisal_logo.png">
+  <title>Account Settings</title>
 </head>
 
-<body style="background-color: rgba(0,0,0,0)">
- 
+<header>
+
     <!-------------------------- NAV BAR ------------------->
-    
-  <nav class="navbar navbar-default">
-    <a href="/home" class="navbar-brand">WebAppraisal</a>
-       
+    <nav class="navbar navbar-default">
+    <a href="/home" class="navbar-brand webappraisal-header">
+            <span style="font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130% ">
+              <img src="../static/img/webappraisal_logo.png" width="52" height="45" class="d-inline-block align-top" alt="">
+              <strong> WebAppraisal</strong>
+            </span>
+          </a>
+
     <div class="dropdown pull-right">
       <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
         <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
       </button>
-          
+
       <div class="dropdown-menu" aria-labelledby="account-management">
         <a href="/account-management" class="dropdown-item btn btn-secondary">
           <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
@@ -32,18 +40,25 @@
           <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
         </a>
       </div>
-    </div>  
+    </div>
   </nav>
+</header>
+
+<body style="background-color: rgba(0,0,0,0)">
+ 
+
       
   <!-- Where success message will appear -->
+
+  <!-- Brian: disabling messages due to bug - when other appraisal forms are updated, their messages stack up here -->
     
-  <div>
-    {% if messages %}
-        {% for message in messages %}
-           <div class="success-msg">{{message}}</div><br>
-        {% endfor %}
-    {% endif %}
-  </div>
+{#  <div>#}
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#           <div class="success-msg">{{message}}</div><br>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{#  </div>#}
   
   <!---------------- FORM --------------->
     

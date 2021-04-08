@@ -38,6 +38,59 @@ button:hover {
   width:51%;
 }
 
+.webappraisal-header {
+  font-family: Georgia, serif;
+  font-size: 50px;
+}
+
+.dropdown {
+  position: absolute;
+  float: right;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #abd4b2;
+}
+
+.dropdown {
+  position: absolute;
+  float: right;
+  display: inline-block;
+}
+
+.dropdown-text {
+  font-family: Georgia, serif;
+  font-size: 50%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #abd4b2;}
+
 </style>
 
 

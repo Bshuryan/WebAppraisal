@@ -81,6 +81,7 @@ def view(request, house_id):
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
             img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
+            zip_code = House.objects.filter(id=house_id).first().zip
 
             if Neighborhood.objects.filter(house=house_id).exists():
                 neighborhood_info = Neighborhood.objects.get(house=house_id)
@@ -91,14 +92,17 @@ def view(request, house_id):
             return render(request, 'appraisal_edit_forms/neighborhood.html',
                           context={'form': form, 'house_id': house_id,
                                    'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,
-                                   'img_forms': img_forms, 'new_img_form': add_image_form})
+                                   'img_forms': img_forms, 'new_img_form': add_image_form,
+                                   'zip': zip_code})
 
     # start customer view
     else:
+        zip_code = House.objects.filter(id=house_id).first().zip
         if Neighborhood.objects.filter(house=house_id).exists():
             neighborhood_instance = Neighborhood.objects.get(house=house_id)
         else:
             neighborhood_instance = 'empty'
 
         return render(request, 'customer_view_forms/view_neighborhood.html',
-                      context={'neighborhood': neighborhood_instance, 'house_id': house_id, 'images': images})
+                      context={'neighborhood': neighborhood_instance, 'house_id': house_id, 'images': images,
+                               'zip': zip_code })

@@ -83,6 +83,7 @@ def view(request, house_id):
 
         # haven't submitted anything - get blank form if object doesn't exist or create form using existing object
         else:
+            zip_code = House.objects.filter(id=house_id).first().zip
             img_forms = list(map(lambda img: ImageFormWithDescription(instance=img), images))
             if Property.objects.filter(house=house_id).exists():
                 property_info = Property.objects.get(house=house_id)
@@ -92,11 +93,13 @@ def view(request, house_id):
 
             return render(request, 'appraisal_edit_forms/property_information.html', context={'form': form, 'house_id': house_id,
                                                                                               'is_mobile': is_mobile, 'mobile_img_form': mobile_img_form,
-                                                                                              'img_forms': img_forms, 'new_img_form': add_image_form })
+                                                                                              'img_forms': img_forms, 'new_img_form': add_image_form,
+                                                                                              'zip': zip_code})
     else:
+        zip_code = House.objects.filter(id=house_id).first().zip
         if Property.objects.filter(house_id=house_id).exists():
             property_info = Property.objects.get(house_id=house_id)
         else:
             property_info = 'empty'
         return render(request, 'customer_view_forms/view_property_information.html',
-                      context={'property': property_info, 'house_id': house_id})
+                      context={'property': property_info, 'house_id': house_id, 'zip': zip_code})

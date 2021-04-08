@@ -1,55 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/FormStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    <link rel="icon" href="../static/img/webappraisal_logo.png">
-    <title>Comparables</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" href="../static/img/webappraisal_logo.png">
+  <link rel="stylesheet" href="../static/css/FormStyle.css">
+  <title>Comparable Houses</title>
+  <link rel="icon" href="../static/img/webappraisal_logo.png">
 </head>
+
 <header>
   <div class="container">
-      <nav class="navbar navbar-default" style="border: none;">
-        <div>
-          <a href="/home" class="navbar-brand webappraisal-header">
-                  <span style="font-family: 'Raleway', sans-serif; color: darkblue; font-size: 130% ">
-                    <img src="../static/img/webappraisal_logo.png" width="52" height="45" class="d-inline-block align-top" alt="">
-                    <strong> WebAppraisal</strong>
-                  </span>
-                </a><br>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="/home" style="font-family: Raleway,serif; font-size: 160%">
+        <img src="../static/img/webappraisal_logo.png" width="45" height="38" class="d-inline-block align-top" alt="">
+        WebAppraisal
+      </a>
 
-          <div class="dropdown pull-right">
-            <button class="btn btn-default dropdown-toggle" type="button" id="account-management" data-toggle="dropdown">
-              <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
-            </button>
-
-            <div class="dropdown-menu" aria-labelledby="account-management">
-              <a href="/account-management" class="dropdown-item btn btn-secondary">
-                <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
-              </a>
-              <br>
-              <a href="/welcome" class="dropdown-item btn btn-secondary">
-                <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
-              </a>
-            </div>
-          </div><br>
-        </div>
-      </nav></div><br>
+    <div class="btn-group" style="background-color: transparent">
+      <button type="button" class="btn btn-default" style="background-color: transparent; border: none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="../static/img/hamburger.png" alt="Account Management" width="30" height="30">
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a href="/account-management" class="dropdown-item btn">
+          <img src="../static/img/person.svg" width="24" height="24" alt=""></img> User Settings
+        </a>
+        <br>
+        <a href="/welcome" class="dropdown-item btn">
+          <img src="../static/img/sign-out.svg" width="24" height="24" alt=""></img> Log out
+        </a>
+      </div>
+    </div>
+    </nav>
+  </div><br>
 </header>
 
-<body>
+<body class="bg-light">
+  <div class="page-container">
   <div class="container">
-     <h2>Results for {{ zip }}:</h2>
-    {% for comparable in comparables %}
-      <p>{{ comparable.address }}, {{ comparable.price }}</p>
-    {% endfor %}
+
+  <section id="stats-subtitle">
+  <div class="row">
+    <div class="col-12 mt-3 mb-1">
+      <h1 class="text-uppercase">Comparable Houses near {{ zip }}</h1><hr style="width: 100%">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.0.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.0.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.0.bedrooms }} bd | {{ comparables.0.bathrooms }} ba | {{ comparables.0.area }} sqft.</h4>
+                <a href="{{ comparables.0.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-home font-large-4" style="color: lightblue"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+       <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.1.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.1.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.1.bedrooms }} bd | {{ comparables.1.bathrooms }} ba | {{ comparables.1.area }} sqft.</h4>
+                <a href="{{ comparables.1.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-globe-alt primary font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+    <div class="row">
+        <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.2.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.2.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.2.bedrooms }} bd | {{ comparables.2.bathrooms }} ba | {{ comparables.2.area }} sqft.</h4>
+                <a href="{{ comparables.2.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-rocket danger font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.3.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.3.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.3.bedrooms }} bd | {{ comparables.3.bathrooms }} ba | {{ comparables.3.area }} sqft.</h4>
+                <a href="{{ comparables.3.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-bulb warning font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+    <div class="row">
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.4.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.4.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.4.bedrooms }} bd | {{ comparables.4.bathrooms }} ba | {{ comparables.4.area }} sqft.</h4>
+                <a href="{{ comparables.4.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-paper-plane primary font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.5.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.5.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.5.bedrooms }} bd | {{ comparables.5.bathrooms }} ba | {{ comparables.5.area }} sqft.</h4>
+                <a href="{{ comparables.5.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-layers font-large-4" style="color: lightblue"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+    <div class="row">
+        <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.6.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.6.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.6.bedrooms }} bd | {{ comparables.6.bathrooms }} ba | {{ comparables.6.area }} sqft.</h4>
+                <a href="{{ comparables.6.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-energy warning font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h5 class="mr-0">Sale price</h5>
+                <h1 class="mr-2 comparable-price">{{ comparables.7.price }}</h1>
+              </div>
+              <div class="media-body">
+                <h3 class="left-pad"><strong>{{ comparables.7.address }}</strong></h3>
+                <h4 class="left-pad">{{ comparables.7.bedrooms }} bd | {{ comparables.7.bathrooms }} ba | {{ comparables.7.area }} sqft.</h4>
+                <a href="{{ comparables.7.url }}" class="navbar-brand navbar-left webappraisal-header">
+                  <img src="../static/img/zillow-icon.png" width="35" height="35" alt="Zillow Logo" align="left">
+                  <p class="comparable-zillow">Find More Information</p>
+                </a>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-key danger font-large-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+  </div><br><br>
+
+  <footer id="webappr-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-left">
+      <div class="row">
+        <div class="col-md-7">
+          <h1 class="font-weight-light mt-4 text-white" style="color: ghostwhite; font-family: 'Raleway', serif; text-align: left; font-size: 260%">Webappraisal</h1>
+          <p class="text-white-50" style="color: ghostwhite">Making your job easier and your customers happier.</p>
+        </div>
+      </div>
+      <small style="color: ghostwhite">Copyright &copy; Webappraisal</small>
+    </div>
+  </footer>
   </div>
 </body>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
 
 </html>
