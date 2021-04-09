@@ -53,7 +53,7 @@
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
       <span class="glyphicon glyphicon-th"></span> Navigate
     </button>
-
+    
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -65,6 +65,54 @@
             <h3 class="modal-title" id="exampleModalLabel">Select a Page</h3>
           </div>
           <div class="modal-body">
+          
+            {% if is_mobile %}
+            
+            <table class="table text-center">
+              <tbody>
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../amenities/{{ house_id }}" >Amenities</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../basement/{{ house_id }}">Basement</a></td>
+                </tr>
+
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../foundation/{{ house_id }}" >Foundation</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../general/{{ house_id }}" >General</a></td>
+                </tr>
+
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../kitchen/{{ house_id }}" >Kitchen</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../materials-conditions/{{ house_id }}" >Materials/Conditions</a></td>
+                </tr>
+
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../offsite-information/{{ house_id }}" >Offsite Information</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../property-information/{{ house_id }}" >Property Information</a></td>
+                </tr>
+
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../site/{{ house_id }}" >Site Information</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../utilities/{{ house_id }}" >Utilities</a></td>
+                </tr>
+                
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../comments/{{ house_id }}" >Comments</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../description-improvements/{{ house_id }}" >Improvements</a></td>
+                </tr>
+                
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../neighborhood/{{ house_id }}" >Neighborhood</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../rooms/{{ house_id }}" >Rooms</a></td>
+                </tr>
+                
+                <tr>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../appraisal/{{ house_id }}" >Appraisal</a></td>
+                </tr>
+              </tbody>
+            </table>
+            
+            {% else %}
+          
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -104,13 +152,16 @@
                     <td><a style="width: 100%" class="btn btn-primary nav-button" href="../../appraisal/{{ house_id }}" class="btn btn-primary">Appraisal</a></td>
                   </tr>
               </tbody>
-          </table>
-              </div>
-            </div>
-            &nbsp
+            </table>
+            
+            {% endif %}
+            
           </div>
         </div>
-
+        &nbsp
+      </div>
+    </div>
+        
       {% if form.instance.zip != None %}
         <a href="/comparables/{{ form.instance.zip }}" class="btn btn-primary btn-lg pull-right" title="Find similar houses in the area">
           <span class="glyphicon glyphicon-search"></span> Comparables
