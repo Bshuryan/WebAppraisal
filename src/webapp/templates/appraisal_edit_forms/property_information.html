@@ -201,8 +201,11 @@
         <button class="btn btn-primary btn-md form-submit-btn" name="submit_prop_info" type="submit">Save changes</button><br><br>
     </form>
 
-      <hr><h2 class="form-header webappraisal-header">Photos</h2><hr>
-          <div>
+        <hr>
+          <h2 class="form-header webappraisal-header">
+            <img src="../../static/img/photos-title.png" width="240" height="136" class="d-inline-block align-top" alt="">
+          </h2><hr>
+      <div>
             <form method="POST" enctype="multipart/form-data" name="img_form" id="img_form" style="margin-left: 5px">
               {% csrf_token %}
               <div class="upload-photos" style="font-family: Georgia, serif; font-size: 120%; float: left;">

@@ -96,7 +96,7 @@
                 </tr>
                 
                 <tr>
-                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../comments/{{ house_id }}" >Comments</a></td>
+                  <td><a style="width:100%" class="btn btn-sm btn-primary " href="/comparables/" >Comparables</a></td>
                   <td><a style="width:100%" class="btn btn-sm btn-primary " href="../../description-improvements/{{ house_id }}" >Improvements</a></td>
                 </tr>
                 
@@ -225,7 +225,10 @@
             </div>
         </form>
 
-        <hr><h2 class="form-header webappraisal-header">Photos</h2><hr>
+        <hr>
+          <h2 class="form-header webappraisal-header">
+            <img src="../../static/img/photos-title.png" width="240" height="136" class="d-inline-block align-top" alt="">
+          </h2><hr>
         <div>
           {% if role == 'APPRAISER' %}
             <div>
