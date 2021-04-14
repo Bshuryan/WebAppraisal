@@ -4,14 +4,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../static/css/FormStyle.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-    <title>Foundation</title>
+  <title>Foundation</title>
 </head>
 <header>
   <div class="container">
@@ -126,46 +126,50 @@
     <form method="POST">
         {% csrf_token %}
 
-        Does the Property Have a...
-        <div class="form-check col-md-12">
-            <label class="checkbox-inline form-check-label" for="id_sump_pump">Sump Pump</label>
-            {% render_field form.sump_pump placeholder=form.sump_pump.label class="form-check-label capped-input" %}
+        <h3>Does the Property Have a...</h2>
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+              <label for="id_sump_pump">Sump Pump</label>
+              {% render_field form.sump_pump placeholder=form.sump_pump.label class="form-control capped-input" %}
+          </div>
+
+          <div class="form-group col-sm-4">
+              <label for="id_slab">Slab</label>
+              {% render_field form.slab placeholder=form.slab.label class="form-control capped-input" %}
+          </div>
+
+          <div class="form-group col-sm-4">
+              <label for="id_crawl_space">Crawl Space</label>
+              {% render_field form.crawl_space placeholder=form.crawl_space.label class="form-control capped-input" %}
+          </div>
         </div>
 
-        <div class="form-check col-md-12">
-            <label class="checkbox-inline form-check-label" for="id_slab">Slab</label>
-            {% render_field form.slab placeholder=form.slab.label class="form-check-label capped-input" %}
+        <div class="form-row">
+          <div class="form-group col-md-6"> 
+              <label for="id_foundation_ext">Foundation Ext.</label>
+              {% render_field form.foundation_ext placeholder=form.foundation_ext.label class="form-control capped-input" %}
+          </div>
 
+          <div class="form-group col-md-6">
+              <label for="id_dampness">Dampness</label>
+              {% render_field form.dampness placeholder=form.dampness.label class="form-control capped-input" %}
+          </div>
         </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="id_infestation">Infestation</label>
+              {% render_field form.infestation placeholder=form.infestation.label class="form-control capped-input" %}
+          </div>
+        
 
-        <div class="form-check col-md-12">
-            <label class="checkbox-inline form-check-label" for="id_crawl_space">Crawl Space</label>
-            {% render_field form.crawl_space placeholder=form.crawl_space.label class="form-check-label capped-input" %}
+          <div class="form-col-md-6">
+              <label for="id_settlement">Settlement</label>
+              {% render_field form.settlement placeholder=form.settlement.label class="form-control capped-input" %}
+          </div>
         </div>
-
-        <br><br><br>
-
-        <div class="form-floating col-md-14">
-            <label for="id_foundation_ext">foundation_ext</label>
-            {% render_field form.foundation_ext placeholder=form.foundation_ext.label class="form-check-label capped-input" %}
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="id_dampness">Dampness</label>
-            {% render_field form.dampness placeholder=form.dampness.label class="form-check-label capped-input" %}
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="id_infestation">Infestation</label>
-            {% render_field form.infestation placeholder=form.infestation.label class="form-check-label capped-input" %}
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
-            <label for="id_settlement">Settlement</label>
-            {% render_field form.settlement placeholder=form.settlement.label class="form-check-label capped-input" %}
-        </div>
-
-        <div class="form-floating col-md-12 additional-comments">
+        
+        <div class="col-md-12 additional-comments">
             <label for="comments">Additional Comments</label>
             {% render_field form.comments placeholder=form.comments.label class="form-control capped-input" type="text"%}
         </div>
