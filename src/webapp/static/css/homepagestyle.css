@@ -115,3 +115,7 @@
 .hide-input {
   display: none; !important;
 }
+
+.img-wrapper {
+  height: 210px;
+}
