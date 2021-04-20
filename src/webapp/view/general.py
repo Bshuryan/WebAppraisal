@@ -21,6 +21,7 @@ def view(request, house_id):
             redirect('/general/new')
         else:
             if request.method == 'POST':
+
                 if 'user_logout' in request.POST:
                     logout(request)
                     redirect('/welcome')
@@ -34,6 +35,9 @@ def view(request, house_id):
                         # set house id
                         new_img.house = House.objects.filter(id=house_id).first()
                         new_img.save()
+                        request.session['is_created'] = 0
+                        request.session['is_updated'] = 1
+                        request.session.modified = True
                         return redirect('/general/%s' % house_id)
                     else:
                         return redirect('/general/%s' % house_id)
@@ -44,6 +48,9 @@ def view(request, house_id):
                     form = ImageFormWithDescription(request.POST, instance=img_instance)
                     if form.is_valid():
                         form.save()
+                        request.session['is_created'] = 0
+                        request.session['is_updated'] = 1
+                        request.session.modified = True
                         return redirect('/general/%s' % house_id)
                     else:
                         return redirect('/general/%s' % house_id)
@@ -52,7 +59,10 @@ def view(request, house_id):
                     form = UpdateAppraisalForm(request.POST, instance=house_instance)
                     if form.is_valid():
                         form.save()
-                        messages.success(request, "We've successfully updated the general information")
+                        request.session['is_created'] = 0
+                        request.session['is_updated'] = 1
+
+                        request.session.modified = True
                         return redirect('/general/%s' % house_id)
                     # hopefully won't reach here but just in case redirect back to same page
                     else:
@@ -66,6 +76,9 @@ def view(request, house_id):
                 phone_num = Profile.objects.get(user_id=house_instance.customer.id).phone_number
                 if not phone_num:
                     phone_num = 'Not entered'
+
+                # request.session['is_updated'] = 0
+                request.session.modified = True
 
                 return render(request, 'appraisal_edit_forms/general.html', {'customer': house_instance.customer,
                                                                              'form': form, 'phone_number': phone_num,

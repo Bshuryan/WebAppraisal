@@ -272,3 +272,66 @@ hr {
   padding-left: 3px;
 }
 
+
+.dismissible {
+	color: #222;
+	font-size: 16px;
+	line-height: 22px;
+	position: relative;
+	overflow: hidden;
+}
+
+ .dismissible span {
+	background: #fff;
+	border: 2px solid rgba(0, 0, 0, .3);
+	border-radius: 5px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .2);
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto 20px auto;
+	padding: 10px;
+	position: relative;
+ }
+
+.dismissible button {
+	background: rgba(0, 0, 0, .4);
+	border: 0;
+	border-radius: 100%;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	height: 24px;
+	line-height: 20px;
+	margin-top: -12px;
+	right: 10px;
+	position: absolute;
+	top: 50%;
+	width: 24px;
+}
+
+.dismissible button:focus {
+	outline: none;
+}
+
+.dismissible-success span {
+	background-color: rgba(89, 190, 70, 0.74);
+	border-color: rgba(61, 136, 54, 0.94);
+	color: #fff;
+    width: 40% !important;
+    text-align: center;
+    alignment: left !important;
+}
+
+.dismissible-success button {
+	background-color: #7CB342;
+	color: #DCEDC8;
+}
+
+.alert {
+  width: 50% !important;
+  alignment: center !important;
+}
+
+
+

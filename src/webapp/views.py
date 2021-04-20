@@ -169,6 +169,9 @@ def create_appraisal(request):
                 new_house.save()
                 messages.success(request, "We've successfully updated the housing information")
                 house_id = new_house.id
+                request.session['is_created'] = 1
+                # request.session['is_updated'] = 0
+                request.session.modified = True
                 return redirect('/general/' + str(house_id))
             # hopefully won't reach here but just in case redirect back to same page
             else:
@@ -525,4 +528,14 @@ def single_room_view(request, house_id, room_id):
 
 @register.filter
 def get_item(dictionary, key):
+    # print('filter values')
+    # print(str(key) + str(dictionary.get(key)))
     return dictionary.get(key)
+
+@register.filter
+def set_item(dictionary, args):
+    arg_list = [arg.strip() for arg in args.split(',')]
+    key = arg_list[0]
+    value = arg_list[1]
+    dictionary[key] = value
+    return ""

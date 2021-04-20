@@ -121,10 +121,10 @@ class Property(models.Model):
     re_taxes = models.IntegerField(blank=True, null=True)
     prop_rights_appraised = models.CharField(max_length=10, blank=True, null=True, choices=PropRightsAppraisedTypes.choices)  # This field type is a guess.
     project_type = models.CharField(max_length=30, blank=True, null=True, choices=ProjectTypes.choices)  # This field type is a guess.
-    hoa_price = models.IntegerField(blank=True, null=True)
+    hoa_price = models.CharField(blank=True, null=True, max_length=50)
     map_ref = models.IntegerField(blank=True, null=True)
     census_tract = models.IntegerField(blank=True, null=True)
-    sale_price = models.IntegerField(blank=True, null=True)
+    sale_price = models.CharField(blank=True, null=True, max_length=50)
     date_of_sale = models.DateField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
     house = models.ForeignKey(House, models.DO_NOTHING)
