@@ -169,4 +169,4 @@ NOSE_ARGS = [
     '--cover-package=src',
 ]
 
-SESSION_COOKIE_SECURE = "False"
+# SESSION_COOKIE_SECURE = "False"

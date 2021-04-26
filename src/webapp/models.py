@@ -118,7 +118,7 @@ class Property(models.Model):
     current_owner = models.CharField(max_length=50, blank=True, null=True)
     occupant = models.CharField(max_length=10, blank=True, null=True, choices=OccupantTypes.choices)  # This field type is a guess.
     tax_year = models.IntegerField(blank=True, null=True, choices=year_choices)
-    re_taxes = models.IntegerField(blank=True, null=True)
+    re_taxes = models.CharField(max_length=20, blank=True, null=True)
     prop_rights_appraised = models.CharField(max_length=10, blank=True, null=True, choices=PropRightsAppraisedTypes.choices)  # This field type is a guess.
     project_type = models.CharField(max_length=30, blank=True, null=True, choices=ProjectTypes.choices)  # This field type is a guess.
     hoa_price = models.CharField(blank=True, null=True, max_length=50)

@@ -163,11 +163,11 @@
           </div>
           <div class="form-group col-md-3">
             <label for="id_re_taxes">Real Estate Taxes</label>
-            {% render_field form.re_taxes placeholder="$" class="form-control capped-input" type="number" placeholder="$"%}
+            {% render_field form.re_taxes placeholder="$" class="form-control capped-input" placeholder="$"%}
           </div>
           <div class="form-group col-md-3">
             <label for="id_hoa_price">Homeowners Association Fees</label>
-            {% render_field form.hoa_price placeholder="$" class="form-control capped-input" type="number"%}
+            {% render_field form.hoa_price placeholder="$" class="form-control capped-input" %}
           </div>
           <div class="form-group col-md-3">
             <label for="id_prop_rights_appraised">Property Rights Appraised</label>
@@ -185,7 +185,7 @@
             {% render_field form.map_ref placeholder=form.map_ref.label class="form-control capped-input" type="text"%}
           </div>
           <div class="form-group col-md-4">
-            <label for="id_census_tract">Census Tract</label>
+            <label for="id_census_tract">Census Tract Number</label>
             {% render_field form.census_tract placeholder=form.census_tract.label class="form-control capped-input" type="text"%}
           </div>
         </div>
